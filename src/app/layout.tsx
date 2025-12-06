@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header className="bg-gray-600 h-16 flex items-center px-4">
-          <h1 className="font-bold text-2xl text-white">Task Management</h1>
+          <div className="flex w-full">
+            <h1 className="font-bold text-2xl text-white">Task Management</h1>
+            <Image src="/menu.svg" alt="menu" width={24} height={24} className="ml-auto"/>
+          </div>
         </header>
         {children}
       </body>
