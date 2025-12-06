@@ -27,8 +27,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header>
-          <h1>Task Management</h1>
+        <header className="bg-gray-600 h-16 flex items-center px-4">
+          <h1 className="font-bold text-2xl text-white">Task Management</h1>
         </header>
         {children}
       </body>
