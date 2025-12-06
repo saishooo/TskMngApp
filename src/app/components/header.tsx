@@ -7,6 +7,9 @@ import Link from "next/link";
 export default function Header(){
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const openSidebar  = () => setSidebarOpen(true);
+  const closeSidebar = () => setSidebarOpen(false);
+
   //menuクリック時の処理
   const menuClick = () =>{
     setSidebarOpen(!sidebarOpen);
@@ -36,11 +39,14 @@ export default function Header(){
               <Link href="/tsk_input" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Task
               </Link>
+              <Link href="/tsk_mng" className="font-bold block p-2 rounded hover:bg-gray-200">
+                Management
+              </Link>
             </nav> 
 
             <button 
               className="lock p-5 rounded hover:bg-gray-200"
-              onClick={() => setSidebarOpen(false)}
+              onClick={closeSidebar}
             >
               閉じる
             </button>
