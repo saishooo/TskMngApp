@@ -16,23 +16,24 @@ export default function Header(){
       <>
         <header className="bg-gray-600 h-16 flex items-center px-4">
           <div className="flex w-full">
-            <h1 className="font-bold text-2xl text-white">Task Management</h1>
             <button 
-              className="ml-auto"
               onClick={menuClick}
               >
               <Image src="/menu.svg" alt="menu" width={24} height={24} />
             </button>
+
+            <h1 className="font-bold text-2xl text-white ml-5">Task Management</h1>
+
           </div>
         </header>
         
         {sidebarOpen && (
-          <aside className="fixed top-16 right-0 w-64 h-full bg-gray-100">
+          <aside className="fixed top-16 left-0 w-64 h-full bg-gray-100">
             <nav className="space-y-2">
               <Link href="/" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Home
               </Link>
-              <Link href="/" className="font-bold block p-2 rounded hover:bg-gray-200">
+              <Link href="/tsk_input" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Task
               </Link>
             </nav> 
