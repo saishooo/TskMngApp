@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Image from "next/image";
-import Link from "next/link";
+import Header from "./components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,23 +28,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="bg-gray-600 h-16 flex items-center px-4">
-          <div className="flex w-full">
-            <h1 className="font-bold text-2xl text-white">Task Management</h1>
-            <button className="ml-auto">
-              <Image src="/menu.svg" alt="menu" width={24} height={24} />
-            </button>
-          </div>
-        </header>
-
+          <Header />
         <div className="flex min-h-screen">
-          <aside className="hidden md:block w-50 bg-gray-100 border-r p-4">
-            <nav className="space-y-2">
-              <Link href="/" className="block p-2 rounded hover:bg-gray-200">
-                Home
-              </Link>
-            </nav> 
-          </aside>
           {children}
         </div>
       </body>
