@@ -42,6 +42,9 @@ export default function Header(){
               <Link href="/tsk_mng" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Management
               </Link>
+              <Link href="/tsk_comp" className="font-bold block p-2 rounded hover:bg-gray-200">
+                Completed
+              </Link>
             </nav> 
 
             <button 
