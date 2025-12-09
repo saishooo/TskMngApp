@@ -9,12 +9,12 @@ interface Props{
     setTasks: React.Dispatch<React.SetStateAction<Tasks[]>>;
 }
 
-//saito :Propsの意味は？
+//saito :Propsの意味は？　{ tasks, setTasks }: Props
 export default function Tsk_Input({ tasks, setTasks }: Props){
     const [form,  setForm]  = useState({tsk_title: "", tsk_date: "" });
 
     //saito
-    const handleChange = ( e: React.ChangeEvent<HTMLInputElement> ) => {
+    const handleChange = ( e: any ) => {
         setForm({...form, [e.target.name]: e.target.value});
     };
 
@@ -67,6 +67,11 @@ export default function Tsk_Input({ tasks, setTasks }: Props){
             <p>タイトル: {form.tsk_title}</p>
             <p>日時: {form.tsk_date}</p>
 
+            {tasks.map((task)=>(
+                <div key={task.id} className="flex w-full hover:bg-gray-200 rounded px-4">
+                    <p className="font-semibold">{task.tsk_title}</p>
+                </div>
+            ))}
 
         </div>
     </div>
