@@ -7,7 +7,7 @@ import { tsk_data, Tasks } from "../../tsk_data/tsk_data";
 export default function Parent( {children} : any) {
   const [tasks, setTasks] = useState<Tasks[]>(tsk_data || []);
 
-  //saito localStorage から復元
+  //saito
   useEffect(() => {
     const saved = localStorage.getItem("tasks");
     if (saved) {
@@ -17,7 +17,7 @@ export default function Parent( {children} : any) {
     }
   }, []);
 
-  // tasks が変わるたび保存
+  //saito
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
