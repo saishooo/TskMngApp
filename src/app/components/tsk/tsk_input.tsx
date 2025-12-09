@@ -1,29 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { tsk_data } from "../tsk_data/tsk_data";
+import { useState } from "react";
+import { Tasks } from "../../tsk_data/tsk_data";
 
-export default function Tsk_Input(){
-    const [tasks, setTasks] = useState(tsk_data);
+//saito
+interface Props{
+    tasks: Tasks[];
+    setTasks: React.Dispatch<React.SetStateAction<Tasks[]>>;
+}
+
+//saito :Propsの意味は？
+export default function Tsk_Input({ tasks, setTasks }: Props){
     const [form,  setForm]  = useState({tsk_title: "", tsk_date: "" });
 
     //saito
-    const handleChange = ( e ) => {
+    const handleChange = ( e: React.ChangeEvent<HTMLInputElement> ) => {
         setForm({...form, [e.target.name]: e.target.value});
     };
-
-    //saito
-    useEffect(() => {
-        const saved = localStorage.getItem("tasks");
-        if (saved) {
-        setTasks(JSON.parse(saved));
-        }
-    }, []);
-
-    //saito
-    useEffect(() => {
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-    }, [tasks]);
 
     const addTask = () => {
         setTasks([
@@ -74,11 +67,6 @@ export default function Tsk_Input(){
             <p>タイトル: {form.tsk_title}</p>
             <p>日時: {form.tsk_date}</p>
 
-            {tasks.map((task)=>(
-                <div key={task.id} className="flex w-full hover:bg-gray-200 rounded px-4">
-                    <p className="font-semibold">{task.tsk_title}</p>
-                </div>
-            ))}
 
         </div>
     </div>

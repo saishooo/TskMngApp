@@ -1,6 +1,6 @@
 "use client";
 
-import { tsk_data } from "../tsk_data/tsk_data";
+import { tsk_data } from "../../tsk_data/tsk_data";
 import { useState } from "react";
 
 export default function Tsk_Management() {

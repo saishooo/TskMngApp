@@ -1,5 +1,5 @@
 "use client";
-import { tsk_data } from "../tsk_data/tsk_data";
+import { tsk_data } from "../../tsk_data/tsk_data";
 import { useState } from "react";
 
 export default function Tsk_Management() {
@@ -27,7 +27,7 @@ export default function Tsk_Management() {
                   onChange={(e) => setValue(e.target.value)}
                   />
                   <div className="pl-4 my-2">
-                    <p className="font-semibold">{i.tsk_data}</p>
+                    <p className="font-semibold">{i.tsk_title}</p>
                     <p className="text-sm text-gray-700">{i.date}</p>
                   </div>
               </div>

@@ -35,13 +35,13 @@ export default function Header(){
               <Link href="/" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Home
               </Link>
-              <Link href="/tsk_input" className="font-bold block p-2 rounded hover:bg-gray-200">
+              <Link href="/tsk/tsk_input" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Task Input
               </Link>
-              <Link href="/tsk_mng" className="font-bold block p-2 rounded hover:bg-gray-200">
+              <Link href="/tsk/tsk_mng" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Management
               </Link>
-              <Link href="/tsk_comp" className="font-bold block p-2 rounded hover:bg-gray-200">
+              <Link href="/tsk/tsk_comp" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Completed
               </Link>
             </nav> 
