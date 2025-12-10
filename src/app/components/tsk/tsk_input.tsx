@@ -1,18 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Tasks } from "../../tsk_data/tsk_data";
-
-
-//TypeScriptの型（タイプ）を定義している
-//Propsという名前の型を定義した
-interface Props{
-    tasks: Tasks[];     //Tasks型()の配列 id,comp,tsk_title,dateの形
-    setTasks: React.Dispatch<React.SetStateAction<Tasks[]>>;    //Tasks[]の更新を行う関数
-}
+import { Tsk_Props } from "../../types";
 
 //[ {tasks, setTasks}:Props ]→Props型のtasks,setTasksを引数として受け取る
-export default function Tsk_Input({ tasks, setTasks }: Props){
+export default function Tsk_Input({ tasks, setTasks }: Tsk_Props){
     const [form,  setForm]  = useState({tsk_title: "", tsk_date: "" });
 
     //引数eをany型にする

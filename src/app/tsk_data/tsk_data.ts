@@ -1,9 +1,4 @@
-export interface Tasks{
-    id: number;             //id
-    comp: boolean;          //達成 or 未達
-    tsk_title: string;       //タスク
-    date: string;           //期日
-}
+import { Tasks } from "../types";
 
 //初期値のみの表示
 export const tsk_data: Tasks[]=[
