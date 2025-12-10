@@ -30,6 +30,7 @@ export default function RootLayout({
       >
           <Header />
         <div className="flex min-h-screen">
+          {/* Tsk_Parentで{children}を囲いタスク管理を行えるようにする */}
           {children}
         </div>
       </body>
