@@ -3,17 +3,21 @@
 import { useState } from "react";
 import { Tasks } from "../../tsk_data/tsk_data";
 
-//saito 何をやっている？
+
+//TypeScriptの型（タイプ）を定義している
+//Propsという名前の型を定義した
 interface Props{
-    tasks: Tasks[];
-    setTasks: React.Dispatch<React.SetStateAction<Tasks[]>>;
+    tasks: Tasks[];     //Tasks型()の配列 id,comp,tsk_title,dateの形
+    setTasks: React.Dispatch<React.SetStateAction<Tasks[]>>;    //Tasks[]の更新を行う関数
 }
 
-//saito :Propsの意味は？　{ tasks, setTasks }: Props
+//[ {tasks, setTasks}:Props ]→Props型のtasks,setTasksを引数として受け取る
 export default function Tsk_Input({ tasks, setTasks }: Props){
     const [form,  setForm]  = useState({tsk_title: "", tsk_date: "" });
 
-    //saito
+    //引数eをany型にする
+    //[ e ] event情報を受け取る
+    //formに変化した値をセットする
     const handleChange = ( e: any ) => {
         setForm({...form, [e.target.name]: e.target.value});
     };
