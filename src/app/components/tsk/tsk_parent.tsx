@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { tsk_data } from "../../tsk_data/tsk_data";
-import { Tasks } from "@/app/types";
+import { tsk_data } from "../../tsk_data/tsk_data";   //初期値が入っているタスクデータ
+import { Tasks } from "@/app/types";                  //Tasksの型を引き継ぐ
 
 //[ {children}:any ]は引数である
 //anyは型の宣言, childrenはany型
@@ -16,17 +16,20 @@ export default function Tsk_Parent( {children} : any) {
   /* Tasks[]の配列を持ち、tsk_dataがあれば、tsk_dataを配列へ、そうでなければ空配列にする */
   const [tasks, setTasks] = useState<Tasks[]>(tsk_data || []);
 
-  //saito
   useEffect(() => {
+    //[ localStrage ]とはブラウザに保存されているデータ
+    //[ getItem("XXX") ] "XXX"で保存されているデータがあればJSONテキスト形式で返却される
     const saved = localStorage.getItem("tasks");
     if (saved) {
+        //[ JSON.parse() ] JSONテキストを配列の形に変化する
         const parsed = JSON.parse(saved);
-  //saito 
+
+        //[ Array.isArray() ] は配列かどうか確認する
         setTasks(Array.isArray(parsed) ? parsed : []);
     }
   }, []);
 
-  //saito
+  
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
