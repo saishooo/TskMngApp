@@ -1,14 +1,9 @@
 "use client";
 
-import { Tsk_Props } from "@/app/types";
+import { useTasks } from "./tsk_parent";
 
-export default function Tsk_Output_Management( { tasks, setTasks }: Tsk_Props ) {
-  
-  const handleChange = (id: number, value: boolean) => {
-    setTasks(tasks.map(task =>
-      task.id === id ? { ...task, comp: value } : task
-    ));
-  };
+export default function Tsk_Output_Management() {
+  const { tasks, toggleTask } =useTasks();
 
   return (
       <div className="fixed top-25 left-64 right-64 h-[350px] flex justify-center">
@@ -21,14 +16,14 @@ export default function Tsk_Output_Management( { tasks, setTasks }: Tsk_Props ) 
                   type="radio"
                   value="false"
                   checked={task.comp === false}
-                  onChange={() => handleChange(task.id, false)}
+                  onChange={() => toggleTask(task.id)}
                   />
                 
                 <input
                   type="radio"
                   value="true"
                   checked={task.comp === true}
-                  onChange={() => handleChange(task.id, true)}
+                  onChange={() => toggleTask(task.id)}
                   />
                   <div className="pl-4 my-2">
                     <p className="font-semibold">{task.tsk_title}</p>

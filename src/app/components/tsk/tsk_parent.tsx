@@ -1,39 +1,55 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { tsk_data } from "../../tsk_data/tsk_data";   //初期値が入っているタスクデータ
+import { createContext, useContext, useState } from "react";
 import { Tasks } from "@/app/types";                  //Tasksの型を引き継ぐ
 
-//[ {children}:any ]は引数である
-//anyは型の宣言, childrenはany型
-//childrenはコンポネートの中に書かれた要素を受け取る
-//childrenとは、<Tsk_Parent>で囲われた中のもの
 
-//Tsk_Parentでtasks,setTasksを生成する
-//Tsk_Parentはchildren関数を受け取る
-export default function Tsk_Parent( {children} : any) {
-  /* useState<Tasks[]>(tsk_data || []) */
-  /* Tasks[]の配列を持ち、tsk_dataがあれば、tsk_dataを配列へ、そうでなければ空配列にする */
-  const [tasks, setTasks] = useState<Tasks[]>(tsk_data || []);
-
-  useEffect(() => {
-    //[ localStrage ]とはブラウザに保存されているデータ
-    //[ getItem("XXX") ] "XXX"で保存されているデータがあればJSONテキスト形式で返却される
-    const saved = localStorage.getItem("tasks");
-    if (saved) {
-        //[ JSON.parse() ] JSONテキストを配列の形に変化する
-        const parsed = JSON.parse(saved);
-
-        //[ Array.isArray() ] は配列かどうか確認する
-        setTasks(Array.isArray(parsed) ? parsed : []);
-    }
-  }, []);
-
-  
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  //受け取った関数にtasks,setTasksを渡して、実行する
-  return children( { tasks, setTasks} );
+export interface Tsk_Props{
+    tasks: Tasks[];
+    addTask: (tsk_title: string, date: string) => void;
+    toggleTask: (id: number)     => void;
 }
+
+export const TaskContext = createContext<Tsk_Props | null>(null);
+
+export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
+  const [tasks, setTasks] = useState<Tasks[]>([
+    {
+        id: 1,
+        comp: false,
+        tsk_title: "プログラミング(初期値)",
+        date: "2025-12-06-00:06:00",
+    }
+  ]);
+
+  const addTask = (tsk_title: string, date: string) => {
+    setTasks((prev) => [
+      ...prev,
+      { id: Date.now(), comp: false, tsk_title, date},
+    ]);
+  };
+
+  const toggleTask = (id: number) =>{ 
+    setTasks((prev) => 
+      prev.map((t) =>
+        t.id === id ? { ...t, comp: !t.comp } : t
+      )
+    );
+  };
+
+  return(
+    <TaskContext.Provider value={{ tasks, addTask, toggleTask }}>
+      {children}
+    </TaskContext.Provider>
+  );
+}
+
+// saito
+//エラーを返す関数？
+export const useTasks = () => {
+  const context = useContext(TaskContext);
+  if (!context) {
+    throw new Error("useTasks must be used inside TaskContextProvider");
+  }
+  return context;
+};

@@ -1,32 +1,26 @@
 "use client";
 
-import { useState } from "react";
-import { Tsk_Props } from "../../types";
+import { useContext, useState } from "react";
+import { TaskContext, useTasks } from "./tsk_parent";
 
-//[ {tasks, setTasks}:Props ]→Props型のtasks,setTasksを引数として受け取る
-export default function Tsk_Input({ tasks, setTasks }: Tsk_Props){
-    const [form,  setForm]  = useState({tsk_title: "", tsk_date: "" });
+export default function Tsk_Input(){
+    //saito
+    const { tasks } = useTasks();
 
-    //引数eをany型にする
-    //[ e ] event情報を受け取る
-    //formに変化した値をセットする
-    const handleChange = ( e: any ) => {
-        setForm({...form, [e.target.name]: e.target.value});
+    const [ title, setTitle ] = useState("");
+    const [ date,  setDate ]  = useState("");
+
+    //saito
+    const ctx = useContext(TaskContext);
+    if (!ctx) return null;
+    const { addTask } = ctx;
+
+
+    const handleAdd = () => {
+        addTask( title, date );
+        setTitle("");
+        setDate("");
     };
-
-    const addTask = () => {
-        setTasks([
-            ...tasks,
-            {
-                id: tasks.length+1,
-                comp: false,
-                tsk_title: form.tsk_title,
-                date: form.tsk_date,
-            },
-        ]);
-
-        setForm({tsk_title: "", tsk_date: ""});
-    }
 
     return(
     <div className="fixed top-25 left-64 right-64 h-[350px] flex justify-center">
@@ -37,8 +31,8 @@ export default function Tsk_Input({ tasks, setTasks }: Tsk_Props){
                 <input
                     name="tsk_title"
                     type="text"
-                    value={form.tsk_title}
-                    onChange={handleChange}
+                    value={ title }
+                    onChange={ (e) => setTitle(e.target.value) }
                     placeholder="タスク"
                     className="border border-gray-300 rounded p-2 w-100 mb-6"
                 />
@@ -47,21 +41,21 @@ export default function Tsk_Input({ tasks, setTasks }: Tsk_Props){
                 <input 
                     name="tsk_date"
                     type="date"
-                    value={form.tsk_date}
-                    onChange={handleChange}
+                    value={ date }
+                    onChange={ (e) => setDate(e.target.value) }
                     placeholder="XXXX-YY-ZZ"
                     className="border border-gray-300 rounded p-2 w-100 mb-6"
                 />
 
             <button
                 className="block border border-gray-300 p-3 rounded hover:bg-gray-200"
-                onClick={addTask}
+                onClick={ handleAdd }
             >
                 Add
             </button>
 
-            <p>タイトル: {form.tsk_title}</p>
-            <p>日時: {form.tsk_date}</p>
+            <p>タイトル: {title}</p>
+            <p>日時: {date}</p>
 
             {tasks.map((task)=>(
                 <div key={task.id} className="flex w-full hover:bg-gray-200 rounded px-4">
