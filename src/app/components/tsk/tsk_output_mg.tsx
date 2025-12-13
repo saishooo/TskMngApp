@@ -11,13 +11,8 @@ export default function Tsk_Output_Management() {
           <h1 className="font-bold mb-3">My Task</h1>    
 
             {tasks.map((task) => (
+              !task.comp && (
               <div key={task.id} className="flex w-full hover:bg-gray-200 rounded px-4">
-                <input
-                  type="radio"
-                  value="false"
-                  checked={task.comp === false}
-                  onChange={() => toggleTask(task.id)}
-                  />
                 
                 <input
                   type="radio"
@@ -25,13 +20,12 @@ export default function Tsk_Output_Management() {
                   checked={task.comp === true}
                   onChange={() => toggleTask(task.id)}
                   />
-                  <div className="pl-4 my-2">
-                    <p className="font-semibold">{task.tsk_title}</p>
-                    <p className="text-sm text-gray-700">{task.date}</p>
-                  </div>
-
-                  <p>select : {task.comp? "達成":"未達"}</p>
+                <div className="pl-4 my-2">
+                  <p className="font-semibold">{task.tsk_title}</p>
+                  <p className="text-sm text-gray-700">{task.date}</p>
+                </div>
               </div>
+              )
             ))}
         </div>
       </div>

@@ -53,16 +53,6 @@ export default function Tsk_Input(){
             >
                 Add
             </button>
-
-            <p>タイトル: {title}</p>
-            <p>日時: {date}</p>
-
-            {tasks.map((task)=>(
-                <div key={task.id} className="flex w-full hover:bg-gray-200 rounded px-4">
-                    <p className="font-semibold">{task.tsk_title}</p>
-                </div>
-            ))}
-
         </div>
     </div>
     );
