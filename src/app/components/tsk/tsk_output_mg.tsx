@@ -18,7 +18,7 @@ export default function Tsk_Output_Management() {
             ) : (
             tasks.map((task) => (
               !task.comp && (
-              <div key={task.id} className="flex w-full hover:bg-gray-200 rounded px-4">
+              <div key={task.id} className="flex w-full hover:bg-gray-200 rounded px-4 h-15">
                 <input
                   type="radio"
                   value="true"

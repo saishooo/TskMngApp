@@ -7,8 +7,9 @@ import { Tasks } from "@/app/types";                  //Tasksの型を引き継�
 //下記のcreateContextで使用
 export interface Tsk_Props{
     tasks: Tasks[];
-    addTask: (tsk_title: string, date: string) => void;
-    toggleTask: (id: number)     => void;
+    addTask: ( tsk_title: string, date: string ) => void;
+    deleteTask: ( id: number )     => void;
+    toggleTask: ( id: number )     => void;
 }
 
 // Context 作成（初期値 null）
@@ -36,14 +37,24 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
     }
   ]);
 
+  //タスク追加関数
   const addTask = (tsk_title: string, date: string) => {
-    //prevとはsetTasksに渡される一つ前のtasksの中身
+    //prevとはsetTasksに渡される前のtasksの中身
+    //prevについてもう少し詳しくあとで調べる
     setTasks((prev) => [
       ...prev,
       { id: Date.now(), comp: false, tsk_title, date},
     ]);
   };
 
+  //タスクを削除する関数
+  const deleteTask = (id: number) => {
+    //指定されたid以外を格納し直す
+    setTasks((prev) =>
+      prev.filter( task => task.id !== id))
+  };
+
+  //実行済み・未実行を切り替える関数
   const toggleTask = (id: number) =>{ 
     setTasks((prev) => 
       prev.map((t) =>
@@ -54,7 +65,7 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
 
 /* [ value={{ tasks, addTask, toggleTask }} ] valueはtasks,addTaskなどをchildrenに渡す */
   return(
-    <TaskContext.Provider value={{ tasks, addTask, toggleTask }}>
+    <TaskContext.Provider value={{ tasks, addTask, deleteTask, toggleTask }}>
       {children}
     </TaskContext.Provider>
   );
