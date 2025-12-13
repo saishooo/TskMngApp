@@ -60,9 +60,9 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
   );
 }
 
-// saito
-//エラーを返す関数？
+//TaskContextに格納されたデータをcontext変数に格納し、戻り値とする
 export const useTasks = () => {
+  // [ useContext ] Providerに保存された値を取り出す
   const context = useContext(TaskContext);
   if (!context) {
     throw new Error("useTasks must be used inside TaskContextProvider");

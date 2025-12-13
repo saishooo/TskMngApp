@@ -1,16 +1,13 @@
 "use client";
 
 import { useContext, useState } from "react";
-import { TaskContext, useTasks } from "./tsk_parent";
+import { TaskContext } from "./tsk_parent";
 
 export default function Tsk_Input(){
-    //saito
-    const { tasks } = useTasks();
 
     const [ title, setTitle ] = useState("");
     const [ date,  setDate ]  = useState("");
 
-    //saito
     const ctx = useContext(TaskContext);
     if (!ctx) return null;
     const { addTask } = ctx;
@@ -37,7 +34,7 @@ export default function Tsk_Input(){
                     className="border border-gray-300 rounded p-2 w-100 mb-6"
                 />
 
-            <h1 className="mb-2">Red Line</h1>
+            <h1 className="mb-2">DeadLine</h1>
                 <input 
                     name="tsk_date"
                     type="date"
