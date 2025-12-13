@@ -1,9 +1,10 @@
 "use client";
 
 import { useContext, useState } from "react";
-import { TaskContext } from "./tsk_parent";
+import { TaskContext, useTasks } from "./tsk_parent";
 
 export default function Tsk_Input(){
+    const { tasks } = useTasks();
 
     const [ title, setTitle ] = useState("");
     const [ date,  setDate ]  = useState("");
@@ -50,6 +51,16 @@ export default function Tsk_Input(){
             >
                 Add
             </button>
+            
+            <p>タイトル: {title}</p>
+            <p>日時: {date}</p>
+
+            {tasks.map((task)=>(
+                <div key={task.id} className="flex w-full hover:bg-gray-200 rounded px-4">
+                    <p className="font-semibold">{task.tsk_title}</p>
+                </div>
+            ))}
+
         </div>
     </div>
     );
