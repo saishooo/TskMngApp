@@ -34,7 +34,7 @@ export default function Tsk_Output_Completed() {
                         <button
                         onClick={() => deleteTask(task.id)}
                         >
-                        <Image className="mt-1" src="/trash.svg" alt="menu" width={24} height={24} />
+                            <Image className="mt-1" src="/trash.svg" alt="delete" width={24} height={24} />
                         </button>
                         <p className="text-xs mt-1">削除</p>
                     </div>
