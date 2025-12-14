@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Header(){
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [ sidebarOpen, setSidebarOpen ] = useState( false );
+  const [ taskOpen, setTaskOpen ] = useState( false );
 
-  const closeSidebar = () => setSidebarOpen(false);
+  const closeSidebar = () => setSidebarOpen( false );
 
   //menuクリック時の処理
   const menuClick = () =>{
@@ -35,22 +36,33 @@ export default function Header(){
               <Link href="/" className="font-bold block p-2 rounded hover:bg-gray-200">
                 Home
               </Link>
-              <Link href="/tsk/tsk_input" className="font-bold block p-2 rounded hover:bg-gray-200">
-                Task Input
-              </Link>
-              <Link href="/tsk/tsk_mng" className="font-bold block p-2 rounded hover:bg-gray-200">
-                Management
-              </Link>
-              <Link href="/tsk/tsk_comp" className="font-bold block p-2 rounded hover:bg-gray-200">
-                Completed
-              </Link>
+
+              <button
+                className="font-bold block p-2 rounded hover:bg-gray-200 w-full text-left"
+                onClick={() => setTaskOpen(!taskOpen)}
+              >
+                Task
+              </button>
+              {taskOpen && (
+                <div className="block p-2">
+                  <Link href="/tsk/tsk_input" className="block p-2 rounded hover:bg-gray-200">
+                    Task Input
+                  </Link>
+                  <Link href="/tsk/tsk_mng" className="block p-2 rounded hover:bg-gray-200">
+                    Task Management
+                  </Link>
+                  <Link href="/tsk/tsk_comp" className="block p-2 rounded hover:bg-gray-200">
+                    Task Completed
+                  </Link>
+                </div>
+              )}
             </nav> 
 
             <button 
-              className="lock p-5 rounded hover:bg-gray-200"
+              className="font-bold block p-2 rounded hover:bg-gray-200 w-full text-left"
               onClick={closeSidebar}
             >
-              閉じる
+              Menu Close
             </button>
 
           </aside>
