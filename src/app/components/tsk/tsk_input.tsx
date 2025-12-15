@@ -1,11 +1,9 @@
 "use client";
 
 import { useContext, useState } from "react";
-import { TaskContext, useTasks } from "./tsk_parent";
+import { TaskContext } from "./tsk_parent";
 
 export default function Tsk_Input(){
-    const { tasks } = useTasks();
-
     const [ tsk_title, setTskTitle ] = useState("");
     const [ dead_line,  setDeadLine ]  = useState("");
 

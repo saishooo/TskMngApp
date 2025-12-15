@@ -43,7 +43,7 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
   const addTask = (tsk_title: string, dead_line: string) => {
     //prevとはsetTasksに渡される前のtasksの中身
     //prevについてもう少し詳しくあとで調べる
-    const now = new Date().toISOString();
+    const nowTime = new Date().toISOString();
 
     setTasks((prev) => [
       ...prev,
@@ -51,8 +51,8 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
         comp: false, 
         tsk_title, 
         dead_line, 
-        createdAt: now,
-        updatedAt: now,
+        createdAt: nowTime,
+        updatedAt: nowTime,
       },
     ]);
   };
