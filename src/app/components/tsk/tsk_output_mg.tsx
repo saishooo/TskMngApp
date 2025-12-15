@@ -28,7 +28,7 @@ export default function Tsk_Output_Management() {
                     />
                   <div className="pl-4 my-2">
                     <p className="font-semibold">{task.tsk_title}</p>
-                    <p className="text-sm text-gray-700">{task.date}</p>
+                    <p className="text-sm text-gray-700">{task.dead_line}</p>
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center w-20 rounded hover:bg-red-200">
