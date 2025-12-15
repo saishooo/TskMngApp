@@ -5,22 +5,35 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Header(){
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [ isSidebarOpen, setIsSidebarOpen ] = useState( false );
+  const [ isTaskMenuOpen, setIsTaskMenuOpen ] = useState( false );
+  const taskLinks = [
+    { href: "/tsk/tsk_input", label: "My Task Input" },
+    { href: "/tsk/tsk_mng",   label: "My Tasks" },
+    { href: "/tsk/tsk_comp",  label: "My Tasks Completed" },
+  ];
 
-  const closeSidebar = () => setSidebarOpen(false);
+  //サイドバーを閉じる
+  const closeSidebar = () => {
+    setIsSidebarOpen( false );
+  };
 
-  //menuクリック時の処理
-  const menuClick = () =>{
-    setSidebarOpen(!sidebarOpen);
+  //タスクメニューの表示切り替え
+  //prevの意味
+  const toggleTaskMenu =() => {
+    setIsTaskMenuOpen( prev => !prev );
+  }
+
+  //メニューサイドバーの表示切り替え　menuクリック時
+  const toggleMenuClick = () =>{
+    setIsSidebarOpen( prev => !prev );
   };
 
   return(
       <>
-        <header className="bg-gray-600 h-16 flex items-center px-4 fixed top-0 left-0 right-0">
+        <header className="fixed top-0 left-0 right-0 h-16 flex items-center px-4 bg-gray-600">
           <div className="flex w-full">
-            <button 
-              onClick={menuClick}
-              >
+            <button onClick = { toggleMenuClick }>
               <Image src="/menu.svg" alt="menu" width={24} height={24} />
             </button>
 
@@ -29,28 +42,39 @@ export default function Header(){
           </div>
         </header>
         
-        {sidebarOpen && (
+        { isSidebarOpen && (
           <aside className="fixed top-16 left-0 w-64 h-full bg-gray-100">
             <nav className="space-y-2">
-              <Link href="/" className="font-bold block p-2 rounded hover:bg-gray-200">
+              <Link href="/" className="block p-2 font-bold rounded hover:bg-gray-200">
                 Home
               </Link>
-              <Link href="/tsk/tsk_input" className="font-bold block p-2 rounded hover:bg-gray-200">
-                Task Input
-              </Link>
-              <Link href="/tsk/tsk_mng" className="font-bold block p-2 rounded hover:bg-gray-200">
-                Management
-              </Link>
-              <Link href="/tsk/tsk_comp" className="font-bold block p-2 rounded hover:bg-gray-200">
-                Completed
-              </Link>
+
+              <button
+                className="block w-full p-2 text-left font-bold rounded hover:bg-gray-200"
+                onClick={ toggleTaskMenu }
+              >
+                Task
+              </button>
+              { isTaskMenuOpen && (
+                <div className="block p-2">
+                  { taskLinks.map(link => (
+                    <Link
+                    key = { link.href }
+                    href = { link.href }
+                    className = "block p-2 rounded hover:bg-gray-200"
+                    >
+                      { link.label }
+                    </Link>
+                  ))}
+                </div>
+              )}
             </nav> 
 
             <button 
-              className="lock p-5 rounded hover:bg-gray-200"
+              className="block w-full p-2 text-left font-bold rounded hover:bg-gray-200"
               onClick={closeSidebar}
             >
-              閉じる
+              Menu Close
             </button>
 
           </aside>
