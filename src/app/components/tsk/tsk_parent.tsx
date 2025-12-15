@@ -7,7 +7,7 @@ import { Tasks } from "@/app/types";                  //Tasksの型を引き継�
 //下記のcreateContextで使用
 export interface Tsk_Props{
     tasks: Tasks[];
-    addTask: ( tsk_title: string, date: string ) => void;
+    addTask: ( tsk_title: string, dead_line: string ) => void;
     deleteTask: ( id: number )     => void;
     toggleTask: ( id: number )     => void;
 }
@@ -33,17 +33,25 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
         id: 1,
         comp: false,
         tsk_title: "プログラミング(初期値)",
-        date: "2025-12-06-00:06:00",
+        dead_line: "2025-12-06-00:06:00",
+        createdAt: "2025-12-06-00:06:00",
     }
   ]);
 
   //タスク追加関数
-  const addTask = (tsk_title: string, date: string) => {
+  const addTask = (tsk_title: string, dead_line: string) => {
     //prevとはsetTasksに渡される前のtasksの中身
     //prevについてもう少し詳しくあとで調べる
+    const now = new Date().toISOString();
+
     setTasks((prev) => [
       ...prev,
-      { id: Date.now(), comp: false, tsk_title, date},
+      { id: Date.now(), 
+        comp: false, 
+        tsk_title, 
+        dead_line, 
+        createdAt: now,
+      },
     ]);
   };
 

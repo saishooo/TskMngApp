@@ -6,6 +6,7 @@ export const tsk_data: Tasks[]=[
         id: 1,
         comp: false,
         tsk_title: "プログラミング",
-        date: "2025-12-06-00:06:00",
+        dead_line: "2025-12-06-00:06:00",
+        createdAt:  "2025-12-06-00:06:00",
     },
 ];

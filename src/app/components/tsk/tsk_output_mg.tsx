@@ -11,15 +11,15 @@ export default function Tsk_Output_Management() {
 
   return (
       <div className="fixed top-25 left-64 right-64 h-[350px] flex justify-center">
-        <div className="border border-gray-300 rounded p-4 w-150">
-          <h1 className="font-bold mb-3">My Task</h1>    
+        <div className="w-150 p-4 border border-gray-300 rounded">
+          <h1 className="font-bold mb-3">My Tasks</h1>    
 
             { management_tsk.length === 0 ? (
               <p>未完了タスクはありません</p>
             ) : (
             management_tsk.map((task) => (
               <div key={task.id} className="flex">
-                <div className="flex w-full hover:bg-gray-200 rounded px-4 w-130 h-15">
+                <div className="flex w-130 h-15 px-4 hover:bg-gray-200 rounded">
                   <input
                     type="radio"
                     value="true"
