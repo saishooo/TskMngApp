@@ -2,6 +2,7 @@
 
 import { useTasks } from "./tsk_parent";
 import { useState } from "react";
+import { Tasks } from "@/app/types";
 import Image from "next/image";
 
 export default function Tsk_Output_Management() {
@@ -11,6 +12,18 @@ export default function Tsk_Output_Management() {
   const [ isEnditing, setIsEditing ] = useState( false );
   const [ editTitle,  setEditTitle ] = useState( "" );
   const [ editDeadLine, setEditDeadLine ] = useState( "" );
+
+  //ラジオボタン
+  const TaskRadioButton = ( { task }: { task: Tasks } ) => (
+    <div className="flex w-10 h-15 px-4">
+      <input
+          type="radio"
+          value="true"
+          checked={ task.comp === true }
+          onChange={() => toggleTask( task.id )}
+      />
+    </div>
+  );
 
   const Local_UpdateTask = ( id: number, newTitle: string, newDeadLine: string )=>{
     setIsEditing( false );
@@ -25,21 +38,13 @@ export default function Tsk_Output_Management() {
           <h1 className="font-bold mb-3">My Tasks</h1>    
 
             { management_tsk.length === 0 ? (
-              <p>未完了タスクはありません</p>
+              <p>There are no unfinished tasks.</p>
             ) : (
             management_tsk.map(( task ) => (
               <div key={ task.id } className="flex">
-                  {!isEnditing && (
+                  { !isEnditing && (
                     <div className="flex">
-                      <div className="flex w-10 h-15 px-4">
-                        <input
-                          type="radio"
-                          value="true"
-                          checked={ task.comp === true }
-                          onChange={() => toggleTask( task.id )}
-                          />
-                      </div>
-
+                        <TaskRadioButton task = { task } />
                       <div className="flex items-center justify-between w-110 px-4 my-2 hover:bg-gray-200 rounded" 
                         onClick = {() => setIsEditing( true )}
                         >
@@ -66,16 +71,9 @@ export default function Tsk_Output_Management() {
                       </div>
                     </div>
                   )}
-                  {isEnditing && (
+                  { isEnditing && (
                     <div className="flex">
-                      <div className="flex w-10 h-15 px-4">
-                        <input
-                          type="radio"
-                          value="true"
-                          checked={ task.comp === true }
-                          onChange={() => toggleTask( task.id )}
-                          />
-                      </div>
+                      <TaskRadioButton task = { task } />
 
                       <div className="flex items-center justify-between w-110 px-4 my-2 hover:bg-gray-200 rounded"
                       onClick = {() => setIsEditing( false )}>

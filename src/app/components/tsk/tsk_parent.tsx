@@ -42,10 +42,9 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
 
   //タスク追加関数
   const addTask = ( tsk_title: string, dead_line: string ) => {
-    //prevとはsetTasksに渡される前のtasksの中身
-    //prevについてもう少し詳しくあとで調べる
     const nowTime = new Date().toISOString();
 
+    //prevとは↑で定義されている[setTask→tasks]の状態こと
     setTasks((prev) => [
       ...prev,
       { id: Date.now(), 
