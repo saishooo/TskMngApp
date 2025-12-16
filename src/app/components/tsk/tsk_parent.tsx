@@ -8,6 +8,7 @@ import { Tasks } from "@/app/types";                  //Tasksの型を引き継�
 export interface Tsk_Props{
     tasks: Tasks[];
     addTask: ( tsk_title: string, dead_line: string ) => void;
+    updateTask: ( id: number, newTitle: string, newDeadLine:string ) => void;
     deleteTask: ( id: number )     => void;
     toggleTask: ( id: number )     => void;
 }
@@ -40,7 +41,7 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
   ]);
 
   //タスク追加関数
-  const addTask = (tsk_title: string, dead_line: string) => {
+  const addTask = ( tsk_title: string, dead_line: string ) => {
     //prevとはsetTasksに渡される前のtasksの中身
     //prevについてもう少し詳しくあとで調べる
     const nowTime = new Date().toISOString();
@@ -57,15 +58,28 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
     ]);
   };
 
+  //タスクの名前や期限をアップデート関数
+  const updateTask = ( id: number, newTitle: string, newDeadLine: string ) => {
+    const nowTime = new Date().toISOString();
+
+    setTasks(prev =>
+      prev.map(task =>
+        task.id === id
+        ? { ...task, tsk_title: newTitle, dead_line: newDeadLine,updatedAt: nowTime }
+        : task
+      )
+    );
+  };
+
   //タスクを削除する関数
-  const deleteTask = (id: number) => {
+  const deleteTask = ( id: number ) => {
     //指定されたid以外を格納し直す
     setTasks((prev) =>
       prev.filter( task => task.id !== id))
   };
 
   //実行済み・未実行を切り替える関数
-  const toggleTask = (id: number) =>{ 
+  const toggleTask = ( id: number ) =>{ 
     setTasks((prev) => 
       prev.map((t) =>
         t.id === id ? { ...t, comp: !t.comp } : t
@@ -75,8 +89,8 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
 
 /* [ value={{ tasks, addTask, toggleTask }} ] valueはtasks,addTaskなどをchildrenに渡す */
   return(
-    <TaskContext.Provider value={{ tasks, addTask, deleteTask, toggleTask }}>
-      {children}
+    <TaskContext.Provider value={{ tasks, addTask, updateTask, deleteTask, toggleTask }}>
+      { children }
     </TaskContext.Provider>
   );
 }
@@ -84,8 +98,8 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
 //TaskContextに格納されたデータをcontext変数に格納し、戻り値とする
 export const useTasks = () => {
   // [ useContext ] Providerに保存された値を取り出す
-  const context = useContext(TaskContext);
-  if (!context) {
+  const context = useContext( TaskContext );
+  if ( !context ) {
     throw new Error("useTasks must be used inside TaskContextProvider");
   }
   return context;
