@@ -12,6 +12,11 @@ export default function Tsk_Output_Management() {
   const [ editTitle,  setEditTitle ] = useState( "" );
   const [ editDeadLine, setEditDeadLine ] = useState( "" );
 
+  const Local_UpdateTask = ( id: number, newTitle: string, newDeadLine: string )=>{
+    setIsEditing( false );
+    updateTask( id, newTitle, newDeadLine );
+  };
+
   const management_tsk = tasks.filter( task => task.comp === false );
 
   return (
@@ -72,25 +77,31 @@ export default function Tsk_Output_Management() {
                           />
                       </div>
 
-                      <div className="flex items-center justify-between w-110 px-4 my-2 hover:bg-gray-200 rounded">
+                      <div className="flex items-center justify-between w-110 px-4 my-2 hover:bg-gray-200 rounded"
+                      onClick = {() => setIsEditing( false )}>
                         
                         <div>
                           <input
-                          className="block font-semibold"
+                          className="block font-semibold h-10"
                           value={ editTitle }
                           placeholder={ task.tsk_title }
-                          onChange={ ( e ) => setEditTitle( e.target.value ) }/>
+                          onChange = { ( e ) => setEditTitle( e.target.value ) }
+                          onClick  = { ( e ) => e.stopPropagation()}
+                          />
                           <input
-                          className="block text-sm text-gray-700"
+                          className="block text-sm text-gray-700 h-10"
+                          type="date"
                           value={editDeadLine}
                           placeholder={ task.dead_line }
-                          onChange={ ( e ) => setEditDeadLine( e.target.value ) }/>
+                          onChange = { ( e ) => setEditDeadLine( e.target.value ) }
+                          onClick  = { ( e ) => e.stopPropagation()}
+                          />
                         </div>
                       </div>
 
-                      <div className="flex flex-col items-center justify-center w-20 rounded hover:bg-blue-200">
+                      <div className="flex flex-col items-center justify-center w-20 rounded hover:bg-green-200">
                         <button
-                          onClick={() => setIsEditing( false )}
+                          onClick={ () => Local_UpdateTask( task.id, editTitle, editDeadLine ) }
                           >
                             <Image 
                               className="mt-1" 

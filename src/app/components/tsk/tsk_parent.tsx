@@ -59,13 +59,13 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
   };
 
   //タスクの名前や期限をアップデート関数
-  const updateTask = ( id: number, newTitle: string, newDeadLine: string) => {
+  const updateTask = ( id: number, newTitle: string, newDeadLine: string ) => {
     const nowTime = new Date().toISOString();
 
     setTasks(prev =>
       prev.map(task =>
         task.id === id
-        ? { ...task, tsk_title: newTitle, dead_line: newDeadLine,updatedAt: nowTime}
+        ? { ...task, tsk_title: newTitle, dead_line: newDeadLine,updatedAt: nowTime }
         : task
       )
     );
