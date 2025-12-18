@@ -7,11 +7,12 @@ export default function Tsk_Input(){
     const [ tsk_title, setTskTitle ] = useState("");
     const [ dead_line,  setDeadLine ]  = useState("");
 
+    //ここ修正　あと意味理解必要
     const ctx = useContext(TaskContext);
     if (!ctx) return null;
     const { addTask } = ctx;
 
-
+    //タスクを加えるローカル関数
     const handleAdd = () => {
         addTask( tsk_title, dead_line );
         setTskTitle("");

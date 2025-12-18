@@ -24,6 +24,7 @@ export default function Tsk_Output_Completed() {
     </div>
   );
 
+  //アップデート関数
   const Local_UpdateTask = ( id: number, newTitle: string, newDeadLine: string )=>{
     updateTask( id, newTitle, newDeadLine );
     setEditingTaskId( null );
@@ -31,6 +32,7 @@ export default function Tsk_Output_Completed() {
     setEditDeadLine("");
   };
 
+  //完了タスクのみを吸い上げ
   const completed_tsk = tasks.filter( task => task.comp === true);
   
   return (

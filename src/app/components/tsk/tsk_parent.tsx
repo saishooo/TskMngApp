@@ -14,6 +14,7 @@ export interface Tsk_Props{
 export const TaskContext = createContext<Tsk_Props | null>(null);
 
 export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
+  //タスクの初期値として登録
   const [tasks, setTasks] = useState<Tasks[]>([
     {
         id: 1,
