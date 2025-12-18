@@ -2,19 +2,33 @@
 
 import { useTasks } from "./tsk_parent";
 import { useState } from "react";
+import { Tasks } from "@/app/types";
 import Image from "next/image";
 
 export default function Tsk_Output_Management() {
-  // ↓ オブジェクトからtasksとtoggleTask関数を取り出している
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
   
-  const [ isEnditing, setIsEditing ] = useState( false );
+  const [ editingTaskId, setEditingTaskId ] = useState< number | null >( null );
   const [ editTitle,  setEditTitle ] = useState( "" );
   const [ editDeadLine, setEditDeadLine ] = useState( "" );
 
+  //ラジオボタン
+  const TaskRadioButton = ( { task }: { task: Tasks } ) => (
+    <div className="flex w-10 h-15 px-4">
+      <input
+          type="radio"
+          value="true"
+          checked={ task.comp === true }
+          onChange={() => toggleTask( task.id )}
+      />
+    </div>
+  );
+
   const Local_UpdateTask = ( id: number, newTitle: string, newDeadLine: string )=>{
-    setIsEditing( false );
     updateTask( id, newTitle, newDeadLine );
+    setEditingTaskId( null );
+    setEditTitle("");
+    setEditDeadLine("");
   };
 
   const management_tsk = tasks.filter( task => task.comp === false );
@@ -25,23 +39,19 @@ export default function Tsk_Output_Management() {
           <h1 className="font-bold mb-3">My Tasks</h1>    
 
             { management_tsk.length === 0 ? (
-              <p>未完了タスクはありません</p>
+              <p>There are no unfinished tasks.</p>
             ) : (
             management_tsk.map(( task ) => (
               <div key={ task.id } className="flex">
-                  {!isEnditing && (
+                  { editingTaskId !== task.id && (
                     <div className="flex">
-                      <div className="flex w-10 h-15 px-4">
-                        <input
-                          type="radio"
-                          value="true"
-                          checked={ task.comp === true }
-                          onChange={() => toggleTask( task.id )}
-                          />
-                      </div>
-
+                        <TaskRadioButton task = { task } />
                       <div className="flex items-center justify-between w-110 px-4 my-2 hover:bg-gray-200 rounded" 
-                        onClick = {() => setIsEditing( true )}
+                        onClick = {() => {
+                          setEditingTaskId( task.id );
+                          setEditTitle( task.tsk_title );
+                          setEditDeadLine( task.dead_line );
+                        }}
                         >
                         
                         <div>
@@ -66,23 +76,16 @@ export default function Tsk_Output_Management() {
                       </div>
                     </div>
                   )}
-                  {isEnditing && (
+                  { editingTaskId === task.id && (
                     <div className="flex">
-                      <div className="flex w-10 h-15 px-4">
-                        <input
-                          type="radio"
-                          value="true"
-                          checked={ task.comp === true }
-                          onChange={() => toggleTask( task.id )}
-                          />
-                      </div>
+                      <TaskRadioButton task = { task } />
 
                       <div className="flex items-center justify-between w-110 px-4 my-2 hover:bg-gray-200 rounded"
-                      onClick = {() => setIsEditing( false )}>
+                      onClick = {() => setEditingTaskId( null )}>
                         
                         <div>
                           <input
-                          className="block font-semibold h-10"
+                          className="block font-semibold text-gray-600 h-10"
                           value={ editTitle }
                           placeholder={ task.tsk_title }
                           onChange = { ( e ) => setEditTitle( e.target.value ) }

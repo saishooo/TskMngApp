@@ -19,7 +19,6 @@ export default function Header(){
   };
 
   //タスクメニューの表示切り替え
-  //prevの意味
   const toggleTaskMenu =() => {
     setIsTaskMenuOpen( prev => !prev );
   }
