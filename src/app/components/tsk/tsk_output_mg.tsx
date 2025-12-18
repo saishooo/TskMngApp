@@ -6,7 +6,6 @@ import { Tasks } from "@/app/types";
 import Image from "next/image";
 
 export default function Tsk_Output_Management() {
-  // ↓ オブジェクトからtasksとtoggleTask関数を取り出している
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
   
   const [ editingTaskId, setEditingTaskId ] = useState< number | null >( null );
