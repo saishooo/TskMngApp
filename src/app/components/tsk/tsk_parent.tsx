@@ -78,9 +78,11 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
 
   //実行済み・未実行を切り替える関数
   const toggleTask = ( id: number ) =>{ 
+    const nowTime = new Date().toISOString();
+
     setTasks((prev) => 
-      prev.map((t) =>
-        t.id === id ? { ...t, comp: !t.comp } : t
+      prev.map((task) =>
+        task.id === id ? { ...task, comp: !task.comp, updatedAt: nowTime} : task
       )
     );
   };
