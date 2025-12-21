@@ -2,7 +2,7 @@
 
 import { useContext, useState } from "react";
 import { TaskContext } from "./tsk_parent";
-import { headerInnerClass, taskBox } from "@/app/className";
+import { headerInnerClass, taskBox, taskInput_Button } from "@/app/className";
 
 export default function Tsk_Input(){
     const [ tsk_title, setTskTitle ] = useState("");
@@ -48,7 +48,7 @@ export default function Tsk_Input(){
                 />
 
             <button
-                className="block p-3 w-18 border border-gray-300 rounded hover:bg-gray-200"
+                className={ taskInput_Button }
                 onClick={ handleAdd }
             >
                 Add

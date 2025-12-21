@@ -1,4 +1,4 @@
-import { headerInnerClass, taskBox } from "../className";
+import { headerInnerClass, taskBox, taskInput_Button } from "../className";
 
 export default function TskMngApp_Login(){
     const input_className = "w-100 p-2 mb-6 border rounded border-gray-300";
@@ -22,7 +22,7 @@ export default function TskMngApp_Login(){
                     className={ input_className }
                 />
                 <button
-                className="block p-3 w-18 border border-gray-300 rounded hover:bg-gray-200"
+                className={ taskInput_Button }
             >
                 Login
             </button>
