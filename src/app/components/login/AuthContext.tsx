@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode} from "react";
-import { User, AuthUser } from "@/app/types";
+import { createContext, useContext, useState, ReactNode, useEffect} from "react";
+import { User } from "@/app/types";
 import { users_data } from "./user_data";
 
 type AuthContextType = {
@@ -36,10 +36,14 @@ export const AuthProvider = ( { children }: { children: ReactNode }) => {
     }
 
     //ページリロード時に保持
-    useState( () =>{
+    //あとで意味理解
+    useEffect( () =>{
         const saved = localStorage.getItem( "currentUser" );
-        if ( saved ) setUser(JSON.parse(saved));
-    });
+        if ( saved ) {
+            const parsed: User = JSON.parse(saved);
+            setUser(parsed);
+        }
+    },[]);
 
     return (
         <AuthContext.Provider value={{ user, login, logout}}>

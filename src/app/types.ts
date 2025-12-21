@@ -5,6 +5,7 @@ export interface Tasks{
     dead_line: string;      //期日
     createdAt: string;      //追加日
     updatedAt: string;      //更新日
+    user_id:   string;      //ユーザーID
 }
 
 

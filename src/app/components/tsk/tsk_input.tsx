@@ -3,10 +3,12 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "./tsk_parent";
 import { headerInnerClass, taskBox, taskInput_Button, input_className } from "@/app/className";
+import { useAuth } from "../login/AuthContext";
 
 export default function Tsk_Input(){
     const [ tsk_title, setTskTitle ] = useState("");
     const [ dead_line,  setDeadLine ]  = useState("");
+    const { user } = useAuth();
 
     //ここ修正　あと意味理解必要
     const ctx = useContext(TaskContext);
@@ -14,8 +16,11 @@ export default function Tsk_Input(){
     const { addTask } = ctx;
 
     //タスクを加えるローカル関数
+    //↓user_idの取得方法
     const handleAdd = () => {
-        addTask( tsk_title, dead_line );
+        if (!user) return;
+        
+        addTask( tsk_title, dead_line, user.user_id );
         setTskTitle("");
         setDeadLine("");
     };

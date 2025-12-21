@@ -61,6 +61,8 @@ export default function Tsk_Output_Management() {
                         <div>
                           <p className="font-semibold">{ task.tsk_title }</p>
                           <p className="text-sm text-gray-700">{ task.dead_line }</p>
+                          {/* あとで↓削除 */}
+                          <p className="text-sm text-gray-700">{ task.user_id }</p>
                         </div>
                       </div>
 

@@ -11,7 +11,11 @@ export default function TskMngApp_Login(){
     const [ error, setError ] = useState("");
 
     const handleLogin = () => {
-        if ( !login( id, password )) setError( "ID or Password is incorrect" );
+        if ( !login( id, password )) {
+            setError( "ID or Password is incorrect" )
+        } else {
+            setError( "Login is success" )
+        };
     };
 
     return(
@@ -43,7 +47,7 @@ export default function TskMngApp_Login(){
                 Login
                 </button>
                 {/* ↓意味理解必要 */}
-                { error && <p className="text-red-500">{ error }</p> }
+                { error && <p className="text-500">{ error }</p> }
             </div>
         </div>
 
