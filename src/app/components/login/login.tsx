@@ -46,7 +46,7 @@ export default function TskMngApp_Login(){
                 >
                 Login
                 </button>
-                {/* ↓意味理解必要 */}
+                {/* saito↓意味理解必要 */}
                 { error && <p className="text-500">{ error }</p> }
             </div>
         </div>

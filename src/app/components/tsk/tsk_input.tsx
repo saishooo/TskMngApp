@@ -10,13 +10,13 @@ export default function Tsk_Input(){
     const [ dead_line,  setDeadLine ]  = useState("");
     const { user } = useAuth();
 
-    //ここ修正　あと意味理解必要
+    //ここ修正　あと意味理解必要saito
     const ctx = useContext(TaskContext);
     if (!ctx) return null;
     const { addTask } = ctx;
 
     //タスクを加えるローカル関数
-    //↓user_idの取得方法
+    //↓user_idの取得方法は？　意味理解 saito
     const handleAdd = () => {
         if (!user) return;
         

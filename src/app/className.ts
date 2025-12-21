@@ -1,6 +1,6 @@
 export const headerInnerClass = "fixed top-16 left-64 flex justify-center";
 
-export const headerInnerClass_center = "fixed top-25 left-64 right-64 flex justify-center";
+export const headerInnerClass_center = "fixed top-40 left-64 right-64 flex justify-center";
 export const taskBox = "w-150 p-4 h-[350px] border rounded border-gray-300";
 
 export const taskOutput_taskDisplayArea = "flex items-center justify-between w-110 px-4 my-2 rounded hover:bg-gray-200";
