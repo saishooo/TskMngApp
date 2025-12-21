@@ -4,7 +4,7 @@ import { useTasks } from "./tsk_parent";
 import { useState } from "react";
 import { Tasks } from "@/app/types";
 import Image from "next/image";
-import { headerInnerClass, taskBox, taskOutput_taskDisplayArea, taskOutput_deleteButton, taskOutput_updateButton } from "@/app/className";
+import { headerInnerClass_center, taskBox, taskOutput_taskDisplayArea, taskOutput_deleteButton, taskOutput_updateButton } from "@/app/className";
 
 export default function Tsk_Output_Management() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -38,7 +38,7 @@ export default function Tsk_Output_Management() {
 
   //タスクが多く保存された時の表示方法を考える
   return (
-      <div className={headerInnerClass}>
+      <div className={ headerInnerClass_center }>
         <div className={taskBox}>
           <h1 className="font-bold mb-3">My Tasks</h1>    
           <div className="pt-3 overflow-y-auto max-h-[250px]">

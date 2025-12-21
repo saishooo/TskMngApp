@@ -1,6 +1,6 @@
 "use client";
 
-import { headerInnerClass, taskBox, taskInput_Button, input_className } from "@/app/className";
+import { headerInnerClass_center, taskBox, taskInput_Button, input_className } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
 
@@ -19,7 +19,7 @@ export default function TskMngApp_Login(){
     };
 
     return(
-        <div className={ headerInnerClass }>
+        <div className={ headerInnerClass_center }>
             <div className={ taskBox }>
                 <h1 className="font-bold mb-3">Login</h1>
                 <h1 className="mb-2">ID</h1>

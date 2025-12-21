@@ -2,7 +2,7 @@
 
 import { useContext, useState } from "react";
 import { TaskContext } from "./tsk_parent";
-import { headerInnerClass, taskBox, taskInput_Button, input_className } from "@/app/className";
+import { headerInnerClass_center, taskBox, taskInput_Button, input_className } from "@/app/className";
 import { useAuth } from "../login/AuthContext";
 
 export default function Tsk_Input(){
@@ -26,7 +26,7 @@ export default function Tsk_Input(){
     };
 
     return(
-    <div className={headerInnerClass}>
+    <div className={ headerInnerClass_center }>
         <div className={taskBox}>
             <h1 className="mb-3 font-bold">My Task Input</h1>    
 
