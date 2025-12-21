@@ -10,6 +10,7 @@ type AuthContextType = {
     logout: () => void;
 }
 
+//AuthContextはデータが入っている箱(鍵をuseAuthで開ける)
 const AuthContext = createContext< AuthContextType >( {} as AuthContextType );
 
 export const AuthProvider = ( { children }: { children: ReactNode }) => {
@@ -47,5 +48,5 @@ export const AuthProvider = ( { children }: { children: ReactNode }) => {
         );
 }
 
-//これは何している？
+//useAuthはAuthContextにアクセスするための鍵
 export const useAuth = () => useContext( AuthContext );

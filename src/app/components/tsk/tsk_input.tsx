@@ -2,13 +2,11 @@
 
 import { useContext, useState } from "react";
 import { TaskContext } from "./tsk_parent";
-import { headerInnerClass, taskBox, taskInput_Button } from "@/app/className";
+import { headerInnerClass, taskBox, taskInput_Button, input_className } from "@/app/className";
 
 export default function Tsk_Input(){
     const [ tsk_title, setTskTitle ] = useState("");
     const [ dead_line,  setDeadLine ]  = useState("");
-
-    const input_className = "w-100 p-2 mb-6 border rounded border-gray-300";
 
     //ここ修正　あと意味理解必要
     const ctx = useContext(TaskContext);

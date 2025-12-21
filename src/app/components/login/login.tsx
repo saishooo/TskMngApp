@@ -1,7 +1,18 @@
-import { headerInnerClass, taskBox, taskInput_Button } from "@/app/className";
+"use client";
+
+import { headerInnerClass, taskBox, taskInput_Button, input_className } from "@/app/className";
+import { useAuth } from "./AuthContext";
+import { useState } from "react";
 
 export default function TskMngApp_Login(){
-    const input_className = "w-100 p-2 mb-6 border rounded border-gray-300";
+    const { login } = useAuth();
+    const [ id, setId ] = useState("");
+    const [ password, setPassword ] = useState("");
+    const [ error, setError ] = useState("");
+
+    const handleLogin = () => {
+        if ( !login( id, password )) setError( "ID or Password is incorrect" );
+    };
 
     return(
         <div className={ headerInnerClass }>
@@ -11,7 +22,9 @@ export default function TskMngApp_Login(){
                 <input
                     name="login_id"
                     type="text"
-                    placeholder="ID"
+                    placeholder="User ID"
+                    value={ id }
+                    onChange={ (e) => setId( e.target.value ) }
                     className={ input_className }
                 />
                 <h1 className="mb-2">PassWord</h1>
@@ -19,13 +32,18 @@ export default function TskMngApp_Login(){
                     name="login_password"
                     type="text"
                     placeholder="PassWord"
+                    value={ password }
+                    onChange={ (e) => setPassword( e.target.value ) }
                     className={ input_className }
                 />
                 <button
+                onClick={ handleLogin }
                 className={ taskInput_Button }
-            >
+                >
                 Login
-            </button>
+                </button>
+                {/* ↓意味理解必要 */}
+                { error && <p className="text-red-500">{ error }</p> }
             </div>
         </div>
 
