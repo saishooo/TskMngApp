@@ -4,6 +4,7 @@ import { useTasks } from "./tsk_parent";
 import { useState } from "react";
 import { Tasks } from "@/app/types";
 import Image from "next/image";
+import { headerInnerClass, taskBox, taskOutput_taskDisplayArea, taskOutput_deleteButton, taskOutput_updateButton } from "@/app/className";
 
 export default function Tsk_Output_Management() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -24,6 +25,7 @@ export default function Tsk_Output_Management() {
     </div>
   );
 
+  //アップデート関数
   const Local_UpdateTask = ( id: number, newTitle: string, newDeadLine: string )=>{
     updateTask( id, newTitle, newDeadLine );
     setEditingTaskId( null );
@@ -31,13 +33,15 @@ export default function Tsk_Output_Management() {
     setEditDeadLine("");
   };
 
+  //未完了タスクの吸い上げ
   const management_tsk = tasks.filter( task => task.comp === false );
 
+  //タスクが多く保存された時の表示方法を考える
   return (
-      <div className="fixed top-25 left-64 right-64 h-[350px] flex justify-center">
-        <div className="w-150 p-4 border border-gray-300 rounded">
+      <div className={headerInnerClass}>
+        <div className={taskBox}>
           <h1 className="font-bold mb-3">My Tasks</h1>    
-
+          <div className="pt-3 overflow-y-auto max-h-[250px]">
             { management_tsk.length === 0 ? (
               <p>There are no unfinished tasks.</p>
             ) : (
@@ -46,7 +50,7 @@ export default function Tsk_Output_Management() {
                   { editingTaskId !== task.id && (
                     <div className="flex">
                         <TaskRadioButton task = { task } />
-                      <div className="flex items-center justify-between w-110 px-4 my-2 hover:bg-gray-200 rounded" 
+                      <div className={ taskOutput_taskDisplayArea } 
                         onClick = {() => {
                           setEditingTaskId( task.id );
                           setEditTitle( task.tsk_title );
@@ -60,7 +64,7 @@ export default function Tsk_Output_Management() {
                         </div>
                       </div>
 
-                      <div className="flex flex-col items-center justify-center w-20 rounded hover:bg-red-200">
+                      <div className={ taskOutput_deleteButton }>
                           <button
                           onClick={() => deleteTask( task.id )}
                           >
@@ -80,7 +84,7 @@ export default function Tsk_Output_Management() {
                     <div className="flex">
                       <TaskRadioButton task = { task } />
 
-                      <div className="flex items-center justify-between w-110 px-4 my-2 hover:bg-gray-200 rounded"
+                      <div className={ taskOutput_taskDisplayArea }
                       onClick = {() => setEditingTaskId( null )}>
                         
                         <div>
@@ -102,7 +106,7 @@ export default function Tsk_Output_Management() {
                         </div>
                       </div>
 
-                      <div className="flex flex-col items-center justify-center w-20 rounded hover:bg-green-200">
+                      <div className={ taskOutput_updateButton }>
                         <button
                           onClick={ () => Local_UpdateTask( task.id, editTitle, editDeadLine ) }
                           >
@@ -120,6 +124,7 @@ export default function Tsk_Output_Management() {
                 </div>
             ))
           )}
+          </div>
         </div>
       </div>
   );

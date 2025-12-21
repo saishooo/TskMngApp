@@ -7,6 +7,8 @@ import Link from "next/link";
 export default function Header(){
   const [ isSidebarOpen, setIsSidebarOpen ] = useState( false );
   const [ isTaskMenuOpen, setIsTaskMenuOpen ] = useState( false );
+
+  //Linkまとめ
   const taskLinks = [
     { href: "/tsk/tsk_input", label: "My Task Input" },
     { href: "/tsk/tsk_mng",   label: "My Tasks" },
