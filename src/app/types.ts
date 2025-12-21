@@ -7,8 +7,14 @@ export interface Tasks{
     updatedAt: string;      //更新日
 }
 
-export interface User{
+
+export interface AuthUser{
     user_id: string;        //ユーザーID
     user_password: string;  //ユーザーパスワード
+    user_name: string;      //ユーザーネーム
+}
+
+export interface User{
+    user_id: string;        //ユーザーID
     user_name: string;      //ユーザーネーム
 }
