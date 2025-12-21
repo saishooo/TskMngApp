@@ -35,6 +35,7 @@ export default function Tsk_Output_Management() {
   //未完了タスクの吸い上げ
   const management_tsk = tasks.filter( task => task.comp === false );
 
+  //タスクが多く保存された時の表示方法を考える
   return (
       <div className="fixed top-25 left-64 right-64 h-[350px] flex justify-center">
         <div className="w-150 p-4 border border-gray-300 rounded">
