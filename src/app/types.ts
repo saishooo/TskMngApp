@@ -6,3 +6,9 @@ export interface Tasks{
     createdAt: string;      //追加日
     updatedAt: string;      //更新日
 }
+
+export type User = {
+    user_id: string;        //ユーザーID
+    user_password: string;  //ユーザーパスワード
+    user_name: string;      //ユーザーネーム
+}

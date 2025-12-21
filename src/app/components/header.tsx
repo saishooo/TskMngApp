@@ -50,6 +50,10 @@ export default function Header(){
                 Home
               </Link>
 
+              <Link href="/login" className="block p-2 font-bold rounded hover:bg-gray-200">
+                Login
+              </Link>
+
               <button
                 className="block w-full p-2 text-left font-bold rounded hover:bg-gray-200"
                 onClick={ toggleTaskMenu }

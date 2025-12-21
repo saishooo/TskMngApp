@@ -48,7 +48,7 @@ export default function Tsk_Input(){
                 />
 
             <button
-                className="block p-3 border border-gray-300 p-3 rounded hover:bg-gray-200"
+                className="block p-3 w-18 border border-gray-300 rounded hover:bg-gray-200"
                 onClick={ handleAdd }
             >
                 Add
