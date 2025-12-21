@@ -1,4 +1,4 @@
-import { headerInnerClass, taskBox, taskInput_Button } from "../className";
+import { headerInnerClass, taskBox, taskInput_Button } from "@/app/className";
 
 export default function TskMngApp_Login(){
     const input_className = "w-100 p-2 mb-6 border rounded border-gray-300";

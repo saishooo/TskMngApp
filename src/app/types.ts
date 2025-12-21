@@ -7,7 +7,7 @@ export interface Tasks{
     updatedAt: string;      //更新日
 }
 
-export type User = {
+export interface User{
     user_id: string;        //ユーザーID
     user_password: string;  //ユーザーパスワード
     user_name: string;      //ユーザーネーム
