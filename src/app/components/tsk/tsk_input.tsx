@@ -2,10 +2,13 @@
 
 import { useContext, useState } from "react";
 import { TaskContext } from "./tsk_parent";
+import { headerInnerClass, taskBox } from "@/app/className";
 
 export default function Tsk_Input(){
     const [ tsk_title, setTskTitle ] = useState("");
     const [ dead_line,  setDeadLine ]  = useState("");
+
+    const input_className = "w-100 p-2 mb-6 border rounded border-gray-300";
 
     //ここ修正　あと意味理解必要
     const ctx = useContext(TaskContext);
@@ -20,8 +23,8 @@ export default function Tsk_Input(){
     };
 
     return(
-    <div className="fixed top-25 left-64 right-64 h-[350px] flex justify-center">
-        <div className="w-150 p-4 border border-gray-300 rounded">
+    <div className={headerInnerClass}>
+        <div className={taskBox}>
             <h1 className="mb-3 font-bold">My Task Input</h1>    
 
             <h1 className="mb-2">Task</h1>
@@ -31,7 +34,7 @@ export default function Tsk_Input(){
                     value={ tsk_title }
                     onChange={ (e) => setTskTitle(e.target.value) }
                     placeholder="タスク"
-                    className="w-100 p-2 mb-6 border border-gray-300 rounded"
+                    className={ input_className }
                 />
 
             <h1 className="mb-2">DeadLine</h1>
@@ -41,7 +44,7 @@ export default function Tsk_Input(){
                     value={ dead_line }
                     onChange={ (e) => setDeadLine(e.target.value) }
                     placeholder="XXXX-YY-ZZ"
-                    className="w-100 p-2 mb-6 border border-gray-300 rounded"
+                    className={ input_className }
                 />
 
             <button
