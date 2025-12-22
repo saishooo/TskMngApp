@@ -21,7 +21,7 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
     {
         id: 1,
         comp: false,
-        tsk_title: "プログラミング(初期値)",
+        tsk_title: "プログラミング(sample)",
         dead_line: "2025-12-06-00:06:00",
         createdAt: "2025-12-06-00:06:00",
         updatedAt: "2025-12-06-00:06:00",
