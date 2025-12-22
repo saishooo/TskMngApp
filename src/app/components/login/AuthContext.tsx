@@ -36,7 +36,7 @@ export const AuthProvider = ( { children }: { children: ReactNode }) => {
 
     //ログアウト関数
     const logout = () => {
-        setUser( null );
+        setUser( guestUser );
         localStorage.removeItem( "currentUser" );
     }
 
