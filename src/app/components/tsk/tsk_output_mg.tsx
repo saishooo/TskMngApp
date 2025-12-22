@@ -5,9 +5,11 @@ import { useState } from "react";
 import { Tasks } from "@/app/types";
 import Image from "next/image";
 import { headerInnerClass_center, taskBox, taskOutput_taskDisplayArea, taskOutput_deleteButton, taskOutput_updateButton } from "@/app/className";
+import { useAuth } from "../login/AuthContext";
 
 export default function Tsk_Output_Management() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
+  const { user } = useAuth();
   
   const [ editingTaskId, setEditingTaskId ] = useState< number | null >( null );
   const [ editTitle,  setEditTitle ] = useState( "" );
@@ -33,8 +35,11 @@ export default function Tsk_Output_Management() {
     setEditDeadLine("");
   };
 
+  //ログインしているユーザーID別にタスクを吸い上げ
+  const management_user_tsk = tasks.filter( task => task.user_id === user.user_id );
+
   //未完了タスクの吸い上げ
-  const management_tsk = tasks.filter( task => task.comp === false );
+  const management_tsk = management_user_tsk.filter( task => task.comp === false );
 
   //タスクが多く保存された時の表示方法を考える
   return (
