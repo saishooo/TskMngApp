@@ -8,13 +8,13 @@ export default function TskMngApp_Login(){
     const { login } = useAuth();
     const [ id, setId ] = useState("");
     const [ password, setPassword ] = useState("");
-    const [ error, setError ] = useState("");
+    const [ error_juge, setErrorJuge ] = useState("");
 
     const handleLogin = () => {
         if ( !login( id, password )) {
-            setError( "ID or Password is incorrect" )
+            setErrorJuge( "Error : ID or Password is incorrect" )
         } else {
-            setError( "Login is success" )
+            setErrorJuge( "Login is success!!" )
         };
     };
 
@@ -48,7 +48,7 @@ export default function TskMngApp_Login(){
                 Login
                 </button>
                 {/* saito↓意味理解必要 */}
-                { error && <p className="text-500">{ error }</p> }
+                { error_juge && <p className="text-500">{ error_juge }</p> }
             </div>
         </div>
 
