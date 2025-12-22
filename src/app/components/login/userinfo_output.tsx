@@ -5,10 +5,12 @@ import { headerInnerClass } from "@/app/className";
 
 export function UserInfo_Output() {
     const { user, logout } = useAuth();
+    const isLoggedIn = ( user.user_id !== "guest" );
+    
     return(
         <div className={ headerInnerClass }>
             <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
-                { user? (
+                { isLoggedIn ? (
                     <>
                         <div className="flex ml-3 w-55">
                             <h1 className="font-bold text-green-600">Login Now :</h1>
@@ -23,7 +25,7 @@ export function UserInfo_Output() {
                     </>
                 ) : (
                     <div className="flex ml-3 w-55">
-                        <h1 className="font-bold">Logout Now</h1>
+                        <h1 className="font-bold text-blue-600">Logout Now :</h1>
                         <p className="ml-2">Guest</p>
                     </div>
                 )}

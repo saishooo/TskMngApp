@@ -5,7 +5,7 @@ import { User } from "@/app/types";
 import { users_data } from "./user_data";
 
 type AuthContextType = {
-    user: User | null;
+    user: User;
     login: ( id: string, password: string ) => boolean;
     logout: () => void;
 }
@@ -14,7 +14,12 @@ type AuthContextType = {
 const AuthContext = createContext< AuthContextType >( {} as AuthContextType );
 
 export const AuthProvider = ( { children }: { children: ReactNode }) => {
-    const [ user, setUser ] = useState<User | null>( null );
+    const guestUser: User = {
+        user_id: "guest",
+        user_name: "Guest",
+    };
+
+    const [ user, setUser ] = useState<User>( guestUser );
 
     //ログイン関数
     const login = (id: string, password: string) => {
