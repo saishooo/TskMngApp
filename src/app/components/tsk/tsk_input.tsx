@@ -2,28 +2,31 @@
 
 import { useContext, useState } from "react";
 import { TaskContext } from "./tsk_parent";
-import { headerInnerClass, taskBox } from "@/app/className";
+import { headerInnerClass_center, taskBox, taskInput_Button, input_className } from "@/app/className";
+import { useAuth } from "../login/AuthContext";
 
 export default function Tsk_Input(){
     const [ tsk_title, setTskTitle ] = useState("");
     const [ dead_line,  setDeadLine ]  = useState("");
+    const { user } = useAuth();
 
-    const input_className = "w-100 p-2 mb-6 border rounded border-gray-300";
-
-    //ここ修正　あと意味理解必要
+    //ここ修正　あと意味理解必要saito
     const ctx = useContext(TaskContext);
     if (!ctx) return null;
     const { addTask } = ctx;
 
     //タスクを加えるローカル関数
+    //↓user_idの取得方法は？　意味理解 saito
     const handleAdd = () => {
-        addTask( tsk_title, dead_line );
+        if (!user) return;
+        
+        addTask( tsk_title, dead_line, user.user_id );
         setTskTitle("");
         setDeadLine("");
     };
 
     return(
-    <div className={headerInnerClass}>
+    <div className={ headerInnerClass_center }>
         <div className={taskBox}>
             <h1 className="mb-3 font-bold">My Task Input</h1>    
 
@@ -48,7 +51,7 @@ export default function Tsk_Input(){
                 />
 
             <button
-                className="block p-3 border border-gray-300 p-3 rounded hover:bg-gray-200"
+                className={ taskInput_Button }
                 onClick={ handleAdd }
             >
                 Add

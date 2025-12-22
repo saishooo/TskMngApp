@@ -4,10 +4,12 @@ import { useTasks } from "./tsk_parent";
 import { useState } from "react";
 import { Tasks } from "@/app/types";
 import Image from "next/image";
-import { headerInnerClass, taskBox, taskOutput_taskDisplayArea, taskOutput_deleteButton, taskOutput_updateButton } from "@/app/className";
+import { headerInnerClass_center, taskBox, taskOutput_taskDisplayArea, taskOutput_deleteButton, taskOutput_updateButton } from "@/app/className";
+import { useAuth } from "../login/AuthContext";
 
 export default function Tsk_Output_Completed() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
+  const { user } = useAuth();
   
   const [ editingTaskId, setEditingTaskId ] = useState< number | null >( null );
   const [ editTitle,  setEditTitle ] = useState( "" );
@@ -33,11 +35,14 @@ export default function Tsk_Output_Completed() {
     setEditDeadLine("");
   };
 
+  //ログインしているユーザーID別にタスクを吸い上げ
+  const comp_user_tsk = tasks.filter( task => task.user_id === user.user_id)
+
   //完了タスクのみを吸い上げ
-  const completed_tsk = tasks.filter( task => task.comp === true);
+  const completed_tsk = comp_user_tsk.filter( task => task.comp === true);
   
   return (
-  <div className={ headerInnerClass }>
+  <div className={ headerInnerClass_center }>
     <div className={ taskBox }>
         <h1 className="font-bold mb-3">My Tasks Completed</h1>
         <div className="pt-3 overflow-y-auto max-h-[250px]">
@@ -60,6 +65,8 @@ export default function Tsk_Output_Completed() {
                             <div>
                               <p className="font-semibold">{ task.tsk_title }</p>
                               <p className="text-sm text-gray-700">{ task.dead_line }</p>
+                              {/* あとで↓削除 */}
+                              <p className="text-sm text-gray-700">{ task.user_id }</p>
                             </div>
                           </div>
     

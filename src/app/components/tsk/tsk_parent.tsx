@@ -5,7 +5,7 @@ import { Tasks } from "@/app/types";                  //Tasksの型を引き継�
 
 export interface Tsk_Props{
     tasks: Tasks[];
-    addTask: ( tsk_title: string, dead_line: string ) => void;
+    addTask: ( tsk_title: string, dead_line: string, user_id: string ) => void;
     updateTask: ( id: number, newTitle: string, newDeadLine:string ) => void;
     deleteTask: ( id: number )     => void;
     toggleTask: ( id: number )     => void;
@@ -19,15 +19,25 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
     {
         id: 1,
         comp: false,
-        tsk_title: "プログラミング(初期値)",
+        tsk_title: "プログラミング(sample)",
         dead_line: "2025-12-06-00:06:00",
         createdAt: "2025-12-06-00:06:00",
         updatedAt: "2025-12-06-00:06:00",
+        user_id: "sai.shooo",
+    },
+    {
+        id: 2,
+        comp: false,
+        tsk_title: "リファクタリング",
+        dead_line: "2025-12-22-22:28:00",
+        createdAt: "2025-12-22-22:28:00",
+        updatedAt: "2025-12-22-22:28:00",
+        user_id: "user2",
     }
   ]);
 
   //タスク追加関数
-  const addTask = ( tsk_title: string, dead_line: string ) => {
+  const addTask = ( tsk_title: string, dead_line: string, user_id: string) => {
     const nowTime = new Date().toISOString();
 
     setTasks((prev) => [
@@ -38,6 +48,7 @@ export default function Tsk_Parent( {children} : { children: React.ReactNode}) {
         dead_line, 
         createdAt: nowTime,
         updatedAt: nowTime,
+        user_id,
       },
     ]);
   };
