@@ -2,10 +2,12 @@
 
 import { useAuth } from "../login/AuthContext";
 import { headerInnerClass } from "@/app/className";
+import { useRouter } from "next/navigation";
 
 export function UserInfo_Output() {
     const { user, logout } = useAuth();
     const isLoggedIn = ( user.user_id !== "guest" );
+    const router = useRouter();
     
     return(
         <div className={ headerInnerClass }>
@@ -24,10 +26,17 @@ export function UserInfo_Output() {
                         </button>
                     </>
                 ) : (
-                    <div className="flex ml-3 w-55">
-                        <h1 className="font-bold text-blue-600">Logout Now :</h1>
-                        <p className="ml-2">Guest</p>
-                    </div>
+                    <>
+                        <div className="flex ml-3 w-55">
+                            <h1 className="font-bold text-blue-600">Logout Now :</h1>
+                            <p className="ml-2">Guest</p>
+                        </div>
+                        <button 
+                            className="ml-12 w-18 h-10 border border-gray-300 rounded hover:bg-gray-200"
+                            onClick={ () => router.push("/login") }
+                        >Login
+                        </button>
+                    </>
                 )}
             </div>
         </div>

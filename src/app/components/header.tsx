@@ -55,18 +55,18 @@ export default function Header(){
               </Link>
 
               <button
-                className="block w-full p-2 text-left font-bold rounded hover:bg-gray-200"
+                className="block w-full pt-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200"
                 onClick={ toggleTaskMenu }
               >
                 Task
               </button>
               { isTaskMenuOpen && (
-                <div className="block p-2">
+                <div className="block pt-2 pr-2 pl-2">
                   { taskLinks.map(link => (
                     <Link
                     key = { link.href }
                     href = { link.href }
-                    className = "block p-2 rounded hover:bg-gray-200"
+                    className = "block pr-2 pl-2 pb-2 rounded hover:bg-gray-200"
                     >
                       { link.label }
                     </Link>
@@ -75,12 +75,14 @@ export default function Header(){
               )}
             </nav> 
 
-            <button 
-              className="block w-full p-2 text-left font-bold rounded hover:bg-gray-200"
-              onClick={closeSidebar}
-            >
-              Menu Close
-            </button>
+            <div className="flex items-center justify-center pt-6">
+              <button 
+                className="flex p-2 text-left text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
+                onClick={closeSidebar}
+              >
+                Menu Close
+              </button>
+            </div>
 
           </aside>
         )}
