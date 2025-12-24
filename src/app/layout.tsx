@@ -33,9 +33,7 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           <div className="flex min-h-screen">
-            <Tsk_Parent>
-              {children}
-            </Tsk_Parent>
+            <Tsk_Parent>{children}</Tsk_Parent>
           </div>
         </AuthProvider>
       </body>

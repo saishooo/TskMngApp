@@ -4,8 +4,8 @@ import { LogInfo_Output } from "@/app/components/log/loginfo_output";
 export default function Tsk_Management_Page() {
   return (
     <>
-    <LogInfo_Output/>
-    <Tsk_Output_Management/>
+      <LogInfo_Output />
+      <Tsk_Output_Management />
     </>
   );
 }
