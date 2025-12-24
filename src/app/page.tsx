@@ -1,7 +1,9 @@
+import { headerInnerClass } from "./className";
+
 export default function Home() {
   return (
-    <div className="fixed top-16 left-64 flex w-full h-full justify-center border border-red-400">
-      <h1>今日からTskManagerアプリを作成します</h1>
+    <div className={headerInnerClass}>
+      <h1>Development of TskManagerApp started on 2025-12-06 at 00:06.</h1>
     </div>
   );
 }
