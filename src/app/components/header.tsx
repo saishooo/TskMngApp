@@ -14,9 +14,9 @@ export default function Header(){
 
   //LogLinkまとめ
   const logLinks = [
-    { href: "/login", label: "Login" },
+    { href: "/log/login", label: "Login" },
     { href: "/", label: "Logout" },
-    { href: "/", label: "Sig Up" },
+    { href: "/log/signup", label: "Sign Up" },
   ];
 
   //TaskLinkまとめ

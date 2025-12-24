@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Tasks } from "@/app/types";
 import Image from "next/image";
 import { headerInnerClass_center, taskBox, taskOutput_taskDisplayArea, taskOutput_deleteButton, taskOutput_updateButton } from "@/app/className";
-import { useAuth } from "../login/AuthContext";
+import { useAuth } from "../log/AuthContext";
 
 export default function Tsk_Output_Completed() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();

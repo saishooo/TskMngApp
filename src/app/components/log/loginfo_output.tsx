@@ -1,10 +1,10 @@
 "use client"
 
-import { useAuth } from "../login/AuthContext";
+import { useAuth } from "./AuthContext";
 import { headerInnerClass } from "@/app/className";
 import { useRouter } from "next/navigation";
 
-export function UserInfo_Output() {
+export function LogInfo_Output() {
     const { user, logout } = useAuth();
     const isLoggedIn = ( user.user_id !== "guest" );
     const router = useRouter();
