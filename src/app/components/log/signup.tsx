@@ -1,6 +1,6 @@
 "use client";
 
-import { headerInnerClass_center, signUpBox, signUp_Button, input_className } from "@/app/className";
+import { headerInnerClass_center, signUpBox, log_Button, input_className } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
 
@@ -44,7 +44,7 @@ export default function TskMngApp_SignUp(){
                 />
 
                 <button
-                className={ signUp_Button }
+                className={ log_Button }
                 >
                 Sign Up
                 </button>

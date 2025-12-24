@@ -1,6 +1,6 @@
 "use client";
 
-import { headerInnerClass_center, taskBox, taskInput_Button, input_className } from "@/app/className";
+import { headerInnerClass_center, taskBox, log_Button, input_className } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
 
@@ -43,7 +43,7 @@ export default function TskMngApp_Login(){
                 />
                 <button
                 onClick={ handleLogin }
-                className={ taskInput_Button }
+                className={ log_Button }
                 >
                 Login
                 </button>
