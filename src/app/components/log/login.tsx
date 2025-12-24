@@ -49,7 +49,6 @@ export default function TskMngApp_Login() {
         <button onClick={handleLogin} className={log_Button}>
           Login
         </button>
-        {/* saito↓意味理解必要 */}
         {error_juge && <p className="text-500">{error_juge}</p>}
       </div>
     </div>
