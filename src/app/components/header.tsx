@@ -1,14 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import { useAuth } from "./log/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Header(){
   const [ isSidebarOpen, setIsSidebarOpen ] = useState( false );
+  const [ isLogMenuOpen,  setIsLogMenuOpen  ] = useState( false );
   const [ isTaskMenuOpen, setIsTaskMenuOpen ] = useState( false );
+  
+  const { user, logout } = useAuth();
 
-  //Linkまとめ
+  const sideBerButton_className = "block w-full pt-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
+  const sideBerLink_className = "block pr-2 pl-2 pb-2 rounded hover:bg-gray-200";
+
+  //LogLinkまとめ
+  const logLinks = [
+    { href: "/log/login", label: "Login" },
+    { href: "/log/signup", label: "Sign Up" },
+  ];
+
+  //TaskLinkまとめ
   const taskLinks = [
     { href: "/tsk/tsk_input", label: "My Task Input" },
     { href: "/tsk/tsk_mng",   label: "My Tasks" },
@@ -20,8 +33,13 @@ export default function Header(){
     setIsSidebarOpen( false );
   };
 
+  //ログインメニューの表示の切り替え
+  const toggleLogMenu = () => {
+    setIsLogMenuOpen( prev => !prev );
+  }
+
   //タスクメニューの表示切り替え
-  const toggleTaskMenu =() => {
+  const toggleTaskMenu = () => {
     setIsTaskMenuOpen( prev => !prev );
   }
 
@@ -50,15 +68,37 @@ export default function Header(){
                 Home
               </Link>
 
-              <Link href="/login" className="block p-2 font-bold rounded hover:bg-gray-200">
-                Login
-              </Link>
+              <button
+                className={ sideBerButton_className }
+                onClick={ toggleLogMenu }
+                >
+                LogList
+              </button>
+              { isLogMenuOpen && (
+                <div className="block pt-2 pr-2 pl-2">
+                  { logLinks.map(link => (
+                    <Link
+                    key = { link.href }
+                    href = { link.href }
+                    className = { sideBerLink_className }
+                    >
+                      { link.label }
+                    </Link>
+                  ))}
+                <button
+                  className={ sideBerLink_className }
+                  onClick={ logout }
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
 
               <button
-                className="block w-full pt-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200"
+                className={ sideBerButton_className }
                 onClick={ toggleTaskMenu }
               >
-                Task
+                TaskList
               </button>
               { isTaskMenuOpen && (
                 <div className="block pt-2 pr-2 pl-2">
@@ -66,7 +106,7 @@ export default function Header(){
                     <Link
                     key = { link.href }
                     href = { link.href }
-                    className = "block pr-2 pl-2 pb-2 rounded hover:bg-gray-200"
+                    className = { sideBerLink_className }
                     >
                       { link.label }
                     </Link>
@@ -77,7 +117,7 @@ export default function Header(){
 
             <div className="flex items-center justify-center pt-6">
               <button 
-                className="flex p-2 text-left text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
+                className="flex p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
                 onClick={closeSidebar}
               >
                 Menu Close

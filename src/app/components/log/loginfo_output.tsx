@@ -1,13 +1,15 @@
 "use client"
 
-import { useAuth } from "../login/AuthContext";
+import { useAuth } from "./AuthContext";
 import { headerInnerClass } from "@/app/className";
 import { useRouter } from "next/navigation";
 
-export function UserInfo_Output() {
+export function LogInfo_Output() {
     const { user, logout } = useAuth();
     const isLoggedIn = ( user.user_id !== "guest" );
     const router = useRouter();
+
+    const Login_out_button = "ml-12 w-18 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400"
     
     return(
         <div className={ headerInnerClass }>
@@ -20,7 +22,7 @@ export function UserInfo_Output() {
                             <p className="ml-2">さん</p>
                         </div>
                         <button 
-                            className="ml-12 w-18 h-10 border border-gray-300 rounded hover:bg-gray-200"
+                            className={ Login_out_button }
                             onClick={ logout }
                         >Logout
                         </button>
@@ -32,8 +34,8 @@ export function UserInfo_Output() {
                             <p className="ml-2">Guest</p>
                         </div>
                         <button 
-                            className="ml-12 w-18 h-10 border border-gray-300 rounded hover:bg-gray-200"
-                            onClick={ () => router.push("/login") }
+                            className={ Login_out_button }
+                            onClick={ () => router.push("/log/login") }
                         >Login
                         </button>
                     </>

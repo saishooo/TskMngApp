@@ -3,7 +3,7 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "./tsk_parent";
 import { headerInnerClass_center, taskBox, taskInput_Button, input_className } from "@/app/className";
-import { useAuth } from "../login/AuthContext";
+import { useAuth } from "../log/AuthContext";
 
 export default function Tsk_Input(){
     const [ tsk_title, setTskTitle ] = useState("");
