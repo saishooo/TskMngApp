@@ -139,7 +139,12 @@ export default function Tsk_Output_Completed() {
                     <div className={taskOutput_updateButton}>
                       <button
                         onClick={() =>
-                          Local_UpdateTask(task.id, editTitle, editDeadLine, editPriority)
+                          Local_UpdateTask(
+                            task.id,
+                            editTitle,
+                            editDeadLine,
+                            editPriority
+                          )
                         }
                       >
                         <Image
