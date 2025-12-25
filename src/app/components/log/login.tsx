@@ -13,7 +13,6 @@ export default function TskMngApp_Login() {
   const { login } = useAuth();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [error_juge, setErrorJuge] = useState("");
 
   const handleLogin = () => {
     if (!login(id, password)) {
