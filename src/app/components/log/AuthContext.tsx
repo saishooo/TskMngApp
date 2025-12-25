@@ -26,18 +26,66 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     user_name: "Guest",
   };
 
+  //登録済みユーザー(配列)
+  const [users, setUsersAdd] = useState<User[]>(users_data);
+
+  //現在ログインしているユーザー
   const [user, setUser] = useState<User>(guestUser);
+
+  //サインアップ関数
+  const signup = (
+    id: string,
+    password: string,
+    passwordConf: string,
+    userName: string
+  ): boolean => {
+    //空欄チェック
+    if (!id || !password || !passwordConf || !userName) {
+      alert("All fields are required");
+      return false;
+    }
+    //パスワード一致チェック
+    if (password !== passwordConf) {
+      alert("Passwords do not match");
+      return false;
+    }
+    //ユーザーIDがすでに使用されていないか
+    if (users.some((user) => user.user_id === id)) {
+      alert("This ID is already in use");
+      return false;
+    }
+
+    //登録したユーザーを入れる
+    const newUser: User = {
+      user_id: id,
+      user_password: password,
+      user_name: userName,
+    };
+
+    //登録済みユーザーに追加する
+    setUsersAdd((prev) => [...prev, newUser]);
+
+    //登録したユーザーでログインする
+    setUser(newUser);
+    //↓saito 意味理解
+    localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+    return true;
+  };
 
   //ログイン関数
   const login = (id: string, password: string) => {
     //users_dataの中からidとpasswordが同じものを取り出す
     const found_user = users_data.find(
-      (user_data) =>
-        user_data.user_id === id && user_data.user_password === password
+      (users) => users.user_id === id && users.user_password === password
     );
 
     if (found_user) {
-      setUser({ user_id: found_user.user_id, user_password: found_user.user_name, user_name: found_user.user_name });
+      setUser({
+        user_id: found_user.user_id,
+        user_password: found_user.user_name,
+        user_name: found_user.user_name,
+      });
       localStorage.setItem("currentUser", JSON.stringify(found_user));
       return true; //ログイン成功
     }

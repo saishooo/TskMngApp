@@ -11,7 +11,7 @@ import {
 import { useAuth } from "../log/AuthContext";
 
 export default function Tsk_Output_AllList() {
-  const { tasks, deleteTask, } = useTasks();
+  const { tasks, deleteTask } = useTasks();
   const { user } = useAuth();
 
   const completedIcon = (
@@ -38,33 +38,31 @@ export default function Tsk_Output_AllList() {
           ) : (
             all_user_tsk.map((task) => (
               <div key={task.id} className="flex">
-                  <div className="flex">
-                    <div className="flex items-center justify-center w-10 h-15">
-                      <p>{task.comp ? completedIcon : ""}</p>
-                    </div>
-                    <div className={taskOutput_taskDisplayArea}>
-                      <div className="w-70">
-                        <p className="font-semibold">{task.tsk_title}</p>
-                        <p className="text-sm text-gray-700">
-                          {task.dead_line}
-                        </p>
-                        <p className="text-sm text-gray-700">{task.priority}</p>
-                      </div>
-                    </div>
-
-                    <div className={taskOutput_deleteButton}>
-                      <button onClick={() => deleteTask(task.id)}>
-                        <Image
-                          className="mt-1"
-                          src="/trash.svg"
-                          alt="delete"
-                          width={24}
-                          height={24}
-                        />
-                      </button>
-                      <p className="text-xs mt-1">delete</p>
+                <div className="flex">
+                  <div className="flex items-center justify-center w-10 h-15">
+                    <p>{task.comp ? completedIcon : ""}</p>
+                  </div>
+                  <div className={taskOutput_taskDisplayArea}>
+                    <div className="w-70">
+                      <p className="font-semibold">{task.tsk_title}</p>
+                      <p className="text-sm text-gray-700">{task.dead_line}</p>
+                      <p className="text-sm text-gray-700">{task.priority}</p>
                     </div>
                   </div>
+
+                  <div className={taskOutput_deleteButton}>
+                    <button onClick={() => deleteTask(task.id)}>
+                      <Image
+                        className="mt-1"
+                        src="/trash.svg"
+                        alt="delete"
+                        width={24}
+                        height={24}
+                      />
+                    </button>
+                    <p className="text-xs mt-1">delete</p>
+                  </div>
+                </div>
               </div>
             ))
           )}

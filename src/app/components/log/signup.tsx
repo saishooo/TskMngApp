@@ -48,7 +48,7 @@ export default function TskMngApp_SignUp() {
           onChange={(e) => setPasswordConf(e.target.value)}
           className={input_className}
         />
-        
+
         <h1 className="mb-2">User Name</h1>
         <input
           name="user_name"
