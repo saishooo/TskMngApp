@@ -20,6 +20,7 @@ export default function Tsk_Output_Completed() {
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
   const [editTitle, setEditTitle] = useState("");
   const [editDeadLine, setEditDeadLine] = useState("");
+  const [editPriority, setEditPriority] = useState("");
 
   //ラジオボタン
   const TaskRadioButton = ({ task }: { task: Tasks }) => (
@@ -37,9 +38,10 @@ export default function Tsk_Output_Completed() {
   const Local_UpdateTask = (
     id: number,
     newTitle: string,
-    newDeadLine: string
+    newDeadLine: string,
+    newPriority: string
   ) => {
-    updateTask(id, newTitle, newDeadLine);
+    updateTask(id, newTitle, newDeadLine, newPriority);
     setEditingTaskId(null);
     setEditTitle("");
     setEditDeadLine("");
@@ -77,8 +79,7 @@ export default function Tsk_Output_Completed() {
                         <p className="text-sm text-gray-700">
                           {task.dead_line}
                         </p>
-                        {/* あとで↓削除 */}
-                        <p className="text-sm text-gray-700">{task.user_id}</p>
+                        <p className="text-sm text-gray-700">{task.priority}</p>
                       </div>
                     </div>
 
@@ -120,13 +121,25 @@ export default function Tsk_Output_Completed() {
                           onChange={(e) => setEditDeadLine(e.target.value)}
                           onClick={(e) => e.stopPropagation()}
                         />
+                        <select
+                          name="tsk_priority"
+                          value={editPriority}
+                          onChange={(e) => setEditPriority(e.target.value)}
+                          onClick={(e) => e.stopPropagation()}
+                          className="block text-sm text-gray-700 h-10"
+                        >
+                          <option value="">select</option>
+                          <option value="high">high</option>
+                          <option value="medium">medium</option>
+                          <option value="low">low</option>
+                        </select>
                       </div>
                     </div>
 
                     <div className={taskOutput_updateButton}>
                       <button
                         onClick={() =>
-                          Local_UpdateTask(task.id, editTitle, editDeadLine)
+                          Local_UpdateTask(task.id, editTitle, editDeadLine, editPriority)
                         }
                       >
                         <Image
