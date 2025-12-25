@@ -13,7 +13,7 @@ export const taskOutput_updateButton =
   "flex flex-col items-center justify-center w-20 rounded hover:bg-green-200";
 
 export const taskInput_Button =
-  "block p-3 w-18 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
+  "block p-3 w-25 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
 export const log_Button =
   "block p-3 w-25 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
 
