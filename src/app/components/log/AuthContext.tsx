@@ -22,6 +22,7 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const guestUser: User = {
     user_id: "guest",
+    user_password: "",
     user_name: "Guest",
   };
 
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     );
 
     if (found_user) {
-      setUser({ user_id: found_user.user_id, user_name: found_user.user_name });
+      setUser({ user_id: found_user.user_id, user_password: found_user.user_name, user_name: found_user.user_name });
       localStorage.setItem("currentUser", JSON.stringify(found_user));
       return true; //ログイン成功
     }

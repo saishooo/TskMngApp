@@ -6,7 +6,7 @@ export const taskBox = "w-150 p-4 h-[410px] border rounded border-gray-300";
 export const taskBoxBig = "w-150 p-4 h-[600px] border rounded border-gray-300";
 
 export const LoginBox = "w-150 p-4 h-[310px] border rounded border-gray-300";
-export const signUpBox = "w-150 p-4 h-[450px] border rounded border-gray-300";
+export const signUpBox = "w-150 p-4 h-[510px] border rounded border-gray-300";
 
 export const taskOutput_taskDisplayArea =
   "flex items-center justify-between w-110 px-4 my-2 rounded hover:bg-gray-200";

@@ -6,13 +6,14 @@ import {
   log_Button,
   input_className,
 } from "@/app/className";
-//import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext";
 import { useState } from "react";
 
 export default function TskMngApp_SignUp() {
   const [login_id, setId] = useState("");
   const [login_password, setPassword] = useState("");
   const [login_password_conf, setPasswordConf] = useState("");
+  const [user_name, setUserName] = useState("");
 
   return (
     <div className={headerInnerClass_center}>
@@ -45,6 +46,16 @@ export default function TskMngApp_SignUp() {
           placeholder="User Password Confirim"
           value={login_password_conf}
           onChange={(e) => setPasswordConf(e.target.value)}
+          className={input_className}
+        />
+        
+        <h1 className="mb-2">User Name</h1>
+        <input
+          name="user_name"
+          type="text"
+          placeholder="User Name"
+          value={user_name}
+          onChange={(e) => setUserName(e.target.value)}
           className={input_className}
         />
 

@@ -17,5 +17,6 @@ export interface AuthUser {
 
 export interface User {
   user_id: string; //ユーザーID
+  user_password: string; //ユーザーパスワード
   user_name: string; //ユーザーネーム
 }
