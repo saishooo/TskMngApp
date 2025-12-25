@@ -7,8 +7,18 @@ import { Tasks } from "@/app/types"; //Tasksの型を引き継ぐ
 //下記のcreateContextで使用
 export interface Tsk_Props {
   tasks: Tasks[];
-  addTask: (tsk_title: string, dead_line: string, user_id: string) => void;
-  updateTask: (id: number, newTitle: string, newDeadLine: string) => void;
+  addTask: (
+    tsk_title: string,
+    dead_line: string,
+    priority: string,
+    user_id: string
+  ) => void;
+  updateTask: (
+    id: number,
+    newTitle: string,
+    newDeadLine: string,
+    newPriority: string
+  ) => void;
   deleteTask: (id: number) => void;
   toggleTask: (id: number) => void;
 }
@@ -26,24 +36,31 @@ export default function Tsk_Parent({
       id: 1,
       comp: false,
       tsk_title: "プログラミング(sample)",
-      dead_line: "2025-12-06-00:06:00",
-      createdAt: "2025-12-06-00:06:00",
-      updatedAt: "2025-12-06-00:06:00",
+      dead_line: "2025-12-06",
+      priority: "high",
+      createdAt: "2025-12-06",
+      updatedAt: "2025-12-06",
       user_id: "sai.shooo",
     },
     {
       id: 2,
       comp: false,
       tsk_title: "リファクタリング",
-      dead_line: "2025-12-22-22:28:00",
-      createdAt: "2025-12-22-22:28:00",
-      updatedAt: "2025-12-22-22:28:00",
+      dead_line: "2025-12-22",
+      priority: "medium",
+      createdAt: "2025-12-22",
+      updatedAt: "2025-12-22",
       user_id: "user2",
     },
   ]);
 
   //タスク追加関数
-  const addTask = (tsk_title: string, dead_line: string, user_id: string) => {
+  const addTask = (
+    tsk_title: string,
+    dead_line: string,
+    priority: string,
+    user_id: string
+  ) => {
     const nowTime = new Date().toISOString();
 
     setTasks((prev) => [
@@ -53,6 +70,7 @@ export default function Tsk_Parent({
         comp: false,
         tsk_title,
         dead_line,
+        priority,
         createdAt: nowTime,
         updatedAt: nowTime,
         user_id,
@@ -61,7 +79,12 @@ export default function Tsk_Parent({
   };
 
   //タスクの名前や期限をアップデート関数
-  const updateTask = (id: number, newTitle: string, newDeadLine: string) => {
+  const updateTask = (
+    id: number,
+    newTitle: string,
+    newDeadLine: string,
+    newPriority: string
+  ) => {
     const nowTime = new Date().toISOString();
 
     setTasks((prev) =>
@@ -71,6 +94,7 @@ export default function Tsk_Parent({
               ...task,
               tsk_title: newTitle,
               dead_line: newDeadLine,
+              priority: newPriority,
               updatedAt: nowTime,
             }
           : task

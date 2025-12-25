@@ -10,7 +10,7 @@ export default function Header() {
   const [isLogMenuOpen, setIsLogMenuOpen] = useState(false);
   const [isTaskMenuOpen, setIsTaskMenuOpen] = useState(false);
 
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
 
   const sideBerButton_className =
     "block w-full pt-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
@@ -25,9 +25,10 @@ export default function Header() {
 
   //TaskLinkまとめ
   const taskLinks = [
-    { href: "/tsk/tsk_input", label: "My Task Input" },
+    { href: "/tsk/tsk_input", label: "Input My Task" },
     { href: "/tsk/tsk_mng", label: "My Tasks" },
-    { href: "/tsk/tsk_comp", label: "My Tasks Completed" },
+    { href: "/tsk/tsk_comp", label: "My Completed Tasks" },
+    { href: "/tsk/tsk_all", label: "My All Tasks" },
   ];
 
   //サイドバーを閉じる
