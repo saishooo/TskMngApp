@@ -6,13 +6,20 @@ import {
   log_Button,
   input_className,
 } from "@/app/className";
-//import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext";
 import { useState } from "react";
 
 export default function TskMngApp_SignUp() {
   const [login_id, setId] = useState("");
   const [login_password, setPassword] = useState("");
   const [login_password_conf, setPasswordConf] = useState("");
+  const [user_name, setUserName] = useState("");
+
+  const { signup } = useAuth();
+
+  const local_signup = () => {
+    signup(login_id, login_password, login_password_conf, user_name);
+  };
 
   return (
     <div className={headerInnerClass_center}>
@@ -48,7 +55,19 @@ export default function TskMngApp_SignUp() {
           className={input_className}
         />
 
-        <button className={log_Button}>Sign Up</button>
+        <h1 className="mb-2">User Name</h1>
+        <input
+          name="user_name"
+          type="text"
+          placeholder="User Name"
+          value={user_name}
+          onChange={(e) => setUserName(e.target.value)}
+          className={input_className}
+        />
+
+        <button className={log_Button} onClick={local_signup}>
+          Sign Up
+        </button>
       </div>
     </div>
   );
