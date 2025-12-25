@@ -57,7 +57,7 @@ export default function Tsk_Output_Completed() {
     <div className={headerInnerClass_center}>
       <div className={taskBox}>
         <h1 className="font-bold mb-3">My Tasks Completed</h1>
-        <div className="pt-3 overflow-y-auto max-h-[250px]">
+        <div className="pt-3 overflow-y-auto max-h-[350px]">
           {completed_tsk.length === 0 ? (
             <p>There are no completed tasks.</p>
           ) : (

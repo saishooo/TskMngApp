@@ -2,7 +2,10 @@ export const headerInnerClass = "fixed top-16 left-64 flex justify-center";
 
 export const headerInnerClass_center =
   "fixed top-40 left-64 right-64 flex justify-center";
-export const taskBox = "w-150 p-4 h-[450px] border rounded border-gray-300";
+export const taskBox = "w-150 p-4 h-[410px] border rounded border-gray-300";
+export const taskBoxBig = "w-150 p-4 h-[600px] border rounded border-gray-300";
+
+export const LoginBox = "w-150 p-4 h-[310px] border rounded border-gray-300";
 export const signUpBox = "w-150 p-4 h-[450px] border rounded border-gray-300";
 
 export const taskOutput_taskDisplayArea =

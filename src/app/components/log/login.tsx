@@ -2,9 +2,9 @@
 
 import {
   headerInnerClass_center,
-  taskBox,
   log_Button,
   input_className,
+  LoginBox,
 } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
@@ -25,7 +25,7 @@ export default function TskMngApp_Login() {
 
   return (
     <div className={headerInnerClass_center}>
-      <div className={taskBox}>
+      <div className={LoginBox}>
         <h1 className="font-bold mb-3">Login</h1>
 
         <h1 className="mb-2">ID</h1>

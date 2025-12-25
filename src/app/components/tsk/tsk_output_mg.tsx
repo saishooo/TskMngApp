@@ -62,7 +62,7 @@ export default function Tsk_Output_Management() {
     <div className={headerInnerClass_center}>
       <div className={taskBox}>
         <h1 className="font-bold mb-3">My Tasks</h1>
-        <div className="pt-3 overflow-y-auto max-h-[450px]">
+        <div className="pt-3 overflow-y-auto max-h-[340px]">
           {management_tsk.length === 0 ? (
             <p>There are no unfinished tasks.</p>
           ) : (
