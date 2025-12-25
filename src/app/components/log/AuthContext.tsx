@@ -12,6 +12,12 @@ import { users_data } from "./user_data";
 
 type AuthContextType = {
   user: User;
+  signup: (
+    id: string,
+    password: string,
+    passwordConf: string,
+    user_name: string
+  ) => boolean;
   login: (id: string, password: string) => boolean;
   logout: () => void;
 };
@@ -109,7 +115,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, signup, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

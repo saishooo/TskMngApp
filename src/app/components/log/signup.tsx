@@ -15,6 +15,12 @@ export default function TskMngApp_SignUp() {
   const [login_password_conf, setPasswordConf] = useState("");
   const [user_name, setUserName] = useState("");
 
+  const { signup } = useAuth();
+
+  const local_signup = () => {
+    signup(login_id, login_password, login_password_conf, user_name);
+  };
+
   return (
     <div className={headerInnerClass_center}>
       <div className={signUpBox}>
@@ -59,7 +65,9 @@ export default function TskMngApp_SignUp() {
           className={input_className}
         />
 
-        <button className={log_Button}>Sign Up</button>
+        <button className={log_Button} onClick={local_signup}>
+          Sign Up
+        </button>
       </div>
     </div>
   );

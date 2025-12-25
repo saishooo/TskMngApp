@@ -17,9 +17,9 @@ export default function TskMngApp_Login() {
 
   const handleLogin = () => {
     if (!login(id, password)) {
-      setErrorJuge("Error : ID or Password is incorrect");
+      alert("Error : ID or Password is incorrect");
     } else {
-      setErrorJuge("Login is success!!");
+      alert("Login is success!!");
     }
   };
 
@@ -49,7 +49,6 @@ export default function TskMngApp_Login() {
         <button onClick={handleLogin} className={log_Button}>
           Login
         </button>
-        {error_juge && <p className="text-500">{error_juge}</p>}
       </div>
     </div>
   );
