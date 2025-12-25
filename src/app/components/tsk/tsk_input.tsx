@@ -13,6 +13,7 @@ import { useAuth } from "../log/AuthContext";
 export default function Tsk_Input() {
   const [tsk_title, setTskTitle] = useState("");
   const [dead_line, setDeadLine] = useState("");
+  const [priority, setPriority] = useState("");
   const { user } = useAuth();
 
   //ここ修正　あと意味理解必要saito
@@ -25,7 +26,7 @@ export default function Tsk_Input() {
   const handleAdd = () => {
     if (!user) return;
 
-    addTask(tsk_title, dead_line, user.user_id);
+    addTask(tsk_title, dead_line, priority, user.user_id);
     setTskTitle("");
     setDeadLine("");
   };
@@ -54,6 +55,19 @@ export default function Tsk_Input() {
           placeholder="XXXX-YY-ZZ"
           className={input_className}
         />
+
+        <h1 className="mb-2">Priority</h1>
+        <select
+          name="tsk_priority"
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+          className={input_className}
+        >
+          <option value="">select</option>
+          <option value="high">high</option>
+          <option value="medium">medium</option>
+          <option value="low">low</option>
+        </select>
 
         <button className={taskInput_Button} onClick={handleAdd}>
           Add

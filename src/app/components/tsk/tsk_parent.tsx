@@ -7,7 +7,7 @@ import { Tasks } from "@/app/types"; //Tasksの型を引き継ぐ
 //下記のcreateContextで使用
 export interface Tsk_Props {
   tasks: Tasks[];
-  addTask: (tsk_title: string, dead_line: string, user_id: string) => void;
+  addTask: (tsk_title: string, dead_line: string, priority: string, user_id: string) => void;
   updateTask: (id: number, newTitle: string, newDeadLine: string) => void;
   deleteTask: (id: number) => void;
   toggleTask: (id: number) => void;
@@ -27,6 +27,7 @@ export default function Tsk_Parent({
       comp: false,
       tsk_title: "プログラミング(sample)",
       dead_line: "2025-12-06-00:06:00",
+      priority: "high",
       createdAt: "2025-12-06-00:06:00",
       updatedAt: "2025-12-06-00:06:00",
       user_id: "sai.shooo",
@@ -36,6 +37,7 @@ export default function Tsk_Parent({
       comp: false,
       tsk_title: "リファクタリング",
       dead_line: "2025-12-22-22:28:00",
+      priority: "medium",
       createdAt: "2025-12-22-22:28:00",
       updatedAt: "2025-12-22-22:28:00",
       user_id: "user2",
@@ -43,7 +45,7 @@ export default function Tsk_Parent({
   ]);
 
   //タスク追加関数
-  const addTask = (tsk_title: string, dead_line: string, user_id: string) => {
+  const addTask = (tsk_title: string, dead_line: string, priority: string, user_id: string) => {
     const nowTime = new Date().toISOString();
 
     setTasks((prev) => [
@@ -53,6 +55,7 @@ export default function Tsk_Parent({
         comp: false,
         tsk_title,
         dead_line,
+        priority,
         createdAt: nowTime,
         updatedAt: nowTime,
         user_id,
