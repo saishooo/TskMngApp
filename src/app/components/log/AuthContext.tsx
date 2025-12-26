@@ -76,6 +76,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     //↓saito 意味理解
     localStorage.setItem("currentUser", JSON.stringify(newUser));
 
+    alert("Sign up is success!!");
+
     return true;
   };
 
