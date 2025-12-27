@@ -28,13 +28,18 @@ export default function Tsk_Output_AllList() {
   );
 
   //ログインしているユーザーID別にタスクを吸い上げ
-  const all_user_tsks = tasks.filter((task) => task.user_id === user.user_id);
+  const login_user_tsks = tasks.filter((task) => task.user_id === user.user_id);
 
-  const output_tsks = all_user_tsks.filter((task) => {
-    if (tsk_filter === "Priority") {
+  //表示するタスクをfilterにかける
+  const output_tsks = login_user_tsks.filter((task) => {
+    if (tsk_filter === "Priority-high") {
       return task.priority === "high";
+    } else if (tsk_filter === "Priority-medium") {
+      return task.priority === "medium";
+    } else if (tsk_filter === "Priority-low") {
+      return task.priority === "low";
     }
-    return true;
+    return true; //何も選択されていない時(select)
   });
 
   //絞り込み関数
@@ -51,16 +56,22 @@ export default function Tsk_Output_AllList() {
       <div className={taskBoxBig}>
         <h1 className="font-bold mb-3">My All Tasks</h1>
 
-        <select
-          name="tsk_filter"
-          value={tsk_filter}
-          onChange={handleFileterChange}
-        >
-          <option value="">select</option>
-          <option value="Priority">Priority</option>
-        </select>
+        <div className="inline-flex items-center h-10">
+          <h1>Filter :</h1>
+          <select
+            name="tsk_filter"
+            value={tsk_filter}
+            onChange={handleFileterChange}
+            className="ml-3"
+          >
+            <option value="">select</option>
+            <option value="Priority-high">Priority-high</option>
+            <option value="Priority-medium">Priority-medium</option>
+            <option value="Priority-low">Priority-low</option>
+          </select>
+        </div>
 
-        <div className="pt-3 overflow-y-auto max-h-[530px]">
+        <div className="pt-3 overflow-y-auto max-h-[490px]">
           {output_tsks.length === 0 ? (
             <p>No tasks have been registered.</p>
           ) : (

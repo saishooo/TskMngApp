@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 import { Tasks } from "@/app/types"; //Tasksの型を引き継ぐ
+import { tasks_data } from "./tsk_data";
 
 //contextに渡すデータの型
 //下記のcreateContextで使用
@@ -31,68 +32,7 @@ export default function Tsk_Parent({
   children: React.ReactNode;
 }) {
   //タスクの初期値として登録
-  const [tasks, setTasks] = useState<Tasks[]>([
-    {
-      id: 1,
-      comp: false,
-      tsk_title: "プログラミング(sample)",
-      dead_line: "2025-12-06",
-      priority: "high",
-      createdAt: "2025-12-06",
-      updatedAt: "2025-12-06",
-      user_id: "sai.shooo",
-    },
-    {
-      id: 2,
-      comp: false,
-      tsk_title: "リファクタリング",
-      dead_line: "2025-12-22",
-      priority: "medium",
-      createdAt: "2025-12-22",
-      updatedAt: "2025-12-22",
-      user_id: "sai.shooo",
-    },
-    {
-      id: 3,
-      comp: false,
-      tsk_title: "sample1",
-      dead_line: "2025-12-08",
-      priority: "high",
-      createdAt: "2025-12-06",
-      updatedAt: "2025-12-06",
-      user_id: "sai.shooo",
-    },
-    {
-      id: 4,
-      comp: false,
-      tsk_title: "sample2",
-      dead_line: "2025-12-09",
-      priority: "low",
-      createdAt: "2025-12-06",
-      updatedAt: "2025-12-06",
-      user_id: "sai.shooo",
-    },
-    {
-      id: 5,
-      comp: false,
-      tsk_title: "sample3",
-      dead_line: "2025-12-10",
-      priority: "medium",
-      createdAt: "2025-12-06",
-      updatedAt: "2025-12-06",
-      user_id: "sai.shooo",
-    },
-    {
-      id: 6,
-      comp: false,
-      tsk_title: "sample4",
-      dead_line: "2025-12-11",
-      priority: "low",
-      createdAt: "2025-12-06",
-      updatedAt: "2025-12-06",
-      user_id: "sai.shooo",
-    },
-  ]);
+  const [tasks, setTasks] = useState<Tasks[]>(tasks_data);
 
   //タスク追加関数
   const addTask = (

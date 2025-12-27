@@ -63,10 +63,10 @@ export default function Tsk_Input() {
           onChange={(e) => setPriority(e.target.value)}
           className={input_className}
         >
-          <option value="">select</option>
-          <option value="high">high</option>
-          <option value="medium">medium</option>
-          <option value="low">low</option>
+          <option value="">Select</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
         </select>
 
         <button className={taskInput_Button} onClick={handleAdd}>

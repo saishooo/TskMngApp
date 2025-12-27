@@ -6,7 +6,7 @@ import { Tasks } from "@/app/types";
 import Image from "next/image";
 import {
   headerInnerClass_center,
-  taskBox,
+  taskBoxBig,
   taskOutput_taskDisplayArea,
   taskOutput_deleteButton,
   taskOutput_updateButton,
@@ -21,6 +21,7 @@ export default function Tsk_Output_Management() {
   const [editTitle, setEditTitle] = useState("");
   const [editDeadLine, setEditDeadLine] = useState("");
   const [editPriority, setEditPriority] = useState("");
+  const [tsk_filter, setTaskFilter] = useState("");
 
   //ラジオボタン
   const TaskRadioButton = ({ task }: { task: Tasks }) => (
@@ -48,25 +49,56 @@ export default function Tsk_Output_Management() {
   };
 
   //ログインしているユーザーID別にタスクを吸い上げ
-  const management_user_tsk = tasks.filter(
+  const management_login_user_tsk = tasks.filter(
     (task) => task.user_id === user.user_id
   );
 
   //未完了タスクの吸い上げ
-  const management_tsk = management_user_tsk.filter(
+  const management_tsks = management_login_user_tsk.filter(
     (task) => task.comp === false
   );
 
+  //絞り込み関数
+  const output_management_tsks = management_tsks.filter((task) => {
+    if (tsk_filter === "Priority-high") {
+      return task.priority === "high";
+    } else if (tsk_filter === "Priority-medium") {
+      return task.priority === "medium";
+    } else if (tsk_filter === "Priority-low") {
+      return task.priority === "low";
+    }
+    return true;
+  });
+
+  const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTaskFilter(e.target.value);
+  };
+  
   //タスクが多く保存された時の表示方法を考える
   return (
     <div className={headerInnerClass_center}>
-      <div className={taskBox}>
+      <div className={taskBoxBig}>
         <h1 className="font-bold mb-3">My Tasks</h1>
-        <div className="pt-3 overflow-y-auto max-h-[340px]">
-          {management_tsk.length === 0 ? (
+        <div className="inline-flex items-center h-10">
+          <h1>Filter :</h1>
+          <select
+            name="tsk_filter"
+            value={tsk_filter}
+            onChange={handleFileterChange}
+            className="ml-3"
+          >
+            <option value="">select</option>
+            <option value="Priority-high">Priority-high</option>
+            <option value="Priority-medium">Priority-medium</option>
+            <option value="Priority-low">Priority-low</option>
+          </select>
+        </div>
+
+        <div className="pt-3 overflow-y-auto max-h-[490px]">
+          {output_management_tsks.length === 0 ? (
             <p>There are no unfinished tasks.</p>
           ) : (
-            management_tsk.map((task) => (
+            output_management_tsks.map((task) => (
               <div key={task.id} className="flex">
                 {editingTaskId !== task.id && (
                   <div className="flex">
