@@ -29,7 +29,8 @@ export default function Tsk_Output_AllList() {
 
   const sortOptions = [
     { value: "Normal", label: "Normal" },
-    { value: "Priority", label: "Priority" },
+    { value: "Priority-ZYX", label: "Priority-ZYX" },
+    { value: "Priority-ABC", label: "Priority-ABC" },
     { value: "DeadLine", label: "DeadLine" },
     { value: "Created", label: "Created" },
     { value: "Updated", label: "Updated" },
