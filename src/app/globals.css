@@ -24,3 +24,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.alert {
+  position: fixed;
+  top: 75px;
+  left: 640px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.alert.success {
+  background-color: #4caf50;
+}
+
+.alert.error {
+  background-color: #f44336;
+}

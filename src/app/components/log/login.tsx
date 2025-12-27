@@ -8,18 +8,19 @@ import {
 } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
+import { useAlert } from "../alert/alertContext";
 
 export default function TskMngApp_Login() {
   const { login } = useAuth();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [error_juge, setErrorJuge] = useState("");
+  const { showAlert } = useAlert();
 
   const handleLogin = () => {
     if (!login(id, password)) {
-      alert("Error : ID or Password is incorrect");
+      showAlert("Error : ID or Password is incorrect", "error");
     } else {
-      alert("Login is success!!");
+      showAlert("Login is success!!", "success");
     }
   };
 

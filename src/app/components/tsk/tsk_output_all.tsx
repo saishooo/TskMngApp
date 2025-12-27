@@ -9,10 +9,13 @@ import {
   taskBoxBig,
 } from "@/app/className";
 import { useAuth } from "../log/AuthContext";
+import { useState } from "react";
 
 export default function Tsk_Output_AllList() {
   const { tasks, deleteTask } = useTasks();
   const { user } = useAuth();
+
+  const [tsk_filter, setTaskFilter] = useState("");
 
   const completedIcon = (
     <Image
@@ -25,18 +28,54 @@ export default function Tsk_Output_AllList() {
   );
 
   //ログインしているユーザーID別にタスクを吸い上げ
-  const all_user_tsk = tasks.filter((task) => task.user_id === user.user_id);
+  const login_user_tsks = tasks.filter((task) => task.user_id === user.user_id);
+
+  //表示するタスクをfilterにかける
+  const output_tsks = login_user_tsks.filter((task) => {
+    if (tsk_filter === "Priority-high") {
+      return task.priority === "high";
+    } else if (tsk_filter === "Priority-medium") {
+      return task.priority === "medium";
+    } else if (tsk_filter === "Priority-low") {
+      return task.priority === "low";
+    }
+    return true; //何も選択されていない時(select)
+  });
+
+  //絞り込み関数
+  const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTaskFilter(e.target.value);
+    //setTaskFileterが動くことによって、
+    //ページ全体が再レタリングされることによって、
+    //output_tsksが書き換わる。
+  };
 
   //タスクが多く保存された時の表示方法を考える
   return (
     <div className={headerInnerClass_center}>
       <div className={taskBoxBig}>
         <h1 className="font-bold mb-3">My All Tasks</h1>
-        <div className="pt-3 overflow-y-auto max-h-[530px]">
-          {all_user_tsk.length === 0 ? (
+
+        <div className="inline-flex items-center h-10">
+          <h1>Filter :</h1>
+          <select
+            name="tsk_filter"
+            value={tsk_filter}
+            onChange={handleFileterChange}
+            className="ml-3"
+          >
+            <option value="">select</option>
+            <option value="Priority-high">Priority-high</option>
+            <option value="Priority-medium">Priority-medium</option>
+            <option value="Priority-low">Priority-low</option>
+          </select>
+        </div>
+
+        <div className="pt-3 overflow-y-auto max-h-[490px]">
+          {output_tsks.length === 0 ? (
             <p>No tasks have been registered.</p>
           ) : (
-            all_user_tsk.map((task) => (
+            output_tsks.map((task) => (
               <div key={task.id} className="flex">
                 <div className="flex">
                   <div className="flex items-center justify-center w-10 h-15">
