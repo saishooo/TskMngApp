@@ -2,7 +2,6 @@
 
 import { useTasks } from "./tsk_parent";
 import { useState } from "react";
-import { Tasks } from "@/app/types";
 import Image from "next/image";
 import {
   headerInnerClass_center,
@@ -13,6 +12,7 @@ import {
 } from "@/app/className";
 import { useAuth } from "../log/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
+import { useTaskFilter } from "../common/taskFilter";
 
 export default function Tsk_Output_Completed() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -22,7 +22,6 @@ export default function Tsk_Output_Completed() {
   const [editTitle, setEditTitle] = useState("");
   const [editDeadLine, setEditDeadLine] = useState("");
   const [editPriority, setEditPriority] = useState("");
-  const [tsk_filter, setTaskFilter] = useState("");
 
   //アップデート関数
   const Local_UpdateTask = (
@@ -47,17 +46,7 @@ export default function Tsk_Output_Completed() {
     (task) => task.comp === true
   );
 
-  //絞り込み関数
-  const output_completed_tsks = completed_tsks.filter((task) => {
-    if (tsk_filter === "Priority-high") {
-      return task.priority === "high";
-    } else if (tsk_filter === "Priority-medium") {
-      return task.priority === "medium";
-    } else if (tsk_filter === "Priority-low") {
-      return task.priority === "low";
-    }
-    return true;
-  });
+  const {tsk_filter,setTaskFilter,output_filtered_tsks}=useTaskFilter(completed_tsks);
 
   const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTaskFilter(e.target.value);
@@ -82,10 +71,10 @@ export default function Tsk_Output_Completed() {
           </select>
         </div>
         <div className="pt-3 overflow-y-auto max-h-[490px]">
-          {output_completed_tsks.length === 0 ? (
+          {output_filtered_tsks.length === 0 ? (
             <p>There are no completed tasks.</p>
           ) : (
-            output_completed_tsks.map((task) => (
+            output_filtered_tsks.map((task) => (
               <div key={task.id} className="flex">
                 {editingTaskId !== task.id && (
                   <div className="flex">
