@@ -12,7 +12,7 @@ import {
 } from "@/app/className";
 import { useAuth } from "../log/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
-import { useTaskFilter } from "../common/taskFilter";
+import { useTaskFilter } from "../common/useTaskFilter";
 
 export default function Tsk_Output_Completed() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -46,7 +46,8 @@ export default function Tsk_Output_Completed() {
     (task) => task.comp === true
   );
 
-  const {tsk_filter,setTaskFilter,output_filtered_tsks}=useTaskFilter(completed_tsks);
+  const { tsk_filter, setTaskFilter, output_filtered_tsks } =
+    useTaskFilter(completed_tsks);
 
   const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTaskFilter(e.target.value);
