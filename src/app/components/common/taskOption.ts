@@ -16,8 +16,8 @@ export const allFileterOption = [
 
 export const sortOptions = [
   { value: "Normal", label: "Normal" },
-  { value: "Priority-high", label: "Priority-high" },
-  { value: "Priority-low", label: "Priority-low" },
+  { value: "Priority-high", label: "Priority(↓)" },
+  { value: "Priority-low", label: "Priority(↑)" },
   { value: "DeadLine-earlier", label: "DeadLine-earlier" },
   { value: "DeadLine-later", label: "DeadLine-later" },
   //{ value: "Created", label: "Created" },
