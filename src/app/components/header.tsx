@@ -14,8 +14,10 @@ export default function Header() {
 
   const sideBerButton_className =
     "block w-full pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
+  const logoutButton_className =
+    "block w-full pb-2 pr-2 pl-2 text-left rounded hover:bg-gray-200";
   const sideBerLink_className =
-    "block pr-2 pl-2 pb-2 rounded hover:bg-gray-200";
+    "block pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
 
   //LogLinkまとめ
   const logLinks = [
@@ -79,7 +81,7 @@ export default function Header() {
               Authentication
             </button>
             {isLogMenuOpen && (
-              <div className="block pt-2 pr-2 pl-2">
+              <div className="block pr-2 pl-2">
                 {logLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -89,7 +91,7 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
-                <button className={sideBerLink_className} onClick={logout}>
+                <button className={logoutButton_className} onClick={logout}>
                   Logout
                 </button>
               </div>
@@ -102,7 +104,7 @@ export default function Header() {
               TaskList
             </button>
             {isTaskMenuOpen && (
-              <div className="block pt-2 pr-2 pl-2">
+              <div className="block pr-2 pl-2">
                 {taskLinks.map((link) => (
                   <Link
                     key={link.href}
