@@ -23,7 +23,6 @@ export function LogInfo_Output() {
           <div className="flex ml-3 w-55">
             <h1 className="font-bold text-green-600">Login Now :</h1>
             <p className="ml-2">{user.user_name}</p>
-            <p className="ml-2">さん</p>
           </div>
           <button className={Logout_button} onClick={logout}>
             Logout
