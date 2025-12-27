@@ -15,6 +15,7 @@ import { TaskRadioButton } from "../common/taskRadioButton";
 import { useTaskFilter } from "../common/useTaskFilter";
 import { SelectTaskFilter } from "../common/slectTaskFilter";
 import { useTaskSort } from "../common/useTaskSort";
+import { filterOptions, sortOptions } from "../common/taskOption";
 
 export default function Tsk_Output_Management() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -24,22 +25,6 @@ export default function Tsk_Output_Management() {
   const [editTitle, setEditTitle] = useState("");
   const [editDeadLine, setEditDeadLine] = useState("");
   const [editPriority, setEditPriority] = useState("");
-
-  const filterOptions = [
-    { value: "Normal", label: "Normal" },
-    { value: "Priority-high", label: "Priority-high" },
-    { value: "Priority-medium", label: "Priority-medium" },
-    { value: "Priority-low", label: "Priority-low" },
-  ];
-
-  const sortOptions = [
-    { value: "Normal", label: "Normal" },
-    { value: "Priority-ZYX", label: "Priority-ZYX" },
-    { value: "Priority-ABC", label: "Priority-ABC" },
-    { value: "DeadLine", label: "DeadLine" },
-    { value: "Created", label: "Created" },
-    { value: "Updated", label: "Updated" },
-  ];
 
   //アップデート関数
   const Local_UpdateTask = (
