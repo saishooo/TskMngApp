@@ -8,21 +8,32 @@ import {
   taskOutput_deleteButton,
   taskBoxBig,
 } from "@/app/className";
-import { useAuth } from "../log/AuthContext";
+import { useAuth } from "../Auth/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
 import { SelectTaskFilter } from "../common/slectTaskFilter";
+import { useState } from "react";
+import { useTaskSort } from "../common/useTaskSort";
 
 export default function Tsk_Output_AllList() {
   const { tasks, deleteTask } = useTasks();
   const { user } = useAuth();
 
   const filterOptions = [
-    {value:"Priority-high", label: "Priority-high"},
-    {value:"Priority-medium", label:"Priority-medium"},
-    {value:"Priority-low", label:"Priority-low"},
-    {value:"Task-completed", label:"Task-completed"},
-    {value:"Task-incomplete", label:"Task-incomplete"}
-  ]
+    { value: "Normal", label: "Normal" },
+    { value: "Priority-high", label: "Priority-high" },
+    { value: "Priority-medium", label: "Priority-medium" },
+    { value: "Priority-low", label: "Priority-low" },
+    { value: "Task-completed", label: "Task-completed" },
+    { value: "Task-incomplete", label: "Task-incomplete" },
+  ];
+
+  const sortOptions = [
+    { value: "Normal", label: "Normal" },
+    { value: "Priority", label: "Priority" },
+    { value: "DeadLine", label: "DeadLine" },
+    { value: "Created", label: "Created" },
+    { value: "Updated", label: "Updated" },
+  ];
 
   const completedIcon = (
     <Image
@@ -37,18 +48,16 @@ export default function Tsk_Output_AllList() {
   //ログインしているユーザーID別にタスクを吸い上げ
   const login_user_tsks = tasks.filter((task) => task.user_id === user.user_id);
 
+  //フィルターにかけたタスク
   const { tsk_filter, setTaskFilter, output_filtered_tsks } =
     useTaskFilter(login_user_tsks);
 
-  //絞り込み関数
-  /*
-  const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTaskFilter(e.target.value);
-    //setTaskFileterが動くことによって、
-    //ページ全体が再レタリングされることによって、
-    //output_tsksが書き換わる。
-  };
-  */
+  const [sortValue, setSortValue] = useState("");
+  //フィルターにかけたタスクをさらに、ソートする
+  const output_filtered_sort_tsks = useTaskSort(
+    output_filtered_tsks,
+    sortValue
+  );
 
   //タスクが多く保存された時の表示方法を考える
   return (
@@ -56,18 +65,38 @@ export default function Tsk_Output_AllList() {
       <div className={taskBoxBig}>
         <h1 className="font-bold mb-3">My All Tasks</h1>
 
-        <div className="inline-flex items-center h-10">
-          <h1>Filter :</h1>
+        <div className="flex items-center h-10">
+          <div className="flex items-center">
+            <h1 className="me-2">Filter :</h1>
 
-          <SelectTaskFilter value={tsk_filter} options={filterOptions} onChange={setTaskFilter} />
-          
+            <SelectTaskFilter
+              value={tsk_filter}
+              options={filterOptions}
+              onChange={setTaskFilter}
+            />
+          </div>
+
+          <div className="flex items-center ml-8">
+            <h1 className="mr-2">Sorte :</h1>
+
+            <SelectTaskFilter
+              value={sortValue}
+              options={sortOptions}
+              onChange={setSortValue}
+            />
+          </div>
+          <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
+            <button>
+              <Image src="/search.svg" alt="search" width={30} height={30} />
+            </button>
+          </div>
         </div>
 
         <div className="pt-3 overflow-y-auto max-h-[490px]">
-          {output_filtered_tsks.length === 0 ? (
+          {output_filtered_sort_tsks.length === 0 ? (
             <p>No tasks have been registered.</p>
           ) : (
-            output_filtered_tsks.map((task) => (
+            output_filtered_sort_tsks.map((task) => (
               <div key={task.id} className="flex">
                 <div className="flex">
                   <div className="flex items-center justify-center w-10 h-15">

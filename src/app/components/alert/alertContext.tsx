@@ -23,7 +23,7 @@ export const AlertProvider = ({ children }: { children: ReactNode }) => {
 
     setTimeout(() => {
       setAlert(null);
-    }, 3000);
+    }, 1500);
   };
 
   return (

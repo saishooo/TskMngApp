@@ -10,7 +10,7 @@ import {
   taskOutput_deleteButton,
   taskOutput_updateButton,
 } from "@/app/className";
-import { useAuth } from "../log/AuthContext";
+import { useAuth } from "../Auth/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
 import { useTaskFilter } from "../common/useTaskFilter";
 import { SelectTaskFilter } from "../common/slectTaskFilter";
@@ -24,11 +24,12 @@ export default function Tsk_Output_Management() {
   const [editDeadLine, setEditDeadLine] = useState("");
   const [editPriority, setEditPriority] = useState("");
 
-    const filterOptions = [
-    {value:"Priority-high", label: "Priority-high"},
-    {value:"Priority-medium", label:"Priority-medium"},
-    {value:"Priority-low", label:"Priority-low"}
-  ]
+  const filterOptions = [
+    { value: "Normal", label: "Normal" },
+    { value: "Priority-high", label: "Priority-high" },
+    { value: "Priority-medium", label: "Priority-medium" },
+    { value: "Priority-low", label: "Priority-low" },
+  ];
 
   //アップデート関数
   const Local_UpdateTask = (
@@ -63,7 +64,11 @@ export default function Tsk_Output_Management() {
         <h1 className="font-bold mb-3">My Tasks</h1>
         <div className="inline-flex items-center h-10">
           <h1>Filter :</h1>
-          <SelectTaskFilter value={tsk_filter} options={filterOptions} onChange={setTaskFilter} />
+          <SelectTaskFilter
+            value={tsk_filter}
+            options={filterOptions}
+            onChange={setTaskFilter}
+          />
         </div>
 
         <div className="pt-3 overflow-y-auto max-h-[490px]">

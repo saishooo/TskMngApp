@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "./log/AuthContext";
+import { useAuth } from "./Auth/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,8 +19,8 @@ export default function Header() {
 
   //LogLinkまとめ
   const logLinks = [
-    { href: "/log/login", label: "Login" },
-    { href: "/log/signup", label: "Sign Up" },
+    { href: "/Auth/login", label: "Login" },
+    { href: "/Auth/signup", label: "Sign Up" },
   ];
 
   //TaskLinkまとめ
@@ -72,11 +72,11 @@ export default function Header() {
               href="/"
               className="block p-2 font-bold rounded hover:bg-gray-200"
             >
-              Home
+              Introduction
             </Link>
 
             <button className={sideBerButton_className} onClick={toggleLogMenu}>
-              LogList
+              Authentication
             </button>
             {isLogMenuOpen && (
               <div className="block pt-2 pr-2 pl-2">

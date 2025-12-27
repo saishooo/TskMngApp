@@ -8,7 +8,7 @@ import {
   taskInput_Button,
   input_className,
 } from "@/app/className";
-import { useAuth } from "../log/AuthContext";
+import { useAuth } from "../Auth/AuthContext";
 
 export default function Tsk_Input() {
   const [tsk_title, setTskTitle] = useState("");

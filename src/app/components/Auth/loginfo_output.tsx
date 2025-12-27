@@ -37,14 +37,14 @@ export function LogInfo_Output() {
           </div>
           <button
             className={Login_button}
-            onClick={() => router.push("/log/login")}
+            onClick={() => router.push("/Auth/login")}
           >
             Login?
           </button>
           <p className="flex ml-4">or</p>
           <button
             className={SignUp_button}
-            onClick={() => router.push("/log/login")}
+            onClick={() => router.push("/Auth/signup")}
           >
             Sing Up?
           </button>
