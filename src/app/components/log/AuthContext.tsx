@@ -110,7 +110,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   //ページリロード時に保持
-  //あとで意味理解
+  //saitoあとで意味理解
   useEffect(() => {
     const saved = localStorage.getItem("currentUser");
     if (saved) {

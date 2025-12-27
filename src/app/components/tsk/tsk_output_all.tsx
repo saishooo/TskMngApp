@@ -9,10 +9,13 @@ import {
   taskBoxBig,
 } from "@/app/className";
 import { useAuth } from "../log/AuthContext";
+import { useState } from "react";
 
 export default function Tsk_Output_AllList() {
   const { tasks, deleteTask } = useTasks();
   const { user } = useAuth();
+
+  const [tsk_filter, setTaskFilter] = useState("");
 
   const completedIcon = (
     <Image
@@ -25,18 +28,43 @@ export default function Tsk_Output_AllList() {
   );
 
   //ログインしているユーザーID別にタスクを吸い上げ
-  const all_user_tsk = tasks.filter((task) => task.user_id === user.user_id);
+  const all_user_tsks = tasks.filter((task) => task.user_id === user.user_id);
+
+  const output_tsks = all_user_tsks.filter((task) => {
+    if (tsk_filter === "Priority") {
+      return task.priority === "high";
+    }
+    return true;
+  });
+
+  //絞り込み関数
+  const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTaskFilter(e.target.value);
+    //setTaskFileterが動くことによって、
+    //ページ全体が再レタリングされることによって、
+    //output_tsksが書き換わる。
+  };
 
   //タスクが多く保存された時の表示方法を考える
   return (
     <div className={headerInnerClass_center}>
       <div className={taskBoxBig}>
         <h1 className="font-bold mb-3">My All Tasks</h1>
+
+        <select
+          name="tsk_filter"
+          value={tsk_filter}
+          onChange={handleFileterChange}
+        >
+          <option value="">select</option>
+          <option value="Priority">Priority</option>
+        </select>
+
         <div className="pt-3 overflow-y-auto max-h-[530px]">
-          {all_user_tsk.length === 0 ? (
+          {output_tsks.length === 0 ? (
             <p>No tasks have been registered.</p>
           ) : (
-            all_user_tsk.map((task) => (
+            output_tsks.map((task) => (
               <div key={task.id} className="flex">
                 <div className="flex">
                   <div className="flex items-center justify-center w-10 h-15">
