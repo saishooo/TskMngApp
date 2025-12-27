@@ -25,6 +25,14 @@ export default function Tsk_Output_AllList() {
     { value: "Task-incomplete", label: "Task-incomplete" },
   ];
 
+  const sortOptions = [
+    { value: "Normal", label: "Normal" },
+    { value: "Priority", label: "Priority" },
+    { value: "DeadLine", label: "DeadLine" },
+    { value: "Created", label: "Created" },
+    { value: "Updated", label: "Updated" },
+  ];
+
   const completedIcon = (
     <Image
       className="mt-1"
@@ -41,8 +49,8 @@ export default function Tsk_Output_AllList() {
   const { tsk_filter, setTaskFilter, output_filtered_tsks } =
     useTaskFilter(login_user_tsks);
 
-  //絞り込み関数
   /*
+  //絞り込み関数
   const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTaskFilter(e.target.value);
     //setTaskFileterが動くことによって、
@@ -57,14 +65,31 @@ export default function Tsk_Output_AllList() {
       <div className={taskBoxBig}>
         <h1 className="font-bold mb-3">My All Tasks</h1>
 
-        <div className="inline-flex items-center h-10">
-          <h1>Filter :</h1>
+        <div className="flex items-center h-10">
+          <div className="flex items-center">
+            <h1 className="me-2">Filter :</h1>
 
-          <SelectTaskFilter
-            value={tsk_filter}
-            options={filterOptions}
-            onChange={setTaskFilter}
-          />
+            <SelectTaskFilter
+              value={tsk_filter}
+              options={filterOptions}
+              onChange={setTaskFilter}
+            />
+          </div>
+
+          <div className="flex items-center ml-8">
+            <h1 className="mr-2">Sorte :</h1>
+
+            <SelectTaskFilter
+              value={tsk_filter}
+              options={sortOptions}
+              onChange={setTaskFilter}
+            />
+          </div>
+          <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
+            <button>
+              <Image src="/search.svg" alt="search" width={30} height={30} />
+            </button>
+          </div>
         </div>
 
         <div className="pt-3 overflow-y-auto max-h-[490px]">
