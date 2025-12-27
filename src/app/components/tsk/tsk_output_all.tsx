@@ -11,6 +11,8 @@ import {
 import { useAuth } from "../Auth/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
 import { SelectTaskFilter } from "../common/slectTaskFilter";
+import { useState } from "react";
+import { useTaskSort } from "../common/useTaskSort";
 
 export default function Tsk_Output_AllList() {
   const { tasks, deleteTask } = useTasks();
@@ -46,18 +48,16 @@ export default function Tsk_Output_AllList() {
   //ログインしているユーザーID別にタスクを吸い上げ
   const login_user_tsks = tasks.filter((task) => task.user_id === user.user_id);
 
+  //フィルターにかけたタスク
   const { tsk_filter, setTaskFilter, output_filtered_tsks } =
     useTaskFilter(login_user_tsks);
 
-  /*
-  //絞り込み関数
-  const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTaskFilter(e.target.value);
-    //setTaskFileterが動くことによって、
-    //ページ全体が再レタリングされることによって、
-    //output_tsksが書き換わる。
-  };
-  */
+  const [sortValue, setSortValue] = useState("");
+  //フィルターにかけたタスクをさらに、ソートする
+  const output_filtered_sort_tsks = useTaskSort(
+    output_filtered_tsks,
+    sortValue
+  );
 
   //タスクが多く保存された時の表示方法を考える
   return (
@@ -80,9 +80,9 @@ export default function Tsk_Output_AllList() {
             <h1 className="mr-2">Sorte :</h1>
 
             <SelectTaskFilter
-              value={tsk_filter}
+              value={sortValue}
               options={sortOptions}
-              onChange={setTaskFilter}
+              onChange={setSortValue}
             />
           </div>
           <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
@@ -93,10 +93,10 @@ export default function Tsk_Output_AllList() {
         </div>
 
         <div className="pt-3 overflow-y-auto max-h-[490px]">
-          {output_filtered_tsks.length === 0 ? (
+          {output_filtered_sort_tsks.length === 0 ? (
             <p>No tasks have been registered.</p>
           ) : (
-            output_filtered_tsks.map((task) => (
+            output_filtered_sort_tsks.map((task) => (
               <div key={task.id} className="flex">
                 <div className="flex">
                   <div className="flex items-center justify-center w-10 h-15">
