@@ -13,6 +13,10 @@ export const useTaskFilter = (tasks: Tasks[]) => {
       return task.priority === "medium";
     } else if (tsk_filter === "Priority-low") {
       return task.priority === "low";
+    } else if (tsk_filter === "Task-completed") {
+        return task.comp === true;
+    } else if (tsk_filter === "Task-incomplete") {
+        return task.comp === false;
     }
     return true; //何も選択されていない時(select)
   });

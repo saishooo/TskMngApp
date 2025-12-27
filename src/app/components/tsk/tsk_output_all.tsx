@@ -57,6 +57,8 @@ export default function Tsk_Output_AllList() {
             <option value="Priority-high">Priority-high</option>
             <option value="Priority-medium">Priority-medium</option>
             <option value="Priority-low">Priority-low</option>
+            <option value="Task-completed">Task-completed</option>
+            <option value="Task-incomplete">Task-incomplete</option>
           </select>
         </div>
 
