@@ -10,7 +10,7 @@ import {
   taskOutput_deleteButton,
   taskOutput_updateButton,
 } from "@/app/className";
-import { useAuth } from "../log/AuthContext";
+import { useAuth } from "../Auth/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
 import { useTaskFilter } from "../common/useTaskFilter";
 import { SelectTaskFilter } from "../common/slectTaskFilter";

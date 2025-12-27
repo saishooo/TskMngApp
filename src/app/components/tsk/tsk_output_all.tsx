@@ -8,7 +8,7 @@ import {
   taskOutput_deleteButton,
   taskBoxBig,
 } from "@/app/className";
-import { useAuth } from "../log/AuthContext";
+import { useAuth } from "../Auth/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
 import { SelectTaskFilter } from "../common/slectTaskFilter";
 

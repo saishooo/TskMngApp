@@ -1,6 +1,6 @@
 import { headerInnerClass } from "./className";
 
-export default function Home() {
+export default function Introduction() {
   return (
     <div className={headerInnerClass}>
       <div className="block">
