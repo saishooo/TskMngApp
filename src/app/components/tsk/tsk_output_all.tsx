@@ -10,10 +10,19 @@ import {
 } from "@/app/className";
 import { useAuth } from "../log/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
+import { SelectTaskFilter } from "../common/slectTaskFilter";
 
 export default function Tsk_Output_AllList() {
   const { tasks, deleteTask } = useTasks();
   const { user } = useAuth();
+
+  const filterOptions = [
+    {value:"Priority-high", label: "Priority-high"},
+    {value:"Priority-medium", label:"Priority-medium"},
+    {value:"Priority-low", label:"Priority-low"},
+    {value:"Task-completed", label:"Task-completed"},
+    {value:"Task-incomplete", label:"Task-incomplete"}
+  ]
 
   const completedIcon = (
     <Image
@@ -32,12 +41,14 @@ export default function Tsk_Output_AllList() {
     useTaskFilter(login_user_tsks);
 
   //絞り込み関数
+  /*
   const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTaskFilter(e.target.value);
     //setTaskFileterが動くことによって、
     //ページ全体が再レタリングされることによって、
     //output_tsksが書き換わる。
   };
+  */
 
   //タスクが多く保存された時の表示方法を考える
   return (
@@ -47,19 +58,9 @@ export default function Tsk_Output_AllList() {
 
         <div className="inline-flex items-center h-10">
           <h1>Filter :</h1>
-          <select
-            name="tsk_filter"
-            value={tsk_filter}
-            onChange={handleFileterChange}
-            className="ml-3"
-          >
-            <option value="">select</option>
-            <option value="Priority-high">Priority-high</option>
-            <option value="Priority-medium">Priority-medium</option>
-            <option value="Priority-low">Priority-low</option>
-            <option value="Task-completed">Task-completed</option>
-            <option value="Task-incomplete">Task-incomplete</option>
-          </select>
+
+          <SelectTaskFilter value={tsk_filter} options={filterOptions} onChange={setTaskFilter} />
+          
         </div>
 
         <div className="pt-3 overflow-y-auto max-h-[490px]">
