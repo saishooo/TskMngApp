@@ -14,6 +14,8 @@ import { useAuth } from "../Auth/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
 import { useTaskFilter } from "../common/useTaskFilter";
 import { SelectTaskFilter } from "../common/slectTaskFilter";
+import { useTaskSort } from "../common/useTaskSort";
+import { filterOptions, sortOptions } from "../common/taskOption";
 
 export default function Tsk_Output_Completed() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -23,13 +25,6 @@ export default function Tsk_Output_Completed() {
   const [editTitle, setEditTitle] = useState("");
   const [editDeadLine, setEditDeadLine] = useState("");
   const [editPriority, setEditPriority] = useState("");
-
-  const filterOptions = [
-    { value: "Normal", label: "Normal" },
-    { value: "Priority-high", label: "Priority-high" },
-    { value: "Priority-medium", label: "Priority-medium" },
-    { value: "Priority-low", label: "Priority-low" },
-  ];
 
   //アップデート関数
   const Local_UpdateTask = (
@@ -57,23 +52,46 @@ export default function Tsk_Output_Completed() {
   const { tsk_filter, setTaskFilter, output_filtered_tsks } =
     useTaskFilter(completed_tsks);
 
+  const [sortValue, setSortValue] = useState("");
+  //フィルターにかけたタスクをさらに、ソートする
+  const output_filtered_sort_tsks = useTaskSort(
+    output_filtered_tsks,
+    sortValue
+  );
+
   return (
     <div className={headerInnerClass_center}>
       <div className={taskBoxBig}>
         <h1 className="font-bold mb-3">My Tasks Completed</h1>
-        <div className="inline-flex items-center h-10">
-          <h1>Filter :</h1>
-          <SelectTaskFilter
-            value={tsk_filter}
-            options={filterOptions}
-            onChange={setTaskFilter}
-          />
+        <div className="flex items-center h-10">
+          <div className="flex items-center">
+            <h1 className="me-2">Filter :</h1>
+            <SelectTaskFilter
+              value={tsk_filter}
+              options={filterOptions}
+              onChange={setTaskFilter}
+            />
+          </div>
+
+          <div className="flex items-center ml-8">
+            <h1 className="mr-2">Sorte :</h1>
+            <SelectTaskFilter
+              value={sortValue}
+              options={sortOptions}
+              onChange={setSortValue}
+            />
+          </div>
+          <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
+            <button>
+              <Image src="/search.svg" alt="search" width={30} height={30} />
+            </button>
+          </div>
         </div>
         <div className="pt-3 overflow-y-auto max-h-[490px]">
-          {output_filtered_tsks.length === 0 ? (
+          {output_filtered_sort_tsks.length === 0 ? (
             <p>There are no completed tasks.</p>
           ) : (
-            output_filtered_tsks.map((task) => (
+            output_filtered_sort_tsks.map((task) => (
               <div key={task.id} className="flex">
                 {editingTaskId !== task.id && (
                   <div className="flex">
