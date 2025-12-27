@@ -9,6 +9,7 @@ import {
 } from "react";
 import { User } from "@/app/types";
 import { users_data } from "./user_data";
+import { useAlert } from "../alert/alertContext";
 
 type AuthContextType = {
   user: User;
@@ -32,6 +33,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     user_name: "Guest",
   };
 
+  const { showAlert } = useAlert();
+
   //登録済みユーザー(配列)
   const [users, setUsersAdd] = useState<User[]>(users_data);
 
@@ -47,17 +50,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   ): boolean => {
     //空欄チェック
     if (!id || !password || !passwordConf || !userName) {
-      alert("All fields are required");
+      showAlert("All fields are required", "error");
       return false;
     }
     //パスワード一致チェック
     if (password !== passwordConf) {
-      alert("Passwords do not match");
+      showAlert("Passwords do not match", "error");
       return false;
     }
     //ユーザーIDがすでに使用されていないか
     if (users.some((user) => user.user_id === id)) {
-      alert("This ID is already in use");
+      showAlert("This ID is already in use", "error");
       return false;
     }
 
@@ -76,7 +79,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     //↓saito 意味理解
     localStorage.setItem("currentUser", JSON.stringify(newUser));
 
-    alert("Sign up is success!!");
+    showAlert("Sign up is success!!", "success");
 
     return true;
   };
