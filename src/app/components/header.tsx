@@ -13,7 +13,7 @@ export default function Header() {
   const { logout } = useAuth();
 
   const sideBerButton_className =
-    "block w-full pt-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
+    "block w-full pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
   const sideBerLink_className =
     "block pr-2 pl-2 pb-2 rounded hover:bg-gray-200";
 

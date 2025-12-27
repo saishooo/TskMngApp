@@ -2,7 +2,6 @@
 
 import { useTasks } from "./tsk_parent";
 import { useState } from "react";
-import { Tasks } from "@/app/types";
 import Image from "next/image";
 import {
   headerInnerClass_center,
@@ -12,6 +11,9 @@ import {
   taskOutput_updateButton,
 } from "@/app/className";
 import { useAuth } from "../log/AuthContext";
+import { TaskRadioButton } from "../common/taskRadioButton";
+import { useTaskFilter } from "../common/useTaskFilter";
+import { SelectTaskFilter } from "../common/slectTaskFilter";
 
 export default function Tsk_Output_Completed() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -21,19 +23,12 @@ export default function Tsk_Output_Completed() {
   const [editTitle, setEditTitle] = useState("");
   const [editDeadLine, setEditDeadLine] = useState("");
   const [editPriority, setEditPriority] = useState("");
-  const [tsk_filter, setTaskFilter] = useState("");
 
-  //ラジオボタン
-  const TaskRadioButton = ({ task }: { task: Tasks }) => (
-    <div className="flex w-10 h-15 px-4">
-      <input
-        type="radio"
-        value="false"
-        checked={task.comp === false}
-        onChange={() => toggleTask(task.id)}
-      />
-    </div>
-  );
+  const filterOptions = [
+    {value:"Priority-high", label: "Priority-high"},
+    {value:"Priority-medium", label:"Priority-medium"},
+    {value:"Priority-low", label:"Priority-low"}
+  ]
 
   //アップデート関数
   const Local_UpdateTask = (
@@ -57,22 +52,9 @@ export default function Tsk_Output_Completed() {
   const completed_tsks = comp_login_user_tsks.filter(
     (task) => task.comp === true
   );
-  
-  //絞り込み関数
-  const output_completed_tsks = completed_tsks.filter((task) => {
-    if (tsk_filter === "Priority-high") {
-      return task.priority === "high";
-    } else if (tsk_filter === "Priority-medium") {
-      return task.priority === "medium";
-    } else if (tsk_filter === "Priority-low") {
-      return task.priority === "low";
-    }
-    return true;
-  });
 
-  const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTaskFilter(e.target.value);
-  };
+  const { tsk_filter, setTaskFilter, output_filtered_tsks } =
+    useTaskFilter(completed_tsks);
 
   return (
     <div className={headerInnerClass_center}>
@@ -80,27 +62,21 @@ export default function Tsk_Output_Completed() {
         <h1 className="font-bold mb-3">My Tasks Completed</h1>
         <div className="inline-flex items-center h-10">
           <h1>Filter :</h1>
-          <select
-            name="tsk_filter"
-            value={tsk_filter}
-            onChange={handleFileterChange}
-            className="ml-3"
-          >
-            <option value="">select</option>
-            <option value="Priority-high">Priority-high</option>
-            <option value="Priority-medium">Priority-medium</option>
-            <option value="Priority-low">Priority-low</option>
-          </select>
+          <SelectTaskFilter value={tsk_filter} options={filterOptions} onChange={setTaskFilter} />
         </div>
         <div className="pt-3 overflow-y-auto max-h-[490px]">
-          {output_completed_tsks.length === 0 ? (
+          {output_filtered_tsks.length === 0 ? (
             <p>There are no completed tasks.</p>
           ) : (
-            output_completed_tsks.map((task) => (
+            output_filtered_tsks.map((task) => (
               <div key={task.id} className="flex">
                 {editingTaskId !== task.id && (
                   <div className="flex">
-                    <TaskRadioButton task={task} />
+                    <TaskRadioButton
+                      output_type="completed"
+                      task={task}
+                      onToggle={toggleTask}
+                    />
                     <div
                       className={taskOutput_taskDisplayArea}
                       onClick={() => {
@@ -134,7 +110,11 @@ export default function Tsk_Output_Completed() {
                 )}
                 {editingTaskId === task.id && (
                   <div className="flex">
-                    <TaskRadioButton task={task} />
+                    <TaskRadioButton
+                      output_type="completed"
+                      task={task}
+                      onToggle={toggleTask}
+                    />
 
                     <div
                       className={taskOutput_taskDisplayArea}
