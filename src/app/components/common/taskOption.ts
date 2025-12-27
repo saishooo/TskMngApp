@@ -20,6 +20,6 @@ export const sortOptions = [
   { value: "Priority-low", label: "Priority-low" },
   { value: "DeadLine-earlier", label: "DeadLine-earlier" },
   { value: "DeadLine-later", label: "DeadLine-later" },
-  { value: "Created", label: "Created" },
-  { value: "Updated", label: "Updated" },
+  //{ value: "Created", label: "Created" },
+  //{ value: "Updated", label: "Updated" },
 ];
