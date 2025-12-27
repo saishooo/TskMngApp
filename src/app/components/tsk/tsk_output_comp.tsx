@@ -25,10 +25,11 @@ export default function Tsk_Output_Completed() {
   const [editPriority, setEditPriority] = useState("");
 
   const filterOptions = [
-    {value:"Priority-high", label: "Priority-high"},
-    {value:"Priority-medium", label:"Priority-medium"},
-    {value:"Priority-low", label:"Priority-low"}
-  ]
+    { value: "Normal", label: "Normal" },
+    { value: "Priority-high", label: "Priority-high" },
+    { value: "Priority-medium", label: "Priority-medium" },
+    { value: "Priority-low", label: "Priority-low" },
+  ];
 
   //アップデート関数
   const Local_UpdateTask = (
@@ -62,7 +63,11 @@ export default function Tsk_Output_Completed() {
         <h1 className="font-bold mb-3">My Tasks Completed</h1>
         <div className="inline-flex items-center h-10">
           <h1>Filter :</h1>
-          <SelectTaskFilter value={tsk_filter} options={filterOptions} onChange={setTaskFilter} />
+          <SelectTaskFilter
+            value={tsk_filter}
+            options={filterOptions}
+            onChange={setTaskFilter}
+          />
         </div>
         <div className="pt-3 overflow-y-auto max-h-[490px]">
           {output_filtered_tsks.length === 0 ? (

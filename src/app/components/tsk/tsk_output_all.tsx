@@ -17,12 +17,13 @@ export default function Tsk_Output_AllList() {
   const { user } = useAuth();
 
   const filterOptions = [
-    {value:"Priority-high", label: "Priority-high"},
-    {value:"Priority-medium", label:"Priority-medium"},
-    {value:"Priority-low", label:"Priority-low"},
-    {value:"Task-completed", label:"Task-completed"},
-    {value:"Task-incomplete", label:"Task-incomplete"}
-  ]
+    { value: "Normal", label: "Normal" },
+    { value: "Priority-high", label: "Priority-high" },
+    { value: "Priority-medium", label: "Priority-medium" },
+    { value: "Priority-low", label: "Priority-low" },
+    { value: "Task-completed", label: "Task-completed" },
+    { value: "Task-incomplete", label: "Task-incomplete" },
+  ];
 
   const completedIcon = (
     <Image
@@ -59,8 +60,11 @@ export default function Tsk_Output_AllList() {
         <div className="inline-flex items-center h-10">
           <h1>Filter :</h1>
 
-          <SelectTaskFilter value={tsk_filter} options={filterOptions} onChange={setTaskFilter} />
-          
+          <SelectTaskFilter
+            value={tsk_filter}
+            options={filterOptions}
+            onChange={setTaskFilter}
+          />
         </div>
 
         <div className="pt-3 overflow-y-auto max-h-[490px]">

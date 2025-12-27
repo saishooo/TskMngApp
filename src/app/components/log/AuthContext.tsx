@@ -107,6 +107,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setUser(guestUser);
     localStorage.removeItem("currentUser");
+    showAlert("You are now logged out.", "error");
   };
 
   //ページリロード時に保持
