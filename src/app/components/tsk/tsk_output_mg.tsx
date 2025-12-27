@@ -12,6 +12,7 @@ import {
   taskOutput_updateButton,
 } from "@/app/className";
 import { useAuth } from "../log/AuthContext";
+import { TaskRadioButton } from "../common/taskRadioButton";
 
 export default function Tsk_Output_Management() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -22,18 +23,6 @@ export default function Tsk_Output_Management() {
   const [editDeadLine, setEditDeadLine] = useState("");
   const [editPriority, setEditPriority] = useState("");
   const [tsk_filter, setTaskFilter] = useState("");
-
-  //ラジオボタン
-  const TaskRadioButton = ({ task }: { task: Tasks }) => (
-    <div className="flex w-10 h-15 px-4">
-      <input
-        type="radio"
-        value="true"
-        checked={task.comp === true}
-        onChange={() => toggleTask(task.id)}
-      />
-    </div>
-  );
 
   //アップデート関数
   const Local_UpdateTask = (
@@ -73,7 +62,7 @@ export default function Tsk_Output_Management() {
   const handleFileterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTaskFilter(e.target.value);
   };
-  
+
   //タスクが多く保存された時の表示方法を考える
   return (
     <div className={headerInnerClass_center}>
@@ -102,7 +91,11 @@ export default function Tsk_Output_Management() {
               <div key={task.id} className="flex">
                 {editingTaskId !== task.id && (
                   <div className="flex">
-                    <TaskRadioButton task={task} />
+                    <TaskRadioButton
+                      output_type="management"
+                      task={task}
+                      onToggle={toggleTask}
+                    />
                     <div
                       className={taskOutput_taskDisplayArea}
                       onClick={() => {
@@ -136,7 +129,11 @@ export default function Tsk_Output_Management() {
                 )}
                 {editingTaskId === task.id && (
                   <div className="flex">
-                    <TaskRadioButton task={task} />
+                    <TaskRadioButton
+                      output_type="management"
+                      task={task}
+                      onToggle={toggleTask}
+                    />
 
                     <div
                       className={taskOutput_taskDisplayArea}

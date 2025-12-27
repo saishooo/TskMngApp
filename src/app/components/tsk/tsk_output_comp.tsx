@@ -12,6 +12,7 @@ import {
   taskOutput_updateButton,
 } from "@/app/className";
 import { useAuth } from "../log/AuthContext";
+import { TaskRadioButton } from "../common/taskRadioButton";
 
 export default function Tsk_Output_Completed() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
@@ -22,18 +23,6 @@ export default function Tsk_Output_Completed() {
   const [editDeadLine, setEditDeadLine] = useState("");
   const [editPriority, setEditPriority] = useState("");
   const [tsk_filter, setTaskFilter] = useState("");
-
-  //ラジオボタン
-  const TaskRadioButton = ({ task }: { task: Tasks }) => (
-    <div className="flex w-10 h-15 px-4">
-      <input
-        type="radio"
-        value="false"
-        checked={task.comp === false}
-        onChange={() => toggleTask(task.id)}
-      />
-    </div>
-  );
 
   //アップデート関数
   const Local_UpdateTask = (
@@ -57,7 +46,7 @@ export default function Tsk_Output_Completed() {
   const completed_tsks = comp_login_user_tsks.filter(
     (task) => task.comp === true
   );
-  
+
   //絞り込み関数
   const output_completed_tsks = completed_tsks.filter((task) => {
     if (tsk_filter === "Priority-high") {
@@ -100,7 +89,11 @@ export default function Tsk_Output_Completed() {
               <div key={task.id} className="flex">
                 {editingTaskId !== task.id && (
                   <div className="flex">
-                    <TaskRadioButton task={task} />
+                    <TaskRadioButton
+                      output_type="completed"
+                      task={task}
+                      onToggle={toggleTask}
+                    />
                     <div
                       className={taskOutput_taskDisplayArea}
                       onClick={() => {
@@ -134,7 +127,11 @@ export default function Tsk_Output_Completed() {
                 )}
                 {editingTaskId === task.id && (
                   <div className="flex">
-                    <TaskRadioButton task={task} />
+                    <TaskRadioButton
+                      output_type="completed"
+                      task={task}
+                      onToggle={toggleTask}
+                    />
 
                     <div
                       className={taskOutput_taskDisplayArea}
