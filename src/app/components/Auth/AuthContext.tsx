@@ -27,6 +27,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  //ゲストユーザー情報
   const guestUser: User = {
     user_id: "guest",
     user_password: "",
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   //登録済みユーザー(配列)
   const [users, setUsersAdd] = useState<User[]>(users_data);
 
-  //現在ログインしているユーザー
+  //現在ログインしているユーザー情報
   const [user, setUser] = useState<User>(guestUser);
 
   //サインアップ関数

@@ -4,11 +4,11 @@ import { useTasks } from "./tsk_parent";
 import { useState } from "react";
 import Image from "next/image";
 import {
-  headerInnerClass_center,
-  taskBoxBig,
-  taskOutput_taskDisplayArea,
-  taskOutput_deleteButton,
-  taskOutput_updateButton,
+  headerInnerCenter_className,
+  taskBoxBig_className,
+  taskOutput_taskDisplayArea_className,
+  taskOutput_deleteButton_className,
+  taskOutput_updateButton_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
@@ -17,6 +17,7 @@ import { SelectTaskFilter } from "../common/slectTaskFilter";
 import { useTaskSort } from "../common/useTaskSort";
 import { filterOptions, sortOptions } from "../common/taskOption";
 
+//完了済みタスクを表示するコンポーネント
 export default function Tsk_Output_Completed() {
   const { tasks, updateTask, deleteTask, toggleTask } = useTasks();
   const { user } = useAuth();
@@ -60,8 +61,8 @@ export default function Tsk_Output_Completed() {
   );
 
   return (
-    <div className={headerInnerClass_center}>
-      <div className={taskBoxBig}>
+    <div className={headerInnerCenter_className}>
+      <div className={taskBoxBig_className}>
         <h1 className="font-bold mb-3">My Tasks Completed</h1>
         <div className="flex items-center h-10">
           <div className="flex items-center">
@@ -81,19 +82,23 @@ export default function Tsk_Output_Completed() {
               onChange={setSortValue}
             />
           </div>
+          {/*
           <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
             <button>
               <Image src="/search.svg" alt="search" width={30} height={30} />
             </button>
           </div>
+          */}
         </div>
         <div className="pt-3 overflow-y-auto max-h-[490px]">
           {output_filtered_sort_tsks.length === 0 ? (
             <p>There are no completed tasks.</p>
           ) : (
+            //表示するタスクがある場合
             output_filtered_sort_tsks.map((task) => (
               <div key={task.id} className="flex">
                 {editingTaskId !== task.id && (
+                  //タスク表示状態
                   <div className="flex">
                     <TaskRadioButton
                       output_type="completed"
@@ -101,7 +106,7 @@ export default function Tsk_Output_Completed() {
                       onToggle={toggleTask}
                     />
                     <div
-                      className={taskOutput_taskDisplayArea}
+                      className={taskOutput_taskDisplayArea_className}
                       onClick={() => {
                         setEditingTaskId(task.id);
                         setEditTitle(task.tsk_title);
@@ -117,7 +122,7 @@ export default function Tsk_Output_Completed() {
                       </div>
                     </div>
 
-                    <div className={taskOutput_deleteButton}>
+                    <div className={taskOutput_deleteButton_className}>
                       <button onClick={() => deleteTask(task.id)}>
                         <Image
                           className="mt-1"
@@ -132,15 +137,15 @@ export default function Tsk_Output_Completed() {
                   </div>
                 )}
                 {editingTaskId === task.id && (
+                  //タスク編集状態
                   <div className="flex">
                     <TaskRadioButton
                       output_type="completed"
                       task={task}
                       onToggle={toggleTask}
                     />
-
                     <div
-                      className={taskOutput_taskDisplayArea}
+                      className={taskOutput_taskDisplayArea_className}
                       onClick={() => setEditingTaskId(null)}
                     >
                       <div>
@@ -174,7 +179,7 @@ export default function Tsk_Output_Completed() {
                       </div>
                     </div>
 
-                    <div className={taskOutput_updateButton}>
+                    <div className={taskOutput_updateButton_className}>
                       <button
                         onClick={() =>
                           Local_UpdateTask(

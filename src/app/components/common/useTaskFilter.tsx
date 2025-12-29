@@ -1,8 +1,11 @@
+//絞り込み機能に関するファイル
+
 "use client";
 
 import { useState } from "react";
 import { Tasks } from "@/app/types";
 
+//絞り込みを行う関数？
 export const useTaskFilter = (tasks: Tasks[]) => {
   const [tsk_filter, setTaskFilter] = useState("");
 

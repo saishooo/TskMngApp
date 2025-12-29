@@ -3,10 +3,10 @@
 import { useTasks } from "./tsk_parent";
 import Image from "next/image";
 import {
-  headerInnerClass_center,
-  taskOutput_taskDisplayArea,
-  taskOutput_deleteButton,
-  taskBoxBig,
+  headerInnerCenter_className,
+  taskBoxBig_className,
+  taskOutput_taskDisplayArea_className,
+  taskOutput_deleteButton_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
@@ -15,10 +15,12 @@ import { useState } from "react";
 import { useTaskSort } from "../common/useTaskSort";
 import { allFileterOption, sortOptions } from "../common/taskOption";
 
+//タスクを全て表示するコンポーネント
 export default function Tsk_Output_AllList() {
   const { tasks, deleteTask } = useTasks();
   const { user } = useAuth();
 
+  //タスク完了画像
   const completedIcon = (
     <Image
       className="mt-1"
@@ -45,8 +47,8 @@ export default function Tsk_Output_AllList() {
 
   //タスクが多く保存された時の表示方法を考える
   return (
-    <div className={headerInnerClass_center}>
-      <div className={taskBoxBig}>
+    <div className={headerInnerCenter_className}>
+      <div className={taskBoxBig_className}>
         <h1 className="font-bold mb-3">My All Tasks</h1>
 
         <div className="flex items-center h-10">
@@ -69,24 +71,27 @@ export default function Tsk_Output_AllList() {
               onChange={setSortValue}
             />
           </div>
+          {/*
           <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
             <button>
               <Image src="/search.svg" alt="search" width={30} height={30} />
             </button>
           </div>
+          */}
         </div>
 
         <div className="pt-3 overflow-y-auto max-h-[490px]">
           {output_filtered_sort_tsks.length === 0 ? (
             <p>No tasks have been registered.</p>
           ) : (
+            //タスクがある場合
             output_filtered_sort_tsks.map((task) => (
               <div key={task.id} className="flex">
                 <div className="flex">
                   <div className="flex items-center justify-center w-10 h-15">
                     <p>{task.comp ? completedIcon : ""}</p>
                   </div>
-                  <div className={taskOutput_taskDisplayArea}>
+                  <div className={taskOutput_taskDisplayArea_className}>
                     <div className="w-70">
                       <p className="font-semibold">{task.tsk_title}</p>
                       <p className="text-sm text-gray-700">{task.dead_line}</p>
@@ -94,7 +99,7 @@ export default function Tsk_Output_AllList() {
                     </div>
                   </div>
 
-                  <div className={taskOutput_deleteButton}>
+                  <div className={taskOutput_deleteButton_className}>
                     <button onClick={() => deleteTask(task.id)}>
                       <Image
                         className="mt-1"

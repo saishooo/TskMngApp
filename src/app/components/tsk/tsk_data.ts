@@ -1,5 +1,7 @@
-//テスト用
+//テスト用のタスクデータファイル
+
 import { Tasks } from "@/app/types";
+
 export const tasks_data: Tasks[] = [
   {
     id: 1,

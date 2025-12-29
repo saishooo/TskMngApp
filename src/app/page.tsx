@@ -1,8 +1,10 @@
-import { headerInnerClass } from "./className";
+//最初に表示されるhomeページ
+
+import { headerInner_className } from "./className";
 
 export default function Introduction() {
   return (
-    <div className={headerInnerClass}>
+    <div className={headerInner_className}>
       <div className="block">
         <p className="mb-3">
           Development of TskManagerApp started on 2025-12-06 at 00:06.

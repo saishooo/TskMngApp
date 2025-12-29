@@ -1,10 +1,12 @@
+//ユーザー情報を登録するコンポーネントファイル
+
 "use client";
 
 import {
-  headerInnerClass_center,
-  signUpBox,
-  log_Button,
   input_className,
+  headerInnerCenter_className,
+  signUpBox_className,
+  logButton_className,
 } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
@@ -22,8 +24,8 @@ export default function TskMngApp_SignUp() {
   };
 
   return (
-    <div className={headerInnerClass_center}>
-      <div className={signUpBox}>
+    <div className={headerInnerCenter_className}>
+      <div className={signUpBox_className}>
         <h1 className="font-bold mb-3">Sing Up</h1>
         <h1 className="mb-2">ID</h1>
         <input
@@ -65,7 +67,7 @@ export default function TskMngApp_SignUp() {
           className={input_className}
         />
 
-        <button className={log_Button} onClick={local_signup}>
+        <button className={logButton_className} onClick={local_signup}>
           Sign Up
         </button>
       </div>
