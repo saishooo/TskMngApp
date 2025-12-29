@@ -84,11 +84,13 @@ export default function Tsk_Output_Management() {
               onChange={setSortValue}
             />
           </div>
+          {/*
           <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
             <button>
               <Image src="/search.svg" alt="search" width={30} height={30} />
             </button>
           </div>
+          */}
         </div>
 
         <div className="pt-3 overflow-y-auto max-h-[490px]">
