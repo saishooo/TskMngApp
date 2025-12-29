@@ -64,7 +64,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 h-16 flex items-center px-4 bg-gray-600">
+      <header className="fixed top-0 left-0 right-0 h-16 flex items-center px-4 bg-gray-600 z-50">
         <div className="flex w-full">
           <button onClick={toggleMenuClick}>
             <Image src="/menu.svg" alt="menu" width={24} height={24} />
@@ -79,7 +79,7 @@ export default function Header() {
       {isSidebarOpen && (
         // Desktopサイズ時はサイドバーを表示する
         <>
-          <aside className="hidden md:block fixed top-16 left-0 w-64 h-full bg-gray-100">
+          <aside className="hidden md:block fixed top-16 left-0 w-64 h-full bg-gray-100 z-50">
             <nav className="space-y-2">
               <Link
                 href="/"
@@ -142,7 +142,7 @@ export default function Header() {
             </div>
           </aside>
           {/*Mobileサイズ時は下にメニューを表示する*/}
-          <div className="flex md:hidden fixed top-16 h-10 w-full bg-gray-100">
+          <div className="md:hidden fixed top-16 w-full bg-gray-100 z-50 flex">
             <nav className="space-y-2">
               <Link
                 href="/"
