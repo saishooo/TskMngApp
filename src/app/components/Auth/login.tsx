@@ -1,10 +1,10 @@
 "use client";
 
 import {
-  headerInnerClass_center,
-  log_Button,
   input_className,
-  LoginBox,
+  headerInnerCenter_className,
+  LoginBox_className,
+  logButton_className,
 } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
@@ -16,17 +16,20 @@ export default function TskMngApp_Login() {
   const [password, setPassword] = useState("");
   const { showAlert } = useAlert();
 
+  //ログイン成功・失敗のアラートする関数
   const handleLogin = () => {
     if (!login(id, password)) {
+      //ログイン失敗
       showAlert("Error : ID or Password is incorrect", "error");
     } else {
+      //ログイン成功
       showAlert("Login is success!!", "success");
     }
   };
 
   return (
-    <div className={headerInnerClass_center}>
-      <div className={LoginBox}>
+    <div className={headerInnerCenter_className}>
+      <div className={LoginBox_className}>
         <h1 className="font-bold mb-3">Login</h1>
 
         <h1 className="mb-2">ID</h1>
@@ -47,7 +50,7 @@ export default function TskMngApp_Login() {
           onChange={(e) => setPassword(e.target.value)}
           className={input_className}
         />
-        <button onClick={handleLogin} className={log_Button}>
+        <button onClick={handleLogin} className={logButton_className}>
           Login
         </button>
       </div>

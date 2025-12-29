@@ -1,5 +1,8 @@
+//ラジオボタンに関する処理を行うファイル
+
 import { Tasks } from "@/app/types";
 
+//ラジオボタン関数の引数に使用する型
 type Props = {
   output_type: "completed" | "management";
   task: Tasks;
@@ -13,6 +16,7 @@ export const TaskRadioButton = ({ output_type, task, onToggle }: Props) => {
   return (
     <div className="flex w-10 h-15 px-4">
       {isChecked === true ? (
+        //タスク完了ページ使用するラジオボタン
         <>
           <input
             type="radio"
@@ -22,6 +26,7 @@ export const TaskRadioButton = ({ output_type, task, onToggle }: Props) => {
           />
         </>
       ) : (
+        //タスク未完了ページで使用するラジオボタン
         <>
           <input
             type="radio"

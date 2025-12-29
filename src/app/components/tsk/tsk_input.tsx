@@ -3,10 +3,10 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "./tsk_parent";
 import {
-  headerInnerClass_center,
-  taskBox,
-  taskInput_Button,
   input_className,
+  headerInnerCenter_className,
+  taskBox_className,
+  taskInputButton_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 
@@ -32,8 +32,8 @@ export default function Tsk_Input() {
   };
 
   return (
-    <div className={headerInnerClass_center}>
-      <div className={taskBox}>
+    <div className={headerInnerCenter_className}>
+      <div className={taskBox_className}>
         <h1 className="mb-3 font-bold">My Task Input</h1>
 
         <h1 className="mb-2">Task</h1>
@@ -69,7 +69,7 @@ export default function Tsk_Input() {
           <option value="low">Low</option>
         </select>
 
-        <button className={taskInput_Button} onClick={handleAdd}>
+        <button className={taskInputButton_className} onClick={handleAdd}>
           Add
         </button>
       </div>

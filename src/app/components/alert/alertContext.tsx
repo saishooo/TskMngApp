@@ -1,3 +1,5 @@
+//アラートに関する処理を行うファイル
+
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
@@ -18,6 +20,7 @@ const AlertContext = createContext<AlertContextType>({} as AlertContextType);
 export const AlertProvider = ({ children }: { children: ReactNode }) => {
   const [alert, setAlert] = useState<AlertState>(null);
 
+  //アラート表示関数
   const showAlert = (message: string, type: AlertType) => {
     setAlert({ message, type });
 

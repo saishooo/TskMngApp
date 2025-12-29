@@ -1,3 +1,5 @@
+//ユーザー情報ファイル
+
 import { AuthUser } from "@/app/types";
 
 export const users_data: AuthUser[] = [

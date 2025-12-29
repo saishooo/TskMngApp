@@ -1,3 +1,5 @@
+//プルダウンで使用する、selectの選択内容を記したファイル
+
 export const filterOptions = [
   { value: "Normal", label: "Normal" },
   { value: "Priority-high", label: "Priority-high" },

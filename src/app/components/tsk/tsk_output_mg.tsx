@@ -4,11 +4,11 @@ import { useTasks } from "./tsk_parent";
 import { useState } from "react";
 import Image from "next/image";
 import {
-  headerInnerClass_center,
-  taskBoxBig,
-  taskOutput_taskDisplayArea,
-  taskOutput_deleteButton,
-  taskOutput_updateButton,
+  headerInnerCenter_className,
+  taskBoxBig_className,
+  taskOutput_taskDisplayArea_className,
+  taskOutput_deleteButton_className,
+  taskOutput_updateButton_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
@@ -62,8 +62,8 @@ export default function Tsk_Output_Management() {
 
   //タスクが多く保存された時の表示方法を考える
   return (
-    <div className={headerInnerClass_center}>
-      <div className={taskBoxBig}>
+    <div className={headerInnerCenter_className}>
+      <div className={taskBoxBig_className}>
         <h1 className="font-bold mb-3">My Tasks</h1>
 
         <div className="flex items-center h-10">
@@ -95,9 +95,11 @@ export default function Tsk_Output_Management() {
           {output_filtered_sort_tsks.length === 0 ? (
             <p>There are no unfinished tasks.</p>
           ) : (
+            //表示タスクがある場合
             output_filtered_sort_tsks.map((task) => (
               <div key={task.id} className="flex">
                 {editingTaskId !== task.id && (
+                  //タスク表示状態
                   <div className="flex">
                     <TaskRadioButton
                       output_type="management"
@@ -105,7 +107,7 @@ export default function Tsk_Output_Management() {
                       onToggle={toggleTask}
                     />
                     <div
-                      className={taskOutput_taskDisplayArea}
+                      className={taskOutput_taskDisplayArea_className}
                       onClick={() => {
                         setEditingTaskId(task.id);
                         setEditTitle(task.tsk_title);
@@ -121,7 +123,7 @@ export default function Tsk_Output_Management() {
                       </div>
                     </div>
 
-                    <div className={taskOutput_deleteButton}>
+                    <div className={taskOutput_deleteButton_className}>
                       <button onClick={() => deleteTask(task.id)}>
                         <Image
                           className="mt-1"
@@ -136,6 +138,7 @@ export default function Tsk_Output_Management() {
                   </div>
                 )}
                 {editingTaskId === task.id && (
+                  //タスク編集状態
                   <div className="flex">
                     <TaskRadioButton
                       output_type="management"
@@ -144,7 +147,7 @@ export default function Tsk_Output_Management() {
                     />
 
                     <div
-                      className={taskOutput_taskDisplayArea}
+                      className={taskOutput_taskDisplayArea_className}
                       onClick={() => setEditingTaskId(null)}
                     >
                       <div>
@@ -178,7 +181,7 @@ export default function Tsk_Output_Management() {
                       </div>
                     </div>
 
-                    <div className={taskOutput_updateButton}>
+                    <div className={taskOutput_updateButton_className}>
                       <button
                         onClick={() =>
                           Local_UpdateTask(

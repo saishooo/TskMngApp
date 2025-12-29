@@ -1,3 +1,5 @@
+//複数のファイルで使用する型の宣言をするファイル
+
 export interface Tasks {
   id: number; //id
   comp: boolean; //達成 or 未達

@@ -5,6 +5,7 @@ import { useAuth } from "./Auth/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
 
+//Headerコンポーネント
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLogMenuOpen, setIsLogMenuOpen] = useState(false);
@@ -12,6 +13,7 @@ export default function Header() {
 
   const { logout } = useAuth();
 
+  //classNameの宣言
   const sideBerButton_className =
     "block w-full pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
   const logoutButton_className =
