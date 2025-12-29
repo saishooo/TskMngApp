@@ -42,7 +42,7 @@ export default function Tsk_Input() {
           type="text"
           value={tsk_title}
           onChange={(e) => setTskTitle(e.target.value)}
-          placeholder="タスク"
+          placeholder="Task"
           className={input_className}
         />
 
