@@ -2,6 +2,8 @@
 
 export const headerInner_className = "fixed top-16 left-64 flex justify-center";
 
+export const headerInnerChgSixe_className = "fixed top-16 flex justify-center";
+
 export const headerInnerCenter_className =
   "fixed top-40 left-64 right-64 flex justify-center";
 export const taskBox_className =

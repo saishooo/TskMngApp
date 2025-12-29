@@ -21,6 +21,13 @@ export default function Header() {
   const sideBerLink_className =
     "block pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
 
+  const sideBerButtonMobile_className =
+    "inline-block pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
+  const logoutButtonMobile_className =
+    "inline-block pb-2 pr-2 pl-2 text-left rounded hover:bg-gray-200";
+  const sideBerLinkMobile_className =
+    "inline-block pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
+
   //LogLinkまとめ
   const logLinks = [
     { href: "/Auth/login", label: "Login" },
@@ -70,65 +77,134 @@ export default function Header() {
       </header>
 
       {isSidebarOpen && (
-        <aside className="fixed top-16 left-0 w-64 h-full bg-gray-100">
-          <nav className="space-y-2">
-            <Link
-              href="/"
-              className="block p-2 font-bold rounded hover:bg-gray-200"
-            >
-              Introduction
-            </Link>
+        // Desktopサイズ時はサイドバーを表示する
+        <>
+          <aside className="hidden md:block fixed top-16 left-0 w-64 h-full bg-gray-100">
+            <nav className="space-y-2">
+              <Link
+                href="/"
+                className="block p-2 font-bold rounded hover:bg-gray-200"
+              >
+                Introduction
+              </Link>
 
-            <button className={sideBerButton_className} onClick={toggleLogMenu}>
-              Authentication
-            </button>
-            {isLogMenuOpen && (
-              <div className="block pr-2 pl-2">
-                {logLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={sideBerLink_className}
+              <button
+                className={sideBerButton_className}
+                onClick={toggleLogMenu}
+              >
+                Authentication
+              </button>
+              {isLogMenuOpen && (
+                <div className="inline-block pr-2 pl-2">
+                  {logLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={sideBerLink_className}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <button className={logoutButton_className} onClick={logout}>
+                    Logout
+                  </button>
+                </div>
+              )}
+
+              <button
+                className={sideBerButton_className}
+                onClick={toggleTaskMenu}
+              >
+                TaskList
+              </button>
+              {isTaskMenuOpen && (
+                <div className="block pr-2 pl-2">
+                  {taskLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={sideBerLink_className}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </nav>
+
+            <div className="flex items-center justify-center pt-6">
+              <button
+                className="flex p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
+                onClick={closeSidebar}
+              >
+                Menu Close
+              </button>
+            </div>
+          </aside>
+          {/*Mobileサイズ時は下にメニューを表示する*/}
+          <div className="flex md:hidden fixed top-16 h-10 w-full bg-gray-100">
+            <nav className="space-y-2">
+              <Link
+                href="/"
+                className="p-2 font-bold rounded hover:bg-gray-200"
+              >
+                Introduction
+              </Link>
+
+              <button
+                className={sideBerButtonMobile_className}
+                onClick={toggleLogMenu}
+              >
+                Authentication
+              </button>
+              {isLogMenuOpen && (
+                <div className="pr-2 pl-2">
+                  {logLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={sideBerLinkMobile_className}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <button
+                    className={logoutButtonMobile_className}
+                    onClick={logout}
                   >
-                    {link.label}
-                  </Link>
-                ))}
-                <button className={logoutButton_className} onClick={logout}>
-                  Logout
-                </button>
-              </div>
-            )}
+                    Logout
+                  </button>
+                </div>
+              )}
 
+              <button
+                className={sideBerButtonMobile_className}
+                onClick={toggleTaskMenu}
+              >
+                TaskList
+              </button>
+              {isTaskMenuOpen && (
+                <div className="pr-2 pl-2">
+                  {taskLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={sideBerLinkMobile_className}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </nav>
             <button
-              className={sideBerButton_className}
-              onClick={toggleTaskMenu}
-            >
-              TaskList
-            </button>
-            {isTaskMenuOpen && (
-              <div className="block pr-2 pl-2">
-                {taskLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={sideBerLink_className}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </nav>
-
-          <div className="flex items-center justify-center pt-6">
-            <button
-              className="flex p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
+              className="inline-block p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
               onClick={closeSidebar}
             >
               Menu Close
             </button>
           </div>
-        </aside>
+        </>
       )}
     </>
   );
