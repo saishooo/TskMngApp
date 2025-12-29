@@ -13,14 +13,14 @@ const descriptions = [
 export default function Introduction() {
   return (
     <div className={headerInnerChgSixe_className}>
-      {/* Desktopサイズ時はサイドバーを表示する */}
+      {/* Desktopサイズ時 */}
       <div className="hidden md:block items-center pt-16 pl-74">
         {descriptions.map((text, index) => (
           <p key={index}>{text}</p>
         ))}
       </div>
 
-      {/* Mobileサイズ時は下にメニューを表示する */}
+      {/* Mobileサイズ時 */}
       <div className="md:hidden items-center pt-16 pl-10">
         {descriptions.map((text, index) => (
           <p key={index}>{text}</p>

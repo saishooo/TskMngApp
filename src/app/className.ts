@@ -1,21 +1,24 @@
 //複数のページで使用されるclassNameの指定をするファイル
 
+//ヘッダーとサイドバーを除いた内側(PC)
 export const headerInner_className = "fixed top-16 left-64 flex justify-center";
-
+//ヘッダーとサイドバーを除いた内側(スマホ)
 export const headerInnerChgSixe_className = "fixed top-16 flex justify-center";
 
+//サイドバーを含んだセンター位置(PC)
 export const headerInnerCenter_className =
   "fixed top-40 left-64 right-64 flex justify-center";
-
+//サイドバーを含んだセンター位置(スマホ)
 export const headerInnerCenterChgSize_className =
-  "fixed top-40 left-1/2 -translate-x-1/2 flex justify-center";
+  "fixed top-60 left-1/2 -translate-x-1/2 flex justify-center";
 
+//タスクボックス(スマホ)
 export const taskBox_className =
   "w-150 p-4 h-[410px] border rounded border-gray-300";
-
+//タスクボックス(PC)
 export const taskBoxChgSize_className =
   "w-[400px] p-4 h-[410px] border rounded border-gray-300";
-
+//タスクボックス-大きいサイズ
 export const taskBoxBig_className =
   "w-150 p-4 h-[600px] border rounded border-gray-300";
 

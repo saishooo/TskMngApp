@@ -142,67 +142,69 @@ export default function Header() {
             </div>
           </aside>
           {/*Mobileサイズ時は下にメニューを表示する*/}
-          <div className="md:hidden fixed top-16 w-full bg-gray-100 z-50 flex">
-            <nav className="space-y-2">
-              <Link
-                href="/"
-                className="p-2 font-bold rounded hover:bg-gray-200"
-              >
-                Introduction
-              </Link>
+          <div className="md:hidden">
+            <div className="fixed top-16 w-full bg-gray-100 z-50 flex">
+              <nav className="space-y-2">
+                <Link
+                  href="/"
+                  className="p-2 font-bold rounded hover:bg-gray-200"
+                >
+                  Introduction
+                </Link>
 
-              <button
-                className={sideBerButtonMobile_className}
-                onClick={toggleLogMenu}
-              >
-                Authentication
-              </button>
-              {isLogMenuOpen && (
-                <div className="pr-2 pl-2">
-                  {logLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={sideBerLinkMobile_className}
+                <button
+                  className={sideBerButtonMobile_className}
+                  onClick={toggleLogMenu}
+                >
+                  Authentication
+                </button>
+                {isLogMenuOpen && (
+                  <div className="pr-2 pl-2">
+                    {logLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={sideBerLinkMobile_className}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                    <button
+                      className={logoutButtonMobile_className}
+                      onClick={logout}
                     >
-                      {link.label}
-                    </Link>
-                  ))}
-                  <button
-                    className={logoutButtonMobile_className}
-                    onClick={logout}
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
+                      Logout
+                    </button>
+                  </div>
+                )}
 
+                <button
+                  className={sideBerButtonMobile_className}
+                  onClick={toggleTaskMenu}
+                >
+                  TaskList
+                </button>
+                {isTaskMenuOpen && (
+                  <div className="pr-2 pl-2">
+                    {taskLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={sideBerLinkMobile_className}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </nav>
               <button
-                className={sideBerButtonMobile_className}
-                onClick={toggleTaskMenu}
+                className="inline-block p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
+                onClick={closeSidebar}
               >
-                TaskList
+                Menu Close
               </button>
-              {isTaskMenuOpen && (
-                <div className="pr-2 pl-2">
-                  {taskLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={sideBerLinkMobile_className}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </nav>
-            <button
-              className="inline-block p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
-              onClick={closeSidebar}
-            >
-              Menu Close
-            </button>
+            </div>
           </div>
         </>
       )}
