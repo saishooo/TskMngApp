@@ -27,7 +27,7 @@ export default function Header() {
   const logoutButtonMobile_className =
     "inline-block pb-2 pr-2 pl-2 text-left rounded hover:bg-gray-200";
   const pullDownLinkMobile_className =
-    "block w-[140px] pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
+    "block w-[120px] pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
 
   //LogLinkまとめ
   const logLinks = [
@@ -149,12 +149,12 @@ export default function Header() {
               <nav className="space-y-2">
                 <Link
                   href="/"
-                  className="inline-block w-[140px] p-2 font-bold rounded hover:bg-gray-200"
+                  className="inline-block w-[120px] p-2 font-bold rounded hover:bg-gray-200"
                 >
                   Introduction
                 </Link>
 
-                <div className="relative inline-block">
+                <div className="relative inline-block ml-2">
                   <button
                     className={sideBerButtonMobile_className}
                     onClick={toggleLogMenu}
@@ -182,7 +182,7 @@ export default function Header() {
                   )}
                 </div>
 
-                <div className="relative inline-block">
+                <div className="relative inline-block ml-2">
                   <button
                     className={sideBerButtonMobile_className}
                     onClick={toggleTaskMenu}
@@ -204,13 +204,6 @@ export default function Header() {
                   )}
                 </div>
               </nav>
-
-              <button
-                className="inline-block h-10 p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
-                onClick={closeSidebar}
-              >
-                Menu Close
-              </button>
             </div>
           </div>
         </>
