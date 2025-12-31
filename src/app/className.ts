@@ -25,14 +25,23 @@ export const taskBoxBig_className =
 export const taskBoxBigChgSize_className =
   "w-[480px] p-4 h-[510px] border rounded border-gray-300";
 
+//ログインタスクボックス(PC)
 export const LoginBox_className =
   "w-150 p-4 h-[310px] border rounded border-gray-300";
+//ログインタスクボックス(スマホ)
+export const LoginBoxChgSize_className =
+  "w-100 p-4 h-[310px] border rounded border-gray-300";
+//サインアップボックス(PC)
 export const signUpBox_className =
   "w-150 p-4 h-[510px] border rounded border-gray-300";
+//サインアップボックス(スマホ)
+export const signUpBoxChgSize_className =
+  "w-100 p-4 h-[510px] border rounded border-gray-300";
 
 //タスク表示(PC)
 export const taskOutput_taskDisplayArea_className =
   "flex items-center justify-between w-110 px-4 my-2 rounded hover:bg-gray-200";
+//タスク表示(スマホ)
 export const taskOutput_taskDisplayAreaChgSize_className =
   "flex items-center justify-between w-80 px-4 my-2 rounded hover:bg-gray-200";
 

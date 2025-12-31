@@ -5,6 +5,8 @@ import {
   headerInnerCenter_className,
   LoginBox_className,
   logButton_className,
+  headerInnerCenterChgSize_className,
+  LoginBoxChgSize_className,
 } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
@@ -28,32 +30,67 @@ export default function TskMngApp_Login() {
   };
 
   return (
-    <div className={headerInnerCenter_className}>
-      <div className={LoginBox_className}>
-        <h1 className="font-bold mb-3">Login</h1>
+    <>
+      {/* Desktopサイズ時 */}
+      <div className="hidden lg:flex">
+        <div className={headerInnerCenter_className}>
+          <div className={LoginBox_className}>
+            <h1 className="font-bold mb-3">Login</h1>
 
-        <h1 className="mb-2">ID</h1>
-        <input
-          name="login_id"
-          type="text"
-          placeholder="User ID"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-          className={input_className}
-        />
-        <h1 className="mb-2">PassWord</h1>
-        <input
-          name="login_password"
-          type="text"
-          placeholder="PassWord"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={input_className}
-        />
-        <button onClick={handleLogin} className={logButton_className}>
-          Login
-        </button>
+            <h1 className="mb-2">ID</h1>
+            <input
+              name="login_id"
+              type="text"
+              placeholder="User ID"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              className={input_className}
+            />
+            <h1 className="mb-2">PassWord</h1>
+            <input
+              name="login_password"
+              type="text"
+              placeholder="PassWord"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={input_className}
+            />
+            <button onClick={handleLogin} className={logButton_className}>
+              Login
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+      {/* Mobileサイズ時 */}
+      <div className="lg:hidden">
+        <div className={headerInnerCenterChgSize_className}>
+          <div className={LoginBoxChgSize_className}>
+            <h1 className="font-bold mb-3">Login</h1>
+
+            <h1 className="mb-2">ID</h1>
+            <input
+              name="login_id"
+              type="text"
+              placeholder="User ID"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              className={input_className}
+            />
+            <h1 className="mb-2">PassWord</h1>
+            <input
+              name="login_password"
+              type="text"
+              placeholder="PassWord"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={input_className}
+            />
+            <button onClick={handleLogin} className={logButton_className}>
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
