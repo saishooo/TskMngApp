@@ -7,7 +7,7 @@ export const headerInnerChgSixe_className = "fixed top-16 flex justify-center";
 
 //サイドバーを含んだセンター位置(PC)
 export const headerInnerCenter_className =
-  "fixed top-40 left-64 right-64 flex justify-center";
+  "fixed top-40 left-64 w-[calc(100%-16rem)] flex justify-center";
 //サイドバーを含んだセンター位置(スマホ)
 export const headerInnerCenterChgSize_className =
   "fixed top-60 left-1/2 -translate-x-1/2 flex justify-center";

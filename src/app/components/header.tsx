@@ -22,11 +22,12 @@ export default function Header() {
     "block pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
 
   const sideBerButtonMobile_className =
-    "inline-block pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
+    "inline-block w-35 pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
+
   const logoutButtonMobile_className =
     "inline-block pb-2 pr-2 pl-2 text-left rounded hover:bg-gray-200";
-  const sideBerLinkMobile_className =
-    "inline-block pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
+  const pullDownLinkMobile_className =
+    "block w-[140px] pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
 
   //LogLinkまとめ
   const logLinks = [
@@ -141,65 +142,71 @@ export default function Header() {
               </button>
             </div>
           </aside>
+
           {/*Mobileサイズ時は下にメニューを表示する*/}
           <div className="lg:hidden">
             <div className="fixed top-16 w-full bg-gray-100 z-50 flex">
               <nav className="space-y-2">
                 <Link
                   href="/"
-                  className="p-2 font-bold rounded hover:bg-gray-200"
+                  className="inline-block w-[140px] p-2 font-bold rounded hover:bg-gray-200"
                 >
                   Introduction
                 </Link>
 
-                <button
-                  className={sideBerButtonMobile_className}
-                  onClick={toggleLogMenu}
-                >
-                  Authentication
-                </button>
-                {isLogMenuOpen && (
-                  <div className="pr-2 pl-2">
-                    {logLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={sideBerLinkMobile_className}
+                <div className="relative inline-block">
+                  <button
+                    className={sideBerButtonMobile_className}
+                    onClick={toggleLogMenu}
+                  >
+                    Authentication
+                  </button>
+                  {isLogMenuOpen && (
+                    <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
+                      {logLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={pullDownLinkMobile_className}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                      <button
+                        className={logoutButtonMobile_className}
+                        onClick={logout}
                       >
-                        {link.label}
-                      </Link>
-                    ))}
-                    <button
-                      className={logoutButtonMobile_className}
-                      onClick={logout}
-                    >
-                      Logout
-                    </button>
-                  </div>
-                )}
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
 
-                <button
-                  className={sideBerButtonMobile_className}
-                  onClick={toggleTaskMenu}
-                >
-                  TaskList
-                </button>
-                {isTaskMenuOpen && (
-                  <div className="pr-2 pl-2">
-                    {taskLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={sideBerLinkMobile_className}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <div className="relative inline-block">
+                  <button
+                    className={sideBerButtonMobile_className}
+                    onClick={toggleTaskMenu}
+                  >
+                    TaskList
+                  </button>
+                  {isTaskMenuOpen && (
+                    <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
+                      {taskLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={pullDownLinkMobile_className}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </nav>
+
               <button
-                className="inline-block p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
+                className="inline-block h-10 p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
                 onClick={closeSidebar}
               >
                 Menu Close
