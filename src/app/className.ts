@@ -18,17 +18,24 @@ export const taskBox_className =
 //タスクボックス(PC)
 export const taskBoxChgSize_className =
   "w-[400px] p-4 h-[410px] border rounded border-gray-300";
-//タスクボックス-大きいサイズ
+//タスクボックス-大きいサイズ(PC)
 export const taskBoxBig_className =
   "w-150 p-4 h-[600px] border rounded border-gray-300";
+//タスクボックス-大きいサイズ(スマホ)
+export const taskBoxBigChgSize_className =
+  "w-[480px] p-4 h-[510px] border rounded border-gray-300";
 
 export const LoginBox_className =
   "w-150 p-4 h-[310px] border rounded border-gray-300";
 export const signUpBox_className =
   "w-150 p-4 h-[510px] border rounded border-gray-300";
 
+//タスク表示(PC)
 export const taskOutput_taskDisplayArea_className =
   "flex items-center justify-between w-110 px-4 my-2 rounded hover:bg-gray-200";
+export const taskOutput_taskDisplayAreaChgSize_className =
+  "flex items-center justify-between w-80 px-4 my-2 rounded hover:bg-gray-200";
+
 export const taskOutput_deleteButton_className =
   "flex flex-col items-center justify-center w-20 rounded hover:bg-red-200";
 export const taskOutput_updateButton_className =

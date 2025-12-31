@@ -7,6 +7,10 @@ import {
   taskBoxBig_className,
   taskOutput_taskDisplayArea_className,
   taskOutput_deleteButton_className,
+  headerInnerCenterChgSize_className,
+  taskBoxChgSize_className,
+  taskBoxBigChgSize_className,
+  taskOutput_taskDisplayAreaChgSize_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
@@ -47,76 +51,159 @@ export default function Tsk_Output_AllList() {
 
   //タスクが多く保存された時の表示方法を考える
   return (
-    <div className={headerInnerCenter_className}>
-      <div className={taskBoxBig_className}>
-        <h1 className="font-bold mb-3">My All Tasks</h1>
+    <>
+      {/* Desktopサイズ時 */}
+      <div className="hidden lg:flex">
+        <div className={headerInnerCenter_className}>
+          <div className={taskBoxBig_className}>
+            <h1 className="font-bold mb-3">My All Tasks</h1>
 
-        <div className="flex items-center h-10">
-          <div className="flex items-center">
-            <h1 className="me-2">Filter :</h1>
+            <div className="flex items-center h-10">
+              <div className="flex items-center">
+                <h1 className="me-2">Filter :</h1>
 
-            <SelectTaskFilter
-              value={tsk_filter}
-              options={allFileterOption}
-              onChange={setTaskFilter}
-            />
-          </div>
+                <SelectTaskFilter
+                  value={tsk_filter}
+                  options={allFileterOption}
+                  onChange={setTaskFilter}
+                />
+              </div>
 
-          <div className="flex items-center ml-8">
-            <h1 className="mr-2">Sorte :</h1>
+              <div className="flex items-center ml-8">
+                <h1 className="mr-2">Sorte :</h1>
 
-            <SelectTaskFilter
-              value={sortValue}
-              options={sortOptions}
-              onChange={setSortValue}
-            />
-          </div>
-          {/*
+                <SelectTaskFilter
+                  value={sortValue}
+                  options={sortOptions}
+                  onChange={setSortValue}
+                />
+              </div>
+              {/*
           <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
             <button>
               <Image src="/search.svg" alt="search" width={30} height={30} />
             </button>
           </div>
           */}
-        </div>
+            </div>
 
-        <div className="pt-3 overflow-y-auto max-h-[490px]">
-          {output_filtered_sort_tsks.length === 0 ? (
-            <p>No tasks have been registered.</p>
-          ) : (
-            //タスクがある場合
-            output_filtered_sort_tsks.map((task) => (
-              <div key={task.id} className="flex">
-                <div className="flex">
-                  <div className="flex items-center justify-center w-10 h-15">
-                    <p>{task.comp ? completedIcon : ""}</p>
-                  </div>
-                  <div className={taskOutput_taskDisplayArea_className}>
-                    <div className="w-70">
-                      <p className="font-semibold">{task.tsk_title}</p>
-                      <p className="text-sm text-gray-700">{task.dead_line}</p>
-                      <p className="text-sm text-gray-700">{task.priority}</p>
+            <div className="pt-3 overflow-y-auto max-h-[490px]">
+              {output_filtered_sort_tsks.length === 0 ? (
+                <p>No tasks have been registered.</p>
+              ) : (
+                //タスクがある場合
+                output_filtered_sort_tsks.map((task) => (
+                  <div key={task.id} className="flex">
+                    <div className="flex">
+                      <div className="flex items-center justify-center w-10 h-15">
+                        <p>{task.comp ? completedIcon : ""}</p>
+                      </div>
+                      <div className={taskOutput_taskDisplayArea_className}>
+                        <div className="w-70">
+                          <p className="font-semibold">{task.tsk_title}</p>
+                          <p className="text-sm text-gray-700">
+                            {task.dead_line}
+                          </p>
+                          <p className="text-sm text-gray-700">
+                            {task.priority}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className={taskOutput_deleteButton_className}>
+                        <button onClick={() => deleteTask(task.id)}>
+                          <Image
+                            className="mt-1"
+                            src="/trash.svg"
+                            alt="delete"
+                            width={24}
+                            height={24}
+                          />
+                        </button>
+                        <p className="text-xs mt-1">delete</p>
+                      </div>
                     </div>
                   </div>
-
-                  <div className={taskOutput_deleteButton_className}>
-                    <button onClick={() => deleteTask(task.id)}>
-                      <Image
-                        className="mt-1"
-                        src="/trash.svg"
-                        alt="delete"
-                        width={24}
-                        height={24}
-                      />
-                    </button>
-                    <p className="text-xs mt-1">delete</p>
-                  </div>
-                </div>
-              </div>
-            ))
-          )}
+                ))
+              )}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Mobileサイズ時 */}
+      <div className="lg:hidden">
+        <div className={headerInnerCenterChgSize_className}>
+          <div className={taskBoxBigChgSize_className}>
+            <h1 className="font-bold mb-3">My All Tasks</h1>
+
+            <div className="flex items-center h-10">
+              <div className="flex items-center">
+                <h1 className="me-2">Filter :</h1>
+
+                <SelectTaskFilter
+                  value={tsk_filter}
+                  options={allFileterOption}
+                  onChange={setTaskFilter}
+                />
+              </div>
+
+              <div className="flex items-center ml-8">
+                <h1 className="mr-2">Sorte :</h1>
+
+                <SelectTaskFilter
+                  value={sortValue}
+                  options={sortOptions}
+                  onChange={setSortValue}
+                />
+              </div>
+            </div>
+
+            <div className="pt-3 overflow-y-auto max-h-[400px]">
+              {output_filtered_sort_tsks.length === 0 ? (
+                <p>No tasks have been registered.</p>
+              ) : (
+                //タスクがある場合
+                output_filtered_sort_tsks.map((task) => (
+                  <div key={task.id} className="flex">
+                    <div className="flex">
+                      <div className="flex items-center justify-center w-10 h-15">
+                        <p>{task.comp ? completedIcon : ""}</p>
+                      </div>
+                      <div
+                        className={taskOutput_taskDisplayAreaChgSize_className}
+                      >
+                        <div className="w-70">
+                          <p className="font-semibold">{task.tsk_title}</p>
+                          <p className="text-sm text-gray-700">
+                            {task.dead_line}
+                          </p>
+                          <p className="text-sm text-gray-700">
+                            {task.priority}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className={taskOutput_deleteButton_className}>
+                        <button onClick={() => deleteTask(task.id)}>
+                          <Image
+                            className="mt-1"
+                            src="/trash.svg"
+                            alt="delete"
+                            width={24}
+                            height={24}
+                          />
+                        </button>
+                        <p className="text-xs mt-1">delete</p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

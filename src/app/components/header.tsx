@@ -43,6 +43,13 @@ export default function Header() {
     { href: "/tsk/tsk_all", label: "My All Tasks" },
   ];
 
+  const taskLinksChgSize = [
+    { href: "/tsk/tsk_input", label: "Input" },
+    { href: "/tsk/tsk_mng", label: "My Tasks" },
+    { href: "/tsk/tsk_comp", label: "Completed" },
+    { href: "/tsk/tsk_all", label: "All" },
+  ];
+
   //サイドバーを閉じる
   const closeSidebar = () => {
     setIsSidebarOpen(false);
@@ -191,7 +198,7 @@ export default function Header() {
                   </button>
                   {isTaskMenuOpen && (
                     <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
-                      {taskLinks.map((link) => (
+                      {taskLinksChgSize.map((link) => (
                         <Link
                           key={link.href}
                           href={link.href}
