@@ -14,7 +14,7 @@ export const headerInnerCenterChgSize_className =
 
 //タスクボックス(スマホ)
 export const taskBox_className =
-  "w-150 p-4 h-[410px] border rounded border-gray-300";
+  "w-100 p-4 h-[410px] border rounded border-gray-300";
 //タスクボックス(PC)
 export const taskBoxChgSize_className =
   "w-[400px] p-4 h-[410px] border rounded border-gray-300";
@@ -39,7 +39,7 @@ export const taskInputButton_className =
 export const logButton_className =
   "block p-3 w-25 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
 
-export const input_className = "w-100 p-2 mb-6 border rounded border-gray-300";
+export const input_className = "w-90 p-2 mb-6 border rounded border-gray-300";
 
 export const inputChgSize_className =
   "w-90 p-2 mb-6 border rounded border-gray-300";

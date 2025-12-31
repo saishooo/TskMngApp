@@ -37,7 +37,7 @@ export default function Tsk_Input() {
   return (
     <>
       {/* Desktopサイズ時はサイドバーを表示する */}
-      <div className="hidden md:flex">
+      <div className="hidden lg:flex">
         <div className={headerInnerCenter_className}>
           <div className={taskBox_className}>
             <h1 className="mb-3 font-bold">My Task Input</h1>
@@ -83,7 +83,7 @@ export default function Tsk_Input() {
       </div>
 
       {/* Mobileサイズ時は下にメニューを表示する */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <div className={headerInnerCenterChgSize_className}>
           <div className={taskBoxChgSize_className}>
             <h1 className="mb-3 font-bold">My Task Input</h1>

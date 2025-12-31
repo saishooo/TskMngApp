@@ -19,12 +19,13 @@ export function LogInfo_Output() {
     "ml-14 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
   const SignUp_button_className =
     "ml-4 w-20 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
-  const  headerInnerMobile_className = "fixed top-32 flex justify-center left-1/2 -translate-x-1/2";
+  const headerInnerMobile_className =
+    "fixed top-32 flex justify-center left-1/2 -translate-x-1/2";
 
   return (
     <>
       {/* Desktopサイズ時 */}
-      <div className="hidden md:flex">
+      <div className="hidden lg:flex">
         <div className={headerInner_className}>
           {isLoggedIn ? (
             <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
@@ -61,7 +62,7 @@ export function LogInfo_Output() {
       </div>
 
       {/* Mobileサイズ時 */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <div className={headerInnerMobile_className}>
           {isLoggedIn ? (
             <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
