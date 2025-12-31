@@ -7,6 +7,9 @@ import {
   headerInnerCenter_className,
   taskBox_className,
   taskInputButton_className,
+  taskBoxChgSize_className,
+  headerInnerCenterChgSize_className,
+  inputChgSize_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 
@@ -32,47 +35,98 @@ export default function Tsk_Input() {
   };
 
   return (
-    <div className={headerInnerCenter_className}>
-      <div className={taskBox_className}>
-        <h1 className="mb-3 font-bold">My Task Input</h1>
+    <>
+      {/* Desktopサイズ時 */}
+      <div className="hidden lg:flex">
+        <div className={headerInnerCenter_className}>
+          <div className={taskBox_className}>
+            <h1 className="mb-3 font-bold">My Task Input</h1>
 
-        <h1 className="mb-2">Task</h1>
-        <input
-          name="tsk_title"
-          type="text"
-          value={tsk_title}
-          onChange={(e) => setTskTitle(e.target.value)}
-          placeholder="Task"
-          className={input_className}
-        />
+            <h1 className="mb-2">Task</h1>
+            <input
+              name="tsk_title"
+              type="text"
+              value={tsk_title}
+              onChange={(e) => setTskTitle(e.target.value)}
+              placeholder="Task"
+              className={input_className}
+            />
 
-        <h1 className="mb-2">DeadLine</h1>
-        <input
-          name="tsk_dead_line"
-          type="date"
-          value={dead_line}
-          onChange={(e) => setDeadLine(e.target.value)}
-          placeholder="XXXX-YY-ZZ"
-          className={input_className}
-        />
+            <h1 className="mb-2">DeadLine</h1>
+            <input
+              name="tsk_dead_line"
+              type="date"
+              value={dead_line}
+              onChange={(e) => setDeadLine(e.target.value)}
+              placeholder="XXXX-YY-ZZ"
+              className={input_className}
+            />
 
-        <h1 className="mb-2">Priority</h1>
-        <select
-          name="tsk_priority"
-          value={priority}
-          onChange={(e) => setPriority(e.target.value)}
-          className={input_className}
-        >
-          <option value="">Select</option>
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
-        </select>
+            <h1 className="mb-2">Priority</h1>
+            <select
+              name="tsk_priority"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+              className={input_className}
+            >
+              <option value="">Select</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
 
-        <button className={taskInputButton_className} onClick={handleAdd}>
-          Add
-        </button>
+            <button className={taskInputButton_className} onClick={handleAdd}>
+              Add
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* Mobileサイズ時 */}
+      <div className="lg:hidden">
+        <div className={headerInnerCenterChgSize_className}>
+          <div className={taskBoxChgSize_className}>
+            <h1 className="mb-3 font-bold">My Task Input</h1>
+
+            <h1 className="mb-2">Task</h1>
+            <input
+              name="tsk_title"
+              type="text"
+              value={tsk_title}
+              onChange={(e) => setTskTitle(e.target.value)}
+              placeholder="Task"
+              className={inputChgSize_className}
+            />
+
+            <h1 className="mb-2">DeadLine</h1>
+            <input
+              name="tsk_dead_line"
+              type="date"
+              value={dead_line}
+              onChange={(e) => setDeadLine(e.target.value)}
+              placeholder="XXXX-YY-ZZ"
+              className={inputChgSize_className}
+            />
+
+            <h1 className="mb-2">Priority</h1>
+            <select
+              name="tsk_priority"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+              className={inputChgSize_className}
+            >
+              <option value="">Select</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+
+            <button className={taskInputButton_className} onClick={handleAdd}>
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
