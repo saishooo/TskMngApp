@@ -8,7 +8,6 @@ import {
   taskOutput_taskDisplayArea_className,
   taskOutput_deleteButton_className,
   headerInnerCenterChgSize_className,
-  taskBoxChgSize_className,
   taskBoxBigChgSize_className,
   taskOutput_taskDisplayAreaChgSize_className,
 } from "@/app/className";
