@@ -7,9 +7,12 @@ import {
   headerInnerCenter_className,
   taskBox_className,
   taskInputButton_className,
-  taskBoxChgSize_className,
-  headerInnerCenterChgSize_className,
-  inputChgSize_className,
+  headerInnerCenterTablet_className,
+  headerInnerCenterSmartphone_className,
+  taskBoxTablet_className,
+  taskBoxSmartphone_className,
+  inputTablet_className,
+  inputSmartphone_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 
@@ -36,7 +39,7 @@ export default function Tsk_Input() {
 
   return (
     <>
-      {/* Desktopサイズ時 */}
+      {/* Desktop(PC)サイズ時 横幅がlg以上で表示*/}
       <div className="hidden lg:flex">
         <div className={headerInnerCenter_className}>
           <div className={taskBox_className}>
@@ -82,10 +85,10 @@ export default function Tsk_Input() {
         </div>
       </div>
 
-      {/* Mobileサイズ時 */}
-      <div className="lg:hidden">
-        <div className={headerInnerCenterChgSize_className}>
-          <div className={taskBoxChgSize_className}>
+      {/* Mobile(タブレット)サイズ時 横幅がmd以上で表示、lg以下で非表示*/}
+      <div className="hidden md:block lg:hidden">
+        <div className={headerInnerCenterTablet_className}>
+          <div className={taskBoxTablet_className}>
             <h1 className="mb-3 font-bold">My Task Input</h1>
 
             <h1 className="mb-2">Task</h1>
@@ -95,7 +98,7 @@ export default function Tsk_Input() {
               value={tsk_title}
               onChange={(e) => setTskTitle(e.target.value)}
               placeholder="Task"
-              className={inputChgSize_className}
+              className={inputTablet_className}
             />
 
             <h1 className="mb-2">DeadLine</h1>
@@ -105,7 +108,7 @@ export default function Tsk_Input() {
               value={dead_line}
               onChange={(e) => setDeadLine(e.target.value)}
               placeholder="XXXX-YY-ZZ"
-              className={inputChgSize_className}
+              className={inputTablet_className}
             />
 
             <h1 className="mb-2">Priority</h1>
@@ -113,7 +116,53 @@ export default function Tsk_Input() {
               name="tsk_priority"
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
-              className={inputChgSize_className}
+              className={inputTablet_className}
+            >
+              <option value="">Select</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+
+            <button className={taskInputButton_className} onClick={handleAdd}>
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile(スマホ)サイズ時 　横幅がmd以上になったら非表示*/}
+      <div className="block md:hidden">
+        <div className={headerInnerCenterSmartphone_className}>
+          <div className={taskBoxSmartphone_className}>
+            <h1 className="mb-3 font-bold">My Task Input</h1>
+
+            <h1 className="mb-2">Task</h1>
+            <input
+              name="tsk_title"
+              type="text"
+              value={tsk_title}
+              onChange={(e) => setTskTitle(e.target.value)}
+              placeholder="Task"
+              className={inputSmartphone_className}
+            />
+
+            <h1 className="mb-2">DeadLine</h1>
+            <input
+              name="tsk_dead_line"
+              type="date"
+              value={dead_line}
+              onChange={(e) => setDeadLine(e.target.value)}
+              placeholder="XXXX-YY-ZZ"
+              className={inputSmartphone_className}
+            />
+
+            <h1 className="mb-2">Priority</h1>
+            <select
+              name="tsk_priority"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+              className={inputSmartphone_className}
             >
               <option value="">Select</option>
               <option value="high">High</option>

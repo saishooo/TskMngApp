@@ -24,6 +24,9 @@ export default function Header() {
   const sideBerButtonMobile_className =
     "inline-block w-35 pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
 
+  const sideBerButtonSmartphone_className =
+    "inline-block w-32 pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
+
   const logoutButtonMobile_className =
     "inline-block pb-2 pr-2 pl-2 text-left rounded hover:bg-gray-200";
   const pullDownLinkMobile_className =
@@ -150,8 +153,8 @@ export default function Header() {
             </div>
           </aside>
 
-          {/*Mobileサイズ時は下にメニューを表示する*/}
-          <div className="lg:hidden">
+          {/*Mobile(タブレット)サイズ時は下にメニューを表示する*/}
+          <div className="hidden md:block lg:hidden">
             <div className="fixed top-16 w-full bg-gray-100 z-50 flex">
               <nav className="space-y-2">
                 <Link
@@ -192,6 +195,70 @@ export default function Header() {
                 <div className="relative inline-block ml-2">
                   <button
                     className={sideBerButtonMobile_className}
+                    onClick={toggleTaskMenu}
+                  >
+                    TaskList
+                  </button>
+                  {isTaskMenuOpen && (
+                    <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
+                      {taskLinksChgSize.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={pullDownLinkMobile_className}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </nav>
+            </div>
+          </div>
+
+          {/*Mobile(スマホ)サイズ時は下にメニューを表示する*/}
+          <div className="block md:hidden">
+            <div className="fixed top-16 w-full bg-gray-100 z-50 flex">
+              <nav className="space-y-2">
+                <Link
+                  href="/"
+                  className="inline-block w-[100px] p-2 font-bold rounded hover:bg-gray-200"
+                >
+                  Introduction
+                </Link>
+
+                <div className="relative inline-block ml-4">
+                  <button
+                    className={sideBerButtonSmartphone_className}
+                    onClick={toggleLogMenu}
+                  >
+                    Authentication
+                  </button>
+                  {isLogMenuOpen && (
+                    <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
+                      {logLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={pullDownLinkMobile_className}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                      <button
+                        className={logoutButtonMobile_className}
+                        onClick={logout}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="relative inline-block ml-2">
+                  <button
+                    className={sideBerButtonSmartphone_className}
                     onClick={toggleTaskMenu}
                   >
                     TaskList

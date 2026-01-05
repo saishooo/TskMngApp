@@ -9,9 +9,9 @@ import {
   taskOutput_taskDisplayArea_className,
   taskOutput_deleteButton_className,
   taskOutput_updateButton_className,
-  headerInnerCenterChgSize_className,
-  taskBoxBigChgSize_className,
   taskOutput_taskDisplayAreaChgSize_className,
+  headerInnerCenterTablet_className,
+  taskBoxBigTablet_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
@@ -224,8 +224,8 @@ export default function Tsk_Output_Management() {
 
       {/* Mobileサイズ時 */}
       <div className="lg:hidden">
-        <div className={headerInnerCenterChgSize_className}>
-          <div className={taskBoxBigChgSize_className}>
+        <div className={headerInnerCenterTablet_className}>
+          <div className={taskBoxBigTablet_className}>
             <h1 className="font-bold mb-3">My Tasks</h1>
 
             <div className="flex items-center h-10">

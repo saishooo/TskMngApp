@@ -24,7 +24,7 @@ export function LogInfo_Output() {
 
   return (
     <>
-      {/* Desktopサイズ時 */}
+      {/* Desktopサイズ時 横幅がlg以上で表示*/}
       <div className="hidden lg:flex">
         <div className={headerInner_className}>
           {isLoggedIn ? (
@@ -61,8 +61,8 @@ export function LogInfo_Output() {
         </div>
       </div>
 
-      {/* Mobileサイズ時 */}
-      <div className="lg:hidden">
+      {/* Mobileサイズ時 横幅がmd以上で表示、lg以下で非表示*/}
+      <div className="hidden md:block lg:hidden">
         <div className={headerInnerMobile_className}>
           {isLoggedIn ? (
             <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
@@ -76,6 +76,43 @@ export function LogInfo_Output() {
             </div>
           ) : (
             <div className="flex items-center w-115 h-13 mt-3 ml-3  border rounded border-gray-300">
+              <div className="flex ml-3 w-55">
+                <h1 className="font-bold text-blue-600">Logout Now :</h1>
+                <p className="ml-2">Guest</p>
+              </div>
+              <button
+                className={Login_button_className}
+                onClick={() => router.push("/Auth/login")}
+              >
+                Login?
+              </button>
+              <p className="flex ml-4">or</p>
+              <button
+                className={SignUp_button_className}
+                onClick={() => router.push("/Auth/signup")}
+              >
+                Sing Up?
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Mobile(スマホ)サイズ時 横幅がmd以上で表示 横幅がmd以上になったら非表示*/}
+      <div className="block md:hidden">
+        <div className={headerInnerMobile_className}>
+          {isLoggedIn ? (
+            <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
+              <div className="flex ml-3 w-55">
+                <h1 className="font-bold text-green-600">Login Now :</h1>
+                <p className="ml-2">{user.user_name}</p>
+              </div>
+              <button className={Logout_button_className} onClick={logout}>
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
               <div className="flex ml-3 w-55">
                 <h1 className="font-bold text-blue-600">Logout Now :</h1>
                 <p className="ml-2">Guest</p>
