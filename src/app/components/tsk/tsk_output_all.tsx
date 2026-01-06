@@ -7,12 +7,12 @@ import {
   taskBoxBig_className,
   taskOutput_taskDisplayArea_className,
   taskOutput_deleteButton_className,
-  taskOutput_taskDisplayAreaChgSize_className,
   headerInnerCenterTablet_className,
   headerInnerCenterSmartphone_className,
   taskBoxBigTablet_className,
   taskBoxBigSmartphone_className,
   taskOutput_taskDisplayAreaSmartphone_className,
+  taskOutput_taskDisplayAreaTablet_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
@@ -54,7 +54,7 @@ export default function Tsk_Output_AllList() {
   //タスクが多く保存された時の表示方法を考える
   return (
     <>
-      {/* Desktop(PC)サイズ時 横幅がlg以上で表示*/}
+      {/* Desktop(PC)サイズ時 横幅がlg以上で表示 */}
       <div className="hidden lg:flex">
         <div className={headerInnerCenter_className}>
           <div className={taskBoxBig_className}>
@@ -133,7 +133,7 @@ export default function Tsk_Output_AllList() {
         </div>
       </div>
 
-      {/* Mobile(タブレット)サイズ時 横幅がmd以上で表示、lg以下で非表示*/}
+      {/* Mobile(タブレット)サイズ時 横幅がmd以上で表示、lg以下で非表示 */}
       <div className="hidden md:block lg:hidden">
         <div className={headerInnerCenterTablet_className}>
           <div className={taskBoxBigTablet_className}>
@@ -173,7 +173,7 @@ export default function Tsk_Output_AllList() {
                         <p>{task.comp ? completedIcon : ""}</p>
                       </div>
                       <div
-                        className={taskOutput_taskDisplayAreaChgSize_className}
+                        className={taskOutput_taskDisplayAreaTablet_className}
                       >
                         <div className="w-70">
                           <p className="font-semibold">{task.tsk_title}</p>
@@ -207,7 +207,7 @@ export default function Tsk_Output_AllList() {
         </div>
       </div>
 
-      {/* Mobile(スマホ)サイズ時 横幅がmd以上になったら非表示*/}
+      {/* Mobile(スマホ)サイズ時 横幅がmd以上になったら非表示 */}
       <div className="block md:hidden">
         <div className={headerInnerCenterSmartphone_className}>
           <div className={taskBoxBigSmartphone_className}>
@@ -234,7 +234,7 @@ export default function Tsk_Output_AllList() {
               </div>
             </div>
 
-            <div className="pt-4 overflow-y-auto max-h-[400px]">
+            <div className="pt-3 overflow-y-auto max-h-[400px]">
               {output_filtered_sort_tsks.length === 0 ? (
                 <p>No tasks have been registered.</p>
               ) : (
@@ -242,7 +242,7 @@ export default function Tsk_Output_AllList() {
                 output_filtered_sort_tsks.map((task) => (
                   <div key={task.id} className="flex">
                     <div className="flex">
-                      <div className="flex items-center justify-center w-8 h-15">
+                      <div className="flex items-center justify-center w-10 h-15">
                         <p>{task.comp ? completedIcon : ""}</p>
                       </div>
                       <div
@@ -250,7 +250,7 @@ export default function Tsk_Output_AllList() {
                           taskOutput_taskDisplayAreaSmartphone_className
                         }
                       >
-                        <div className="w-44">
+                        <div>
                           <p className="font-semibold">{task.tsk_title}</p>
                           <p className="text-sm text-gray-700">
                             {task.dead_line}

@@ -52,7 +52,7 @@ export const signUpBoxChgSize_className =
 export const taskOutput_taskDisplayArea_className =
   "flex items-center justify-between w-110 px-4 my-2 rounded hover:bg-gray-200";
 //タスク表示(タブレット)
-export const taskOutput_taskDisplayAreaChgSize_className =
+export const taskOutput_taskDisplayAreaTablet_className =
   "flex items-center justify-between w-80 px-4 my-2 rounded hover:bg-gray-200";
 //タスク表示(スマホ)
 export const taskOutput_taskDisplayAreaSmartphone_className =
