@@ -17,6 +17,8 @@ export function LogInfo_Output() {
     "ml-8 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
   const Logout_button_className =
     "ml-14 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
+  const Logout_button_Smartphone_className =
+    "ml-28 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
   const SignUp_button_className =
     "ml-4 w-20 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
   const headerInnerMobile_className =
@@ -65,7 +67,7 @@ export function LogInfo_Output() {
       <div className="hidden md:block lg:hidden">
         <div className={headerInnerMobile_className}>
           {isLoggedIn ? (
-            <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
+            <div className="flex items-center w-90 h-13 mt-3 border rounded border-gray-300">
               <div className="flex ml-3 w-55">
                 <h1 className="font-bold text-green-600">Login Now :</h1>
                 <p className="ml-2">{user.user_name}</p>
@@ -75,7 +77,7 @@ export function LogInfo_Output() {
               </button>
             </div>
           ) : (
-            <div className="flex items-center w-115 h-13 mt-3 ml-3  border rounded border-gray-300">
+            <div className="flex items-center w-115 h-13 mt-3 border rounded border-gray-300">
               <div className="flex ml-3 w-55">
                 <h1 className="font-bold text-blue-600">Logout Now :</h1>
                 <p className="ml-2">Guest</p>
@@ -102,19 +104,22 @@ export function LogInfo_Output() {
       <div className="block md:hidden">
         <div className={headerInnerMobile_className}>
           {isLoggedIn ? (
-            <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
-              <div className="flex ml-3 w-55">
-                <h1 className="font-bold text-green-600">Login Now :</h1>
+            <div className="flex items-center w-90 h-13 mt-3 border rounded border-gray-300">
+              <div className="flex ml-3 w-40">
+                <h1 className="font-bold text-green-600">Login :</h1>
                 <p className="ml-2">{user.user_name}</p>
               </div>
-              <button className={Logout_button_className} onClick={logout}>
+              <button
+                className={Logout_button_Smartphone_className}
+                onClick={logout}
+              >
                 Logout
               </button>
             </div>
           ) : (
-            <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
-              <div className="flex ml-3 w-55">
-                <h1 className="font-bold text-blue-600">Logout Now :</h1>
+            <div className="flex items-center w-100 h-13 mt-3 border rounded border-gray-300">
+              <div className="flex ml-3 w-40">
+                <h1 className="font-bold text-blue-600">Logout :</h1>
                 <p className="ml-2">Guest</p>
               </div>
               <button
