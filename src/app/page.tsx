@@ -24,7 +24,7 @@ export default function Introduction() {
 
       {/* Mobileサイズ時 */}
       <div className="lg:hidden">
-        <div className="items-center pt-16 pl-10">
+        <div className="items-center pt-20 pl-10">
           {descriptions.map((text, index) => (
             <p key={index}>{text}</p>
           ))}

@@ -5,8 +5,8 @@ import {
   headerInnerCenter_className,
   LoginBox_className,
   logButton_className,
-  headerInnerCenterChgSize_className,
   LoginBoxChgSize_className,
+  headerInnerCenterTablet_className,
 } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
@@ -63,7 +63,7 @@ export default function TskMngApp_Login() {
       </div>
       {/* Mobileサイズ時 */}
       <div className="lg:hidden">
-        <div className={headerInnerCenterChgSize_className}>
+        <div className={headerInnerCenterTablet_className}>
           <div className={LoginBoxChgSize_className}>
             <h1 className="font-bold mb-3">Login</h1>
 
