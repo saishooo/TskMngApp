@@ -5,8 +5,11 @@ import {
   headerInnerCenter_className,
   LoginBox_className,
   logButton_className,
-  LoginBoxChgSize_className,
   headerInnerCenterTablet_className,
+  LoginBoxTablet_className,
+  LoginBoxSmartphone_className,
+  inputSmartphone_className,
+  inputTablet_className,
 } from "@/app/className";
 import { useAuth } from "./AuthContext";
 import { useState } from "react";
@@ -31,7 +34,7 @@ export default function TskMngApp_Login() {
 
   return (
     <>
-      {/* Desktopサイズ時 */}
+      {/* Desktop(PC)サイズ時 横幅がlg以上で表示 */}
       <div className="hidden lg:flex">
         <div className={headerInnerCenter_className}>
           <div className={LoginBox_className}>
@@ -61,10 +64,11 @@ export default function TskMngApp_Login() {
           </div>
         </div>
       </div>
-      {/* Mobileサイズ時 */}
-      <div className="lg:hidden">
+
+      {/* Mobile(タブレット)サイズ時 横幅がmd以上で表示、lg以下で非表示 */}
+      <div className="hidden md:block lg:hidden">
         <div className={headerInnerCenterTablet_className}>
-          <div className={LoginBoxChgSize_className}>
+          <div className={LoginBoxTablet_className}>
             <h1 className="font-bold mb-3">Login</h1>
 
             <h1 className="mb-2">ID</h1>
@@ -74,7 +78,7 @@ export default function TskMngApp_Login() {
               placeholder="User ID"
               value={id}
               onChange={(e) => setId(e.target.value)}
-              className={input_className}
+              className={inputTablet_className}
             />
             <h1 className="mb-2">PassWord</h1>
             <input
@@ -83,7 +87,38 @@ export default function TskMngApp_Login() {
               placeholder="PassWord"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={input_className}
+              className={inputTablet_className}
+            />
+            <button onClick={handleLogin} className={logButton_className}>
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile(スマホ)サイズ時 横幅がmd以上になったら非表示 */}
+      <div className="block md:hidden">
+        <div className={headerInnerCenterTablet_className}>
+          <div className={LoginBoxSmartphone_className}>
+            <h1 className="font-bold mb-3">Login</h1>
+
+            <h1 className="mb-2">ID</h1>
+            <input
+              name="login_id"
+              type="text"
+              placeholder="User ID"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              className={inputSmartphone_className}
+            />
+            <h1 className="mb-2">PassWord</h1>
+            <input
+              name="login_password"
+              type="text"
+              placeholder="PassWord"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={inputSmartphone_className}
             />
             <button onClick={handleLogin} className={logButton_className}>
               Login
