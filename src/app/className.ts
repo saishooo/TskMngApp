@@ -28,7 +28,7 @@ export const taskOutput_taskDisplayBase_className =
 export const taskOutput_taskDisplayLg_className = "lg:w-110";
 export const taskOutput_taskDisplayMd_className = "md:w-80";
 
-export const overflowBase_className = "pt-3 overflow-y-auto";
+export const overflowBase_className = "pt-4 overflow-y-auto";
 export const overflowLg_className = "Lg:max-h-[490px]";
 export const overflowMd_className = "md:max-h-[400px]";
 
