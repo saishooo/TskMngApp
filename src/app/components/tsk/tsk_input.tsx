@@ -41,7 +41,6 @@ export default function Tsk_Input() {
 
   return (
     <>
-      {/* Desktop(PC)サイズ時 横幅がlg以上で表示*/}
       <div className="flex justify-center">
         <div className="f">
           <div

@@ -7,13 +7,15 @@ import {
   headerInnerCenterBase_className,
   headerInnerCenterLg_className,
   headerInnerCenterMd_className,
-  headerInnerCenterSm_className,
   taskBoxBigBase_className,
   taskBoxBigLg_className,
   taskBoxBigMd_className,
   taskOutput_taskDisplayBase_className,
   taskOutput_taskDisplayLg_className,
   taskOutput_taskDisplayMd_className,
+  overflowBase_className,
+  overflowLg_className,
+  overflowMd_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
@@ -52,10 +54,6 @@ export default function Tsk_Output_AllList() {
     sortValue
   );
 
-  const overflowBase_className = "pt-3 overflow-y-auto";
-  const overflowLg_className = "Lg:max-h-[490px]";
-  const overflowMd_className = "md:max-h-[400px]";
-
   //タスクが多く保存された時の表示方法を考える
   return (
     <div className="flex">
@@ -64,7 +62,6 @@ export default function Tsk_Output_AllList() {
         ${headerInnerCenterBase_className}
         ${headerInnerCenterLg_className}
         ${headerInnerCenterMd_className}
-        ${headerInnerCenterSm_className}
         `}
       >
         <div
@@ -76,7 +73,7 @@ export default function Tsk_Output_AllList() {
         >
           <h1 className="font-bold mb-3">My All Tasks</h1>
 
-          <div className="flex flex-col h-10 mb-4 md:flex-row mb-0">
+          <div className="flex flex-col h-10 md:flex-row mb-0">
             <div className="flex items-center">
               <h1 className="w-16 md:w-12 me-2">Filter :</h1>
 

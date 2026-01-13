@@ -5,39 +5,37 @@ export const headerInner_className = "fixed top-16 left-64 flex justify-center";
 //ヘッダーとサイドバーを除いた内側(スマホ)
 export const headerInnerChgSixe_className = "fixed top-16 flex justify-center";
 
-// 全サイズ共通（スマホ含む）
 export const headerInnerCenterBase_className =
-  "fixed left-1/2 -translate-x-1/2 flex justify-center";
-// スマホサイズ
+  "fixed top-60 left-1/2 -translate-x-1/2 flex justify-center";
 export const headerInnerCenterSm_className = "top-60";
-// タブレットサイズ
 export const headerInnerCenterMd_className = "md:top-60";
-// PCサイズ
 export const headerInnerCenterLg_className = "lg:top-40";
 
 // 全サイズ共通
 export const taskBoxBase_className =
   "p-4 h-[410px] border rounded border-gray-300";
-// スマホ以下のサイズ
 export const taskBoxSm_className = "w-[370px]";
-// タブレット以下のサイズ
 export const taskBoxMd_className = "md:w-[400px]";
-// PCサイズ
 export const taskBoxLg_className = "lg:w-100";
 
-// 全サイズ共通
 export const taskBoxBigBase_className =
   "p-4 border rounded border-gray-300 w-[380px] h-[510px]";
-// タブレット以下のサイズ
-export const taskBoxBigMd_className = "md:w-[480px] h-[510px]";
-// PCサイズ
-export const taskBoxBigLg_className = "lg:w-150 h-[600px]";
+export const taskBoxBigMd_className = "md:w-[480px] md:h-[510px]";
+export const taskBoxBigLg_className = "lg:w-150 md:h-[600px]";
 
 export const taskOutput_taskDisplayBase_className =
   "flex items-center justify-between w-56 px-4 my-2 rounded hover:bg-gray-200";
-
 export const taskOutput_taskDisplayLg_className = "lg:w-110";
 export const taskOutput_taskDisplayMd_className = "md:w-80";
+
+export const overflowBase_className = "pt-3 overflow-y-auto";
+export const overflowLg_className = "Lg:max-h-[490px]";
+export const overflowMd_className = "md:max-h-[400px]";
+
+export const taskOutput_taskDisplayAreaBase_className =
+  "flex items-center justify-between w-56 px-4 my-2 rounded hover:bg-gray-200";
+export const taskOutput_taskDisplayAreaLg_className = "md:w-110";
+export const taskOutput_taskDisplayAreaMd_className = "md:w-80";
 
 // 全サイズ共通
 export const inputBase_className = "p-2 mb-6 border rounded border-gray-300";
