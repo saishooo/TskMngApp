@@ -8,7 +8,6 @@ import {
   taskOutput_updateButton_className,
   headerInnerCenterBase_className,
   headerInnerCenterLg_className,
-  headerInnerCenterMd_className,
   taskBoxBigBase_className,
   taskBoxBigLg_className,
   taskBoxBigMd_className,
@@ -77,7 +76,6 @@ export default function Tsk_Output_Management() {
           className={`
           ${headerInnerCenterBase_className}
           ${headerInnerCenterLg_className}
-          ${headerInnerCenterMd_className}
           `}
         >
           <div

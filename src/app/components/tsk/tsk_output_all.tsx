@@ -6,7 +6,6 @@ import {
   taskOutput_deleteButton_className,
   headerInnerCenterBase_className,
   headerInnerCenterLg_className,
-  headerInnerCenterMd_className,
   taskBoxBigBase_className,
   taskBoxBigLg_className,
   taskBoxBigMd_className,
@@ -61,7 +60,6 @@ export default function Tsk_Output_AllList() {
         className={`
         ${headerInnerCenterBase_className}
         ${headerInnerCenterLg_className}
-        ${headerInnerCenterMd_className}
         `}
       >
         <div

@@ -7,11 +7,8 @@ export const headerInnerChgSixe_className = "fixed top-16 flex justify-center";
 
 export const headerInnerCenterBase_className =
   "fixed top-60 left-1/2 -translate-x-1/2 flex justify-center";
-export const headerInnerCenterSm_className = "top-60";
-export const headerInnerCenterMd_className = "md:top-60";
 export const headerInnerCenterLg_className = "lg:top-40";
 
-// 全サイズ共通
 export const taskBoxBase_className =
   "p-4 h-[410px] border rounded border-gray-300";
 export const taskBoxSm_className = "w-[370px]";
@@ -30,19 +27,31 @@ export const taskOutput_taskDisplayMd_className = "md:w-80";
 
 export const overflowBase_className = "pt-4 overflow-y-auto max-h-[400px] mt-4";
 export const overflowLg_className = "Lg:max-h-[490px]";
-export const overflowMd_className = "md:max-h-[400px]";
+export const overflowMd_className = "md:max-h-[460px]";
 
 export const taskOutput_taskDisplayAreaBase_className =
   "flex items-center justify-between w-56 px-4 my-2 rounded hover:bg-gray-200";
 export const taskOutput_taskDisplayAreaLg_className = "md:w-110";
 export const taskOutput_taskDisplayAreaMd_className = "md:w-80";
 
-// 全サイズ共通
 export const inputBase_className = "p-2 mb-6 border rounded border-gray-300";
-// タブレット以下のサイズ
 export const inputMd_className = "md:w-80";
-// PCサイズ
 export const inputLg_className = "lg:w-90";
+
+export const LoginBoxBase_className =
+  "w-90 p-4 h-[310px] border rounded border-gray-300";
+export const LoginBoxLg_className =
+  "lg:w-150";
+export const LoginBoxMd_className =
+  "md:w-100";
+
+export const signUpBoxBase_className =
+  "w-90 p-4 h-[510px] border rounded border-gray-300";
+export const signUpBoxLg_className =
+  "lg";
+export const signUpBoxMd_className =
+  "md:w-100";
+
 
 //タスク表示(PC)
 export const input_className = "w-90 p-2 mb-6 border rounded border-gray-300";
@@ -96,6 +105,7 @@ export const LoginBoxTablet_className =
 export const LoginBoxSmartphone_className =
   "w-90 p-4 h-[310px] border rounded border-gray-300";
 
+//--------------後で削除する--------------
 //サインアップボックス(PC)
 export const signUpBox_className =
   "w-150 p-4 h-[510px] border rounded border-gray-300";

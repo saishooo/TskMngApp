@@ -5,7 +5,6 @@ import { TaskContext } from "./tsk_parent";
 import {
   taskInputButton_className,
   headerInnerCenterBase_className,
-  headerInnerCenterMd_className,
   headerInnerCenterLg_className,
   taskBoxBase_className,
   taskBoxSm_className,
@@ -14,7 +13,6 @@ import {
   inputBase_className,
   inputLg_className,
   inputMd_className,
-  headerInnerCenterSm_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 
@@ -47,8 +45,6 @@ export default function Tsk_Input() {
             className={`
           ${headerInnerCenterBase_className}
           ${headerInnerCenterLg_className}
-          ${headerInnerCenterMd_className}
-          ${headerInnerCenterSm_className}
           `}
           >
             <div
