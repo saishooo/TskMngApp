@@ -30,15 +30,19 @@ export default function TskMngApp_SignUp() {
   return (
     <>
       <div className="flex">
-        <div className={`
+        <div
+          className={`
           ${headerInnerCenterBase_className}
           ${headerInnerCenterLg_className}
-          `}>
-          <div className={`
+          `}
+        >
+          <div
+            className={`
             ${signUpBoxBase_className}
             ${signUpBoxLg_className}
             ${signUpBoxMd_className}
-            `}>
+            `}
+          >
             <h1 className="font-bold mb-3">Sing Up</h1>
             <h1 className="mb-2">ID</h1>
             <input

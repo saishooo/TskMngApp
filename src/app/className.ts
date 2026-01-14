@@ -40,18 +40,13 @@ export const inputLg_className = "lg:w-90";
 
 export const LoginBoxBase_className =
   "w-90 p-4 h-[310px] border rounded border-gray-300";
-export const LoginBoxLg_className =
-  "lg:w-150";
-export const LoginBoxMd_className =
-  "md:w-100";
+export const LoginBoxLg_className = "lg:w-150";
+export const LoginBoxMd_className = "md:w-100";
 
 export const signUpBoxBase_className =
   "w-90 p-4 h-[510px] border rounded border-gray-300";
-export const signUpBoxLg_className =
-  "lg";
-export const signUpBoxMd_className =
-  "md:w-100";
-
+export const signUpBoxLg_className = "lg";
+export const signUpBoxMd_className = "md:w-100";
 
 //タスク表示(PC)
 export const input_className = "w-90 p-2 mb-6 border rounded border-gray-300";

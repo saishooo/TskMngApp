@@ -36,16 +36,19 @@ export default function TskMngApp_Login() {
     <>
       {/* Desktop(PC)サイズ時 横幅がlg以上で表示 */}
       <div className="flex">
-        <div className={`
+        <div
+          className={`
           ${headerInnerCenterBase_className}
           ${headerInnerCenterLg_className}
-          `}>
-
-          <div className={`
+          `}
+        >
+          <div
+            className={`
             ${LoginBoxBase_className}
             ${LoginBoxLg_className}
             ${LoginBoxMd_className}
-          `}>
+          `}
+          >
             <h1 className="font-bold mb-3">Login</h1>
 
             <h1 className="mb-2">ID</h1>
