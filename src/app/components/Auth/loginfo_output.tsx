@@ -3,7 +3,6 @@
 "use client";
 
 import { useAuth } from "./AuthContext";
-import { headerInner_className } from "@/app/className";
 import { useRouter } from "next/navigation";
 
 //ログイン情報を表示するコンポーネント
@@ -13,128 +12,86 @@ export function LogInfo_Output() {
   const router = useRouter();
 
   //classNameの宣言
-  const Login_button_className =
-    "ml-8 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
-  const Login_buttonSmartphone_className =
+  const headerInnerBase_className = "fixed top-32 left-1/2 -translate-x-1/2";
+  const headerInnerLg_className = "lg:top-16 flex justify-center";
+
+  const LoginButtonBase_className =
     "ml-4 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
-  const Logout_button_className =
-    "ml-14 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
-  const Logout_button_Smartphone_className =
-    "ml-28 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
-  const SignUp_button_className =
-    "ml-4 w-20 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
-  const SignUp_buttonSmartphone_className =
+  const LoginButtonMd_className = "md:ml-8";
+
+  const SignUpButtonBase_className =
     "ml-2 w-18 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
-  const headerInnerMobile_className =
-    "fixed top-32 flex justify-center left-1/2 -translate-x-1/2";
+  const SignUpButtonMd_className = "md:ml-4 w-20";
+
+  const LogoutButtonBase_className =
+    "ml-28 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
+  const LogoutButtonMd_className = "md:ml-14";
+
+  const loginNowBase_className =
+    "flex items-center w-90 h-13 mt-3 ml-0 border rounded border-gray-300";
+  const loginNowMd_className = "md:ml-3";
+
+  const logoutNowBase_className =
+    "flex items-center w-90 h-13 mt-3 border rounded border-gray-300";
+  const logoutNowLg_className = "md:w-115";
 
   return (
     <>
-      {/* Desktopサイズ時 横幅がlg以上で表示*/}
-      <div className="hidden lg:flex">
-        <div className={headerInner_className}>
+      <div className="flex">
+        <div
+          className={`
+          ${headerInnerBase_className}
+          ${headerInnerLg_className}
+          `}
+        >
           {isLoggedIn ? (
-            <div className="flex items-center w-90 h-13 mt-3 ml-3  border rounded border-gray-300">
-              <div className="flex ml-3 w-55">
-                <h1 className="font-bold text-green-600">Login Now :</h1>
-                <p className="ml-2">{user.user_name}</p>
-              </div>
-              <button className={Logout_button_className} onClick={logout}>
-                Logout
-              </button>
-            </div>
-          ) : (
-            <div className="flex items-center w-115 h-13 mt-3 ml-3  border rounded border-gray-300">
-              <div className="flex ml-3 w-55">
-                <h1 className="font-bold text-blue-600">Logout Now :</h1>
-                <p className="ml-2">Guest</p>
-              </div>
-              <button
-                className={Login_button_className}
-                onClick={() => router.push("/Auth/login")}
-              >
-                Login?
-              </button>
-              <p className="flex ml-4">or</p>
-              <button
-                className={SignUp_button_className}
-                onClick={() => router.push("/Auth/signup")}
-              >
-                Sing Up?
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
+            <div
+              className={`
+              ${loginNowBase_className}
+              ${loginNowMd_className}
+            `}
+            >
+              <div className="flex ml-3 w-40 md:w-55">
+                <h1 className="font-bold text-green-600 md:hidden">Login :</h1>
 
-      {/* Mobileサイズ時 横幅がmd以上で表示、lg以下で非表示*/}
-      <div className="hidden md:block lg:hidden">
-        <div className={headerInnerMobile_className}>
-          {isLoggedIn ? (
-            <div className="flex items-center w-90 h-13 mt-3 border rounded border-gray-300">
-              <div className="flex ml-3 w-55">
-                <h1 className="font-bold text-green-600">Login Now :</h1>
-                <p className="ml-2">{user.user_name}</p>
-              </div>
-              <button className={Logout_button_className} onClick={logout}>
-                Logout
-              </button>
-            </div>
-          ) : (
-            <div className="flex items-center w-115 h-13 mt-3 border rounded border-gray-300">
-              <div className="flex ml-3 w-55">
-                <h1 className="font-bold text-blue-600">Logout Now :</h1>
-                <p className="ml-2">Guest</p>
-              </div>
-              <button
-                className={Login_button_className}
-                onClick={() => router.push("/Auth/login")}
-              >
-                Login?
-              </button>
-              <p className="flex ml-4">or</p>
-              <button
-                className={SignUp_button_className}
-                onClick={() => router.push("/Auth/signup")}
-              >
-                Sing Up?
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Mobile(スマホ)サイズ時 横幅がmd以上で表示 横幅がmd以上になったら非表示*/}
-      <div className="block md:hidden">
-        <div className={headerInnerMobile_className}>
-          {isLoggedIn ? (
-            <div className="flex items-center w-90 h-13 mt-3 border rounded border-gray-300">
-              <div className="flex ml-3 w-40">
-                <h1 className="font-bold text-green-600">Login :</h1>
                 <p className="ml-2">{user.user_name}</p>
               </div>
               <button
-                className={Logout_button_Smartphone_className}
+                className={`
+              ${LogoutButtonBase_className}
+              ${LogoutButtonMd_className}
+              `}
                 onClick={logout}
               >
                 Logout
               </button>
             </div>
           ) : (
-            <div className="flex items-center w-90 h-13 mt-3 border rounded border-gray-300">
-              <div className="flex ml-3 w-40">
+            <div
+              className={`
+            ${logoutNowBase_className}
+            ${logoutNowLg_className}
+            `}
+            >
+              <div className="flex ml-3 w-40 md:w-55">
                 <h1 className="font-bold text-blue-600">Logout :</h1>
                 <p className="ml-2">Guest</p>
               </div>
               <button
-                className={Login_buttonSmartphone_className}
+                className={`
+                  ${LoginButtonBase_className}
+                  ${LoginButtonMd_className}
+                `}
                 onClick={() => router.push("/Auth/login")}
               >
                 Login
               </button>
-              <p className="flex ml-2">or</p>
+              <p className="flex ml-2 md:ml-4">or</p>
               <button
-                className={SignUp_buttonSmartphone_className}
+                className={`
+                  ${SignUpButtonBase_className}
+                  ${SignUpButtonMd_className}
+                `}
                 onClick={() => router.push("/Auth/signup")}
               >
                 Sing Up

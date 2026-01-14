@@ -4,7 +4,6 @@ import {
   logButton_className,
   headerInnerCenterBase_className,
   headerInnerCenterLg_className,
-  LoginBoxLg_className,
   LoginBoxBase_className,
   LoginBoxMd_className,
   inputBase_className,
@@ -44,7 +43,6 @@ export default function TskMngApp_Login() {
           <div
             className={`
             ${LoginBoxBase_className}
-            ${LoginBoxLg_className}
             ${LoginBoxMd_className}
           `}
           >
