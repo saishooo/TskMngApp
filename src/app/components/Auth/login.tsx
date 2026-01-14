@@ -34,7 +34,6 @@ export default function TskMngApp_Login() {
 
   return (
     <>
-      {/* Desktop(PC)サイズ時 横幅がlg以上で表示 */}
       <div className="flex">
         <div
           className={`
