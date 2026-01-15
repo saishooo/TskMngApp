@@ -13,25 +13,6 @@ export default function Header() {
 
   const { logout } = useAuth();
 
-  //classNameの宣言
-  const sideBerButton_className =
-    "block w-full pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
-  const logoutButton_className =
-    "block w-full pb-2 pr-2 pl-2 text-left rounded hover:bg-gray-200";
-  const sideBerLink_className =
-    "block pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
-
-  const sideBerButtonMobile_className =
-    "inline-block w-35 pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
-
-  const sideBerButtonSmartphone_className =
-    "inline-block w-32 pt-2 pb-2 pr-2 pl-2 text-left font-bold rounded hover:bg-gray-200";
-
-  const logoutButtonMobile_className =
-    "inline-block pb-2 pr-2 pl-2 text-left rounded hover:bg-gray-200";
-  const pullDownLinkMobile_className =
-    "block w-[120px] pb-2 pr-2 pl-2 rounded hover:bg-gray-200";
-
   //LogLinkまとめ
   const logLinks = [
     { href: "/Auth/login", label: "Login" },
@@ -40,17 +21,10 @@ export default function Header() {
 
   //TaskLinkまとめ
   const taskLinks = [
-    { href: "/tsk/tsk_input", label: "Input My Task" },
-    { href: "/tsk/tsk_mng", label: "My Tasks" },
-    { href: "/tsk/tsk_comp", label: "My Completed Tasks" },
-    { href: "/tsk/tsk_all", label: "My All Tasks" },
-  ];
-
-  const taskLinksChgSize = [
     { href: "/tsk/tsk_input", label: "Input" },
     { href: "/tsk/tsk_mng", label: "My Tasks" },
     { href: "/tsk/tsk_comp", label: "Completed" },
-    { href: "/tsk/tsk_all", label: "All" },
+    { href: "/tsk/tsk_all", label: "All Tasks" },
   ];
 
   //サイドバーを閉じる
@@ -88,199 +62,77 @@ export default function Header() {
       </header>
 
       {isSidebarOpen && (
-        // Desktopサイズ時はサイドバーを表示する
-        <>
-          <aside className="hidden lg:block fixed top-16 left-0 w-48 h-full bg-gray-100 z-50">
-            <nav className="space-y-2">
-              <Link
-                href="/"
-                className="block p-2 font-bold rounded hover:bg-gray-200"
-              >
-                Introduction
-              </Link>
+        <aside className="fixed top-16 z-50 bg-gray-100 w-full flex lg:left-0 lg:w-48 lg:h-full lg:block">
+          <nav className="flex gap-2 lg:flex-col lg:space-y-2">
+            <Link href="/" className="font-bold p-2 rounded hover:bg-gray-200">
+              Introduction
+            </Link>
 
+            {/* Authentication */}
+            <div className="relative">
               <button
-                className={sideBerButton_className}
+                className="p-2 font-bold rounded hover:bg-gray-200"
                 onClick={toggleLogMenu}
               >
                 Authentication
               </button>
+
               {isLogMenuOpen && (
-                <div className="inline-block pr-2 pl-2">
+                <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50 lg:static lg:shadow-none lg:bg-transparent">
                   {logLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={sideBerLink_className}
+                      className="block p-2 md:"
                     >
                       {link.label}
                     </Link>
                   ))}
-                  <button className={logoutButton_className} onClick={logout}>
+                  <button onClick={logout} className="block p-2">
                     Logout
                   </button>
                 </div>
               )}
+            </div>
 
+            {/* TaskList */}
+            <div className="relative">
               <button
-                className={sideBerButton_className}
+                className="p-2 font-bold rounded hover:bg-gray-200"
                 onClick={toggleTaskMenu}
               >
                 TaskList
               </button>
+
               {isTaskMenuOpen && (
-                <div className="block pr-2 pl-2">
+                <div
+                  className="
+              absolute top-full left-0 mt-1 bg-white shadow rounded z-50
+              lg:static lg:shadow-none lg:bg-transparent
+            "
+                >
                   {taskLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={sideBerLink_className}
+                      className="block p-2"
                     >
                       {link.label}
                     </Link>
                   ))}
                 </div>
               )}
-            </nav>
-
-            <div className="flex items-center justify-center pt-6">
-              <button
-                className="flex p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
-                onClick={closeSidebar}
-              >
-                Menu Close
-              </button>
             </div>
-          </aside>
-
-          {/*Mobile(タブレット)サイズ時は下にメニューを表示する*/}
-          <div className="hidden md:block lg:hidden">
-            <div className="fixed top-16 w-full bg-gray-100 z-50 flex">
-              <nav className="space-y-2">
-                <Link
-                  href="/"
-                  className="inline-block w-[120px] p-2 font-bold rounded hover:bg-gray-200"
-                >
-                  Introduction
-                </Link>
-
-                <div className="relative inline-block ml-2">
-                  <button
-                    className={sideBerButtonMobile_className}
-                    onClick={toggleLogMenu}
-                  >
-                    Authentication
-                  </button>
-                  {isLogMenuOpen && (
-                    <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
-                      {logLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className={pullDownLinkMobile_className}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                      <button
-                        className={logoutButtonMobile_className}
-                        onClick={logout}
-                      >
-                        Logout
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                <div className="relative inline-block ml-2">
-                  <button
-                    className={sideBerButtonMobile_className}
-                    onClick={toggleTaskMenu}
-                  >
-                    TaskList
-                  </button>
-                  {isTaskMenuOpen && (
-                    <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
-                      {taskLinksChgSize.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className={pullDownLinkMobile_className}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </nav>
-            </div>
+          </nav>
+          <div className="hidden lg:flex lg:items-center lg:justify-center lg:pt-6">
+            <button
+              className="flex p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
+              onClick={closeSidebar}
+            >
+              Menu Close
+            </button>
           </div>
-
-          {/*Mobile(スマホ)サイズ時は下にメニューを表示する*/}
-          <div className="block md:hidden">
-            <div className="fixed top-16 w-full bg-gray-100 z-50 flex">
-              <nav className="space-y-2">
-                <Link
-                  href="/"
-                  className="inline-block w-[100px] p-2 font-bold rounded hover:bg-gray-200"
-                >
-                  Introduction
-                </Link>
-
-                <div className="relative inline-block ml-4">
-                  <button
-                    className={sideBerButtonSmartphone_className}
-                    onClick={toggleLogMenu}
-                  >
-                    Authentication
-                  </button>
-                  {isLogMenuOpen && (
-                    <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
-                      {logLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className={pullDownLinkMobile_className}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                      <button
-                        className={logoutButtonMobile_className}
-                        onClick={logout}
-                      >
-                        Logout
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                <div className="relative inline-block ml-2">
-                  <button
-                    className={sideBerButtonSmartphone_className}
-                    onClick={toggleTaskMenu}
-                  >
-                    TaskList
-                  </button>
-                  {isTaskMenuOpen && (
-                    <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50">
-                      {taskLinksChgSize.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className={pullDownLinkMobile_className}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </nav>
-            </div>
-          </div>
-        </>
+        </aside>
       )}
     </>
   );
