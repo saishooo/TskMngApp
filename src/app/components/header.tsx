@@ -90,7 +90,7 @@ export default function Header() {
       {isSidebarOpen && (
         // Desktopサイズ時はサイドバーを表示する
         <>
-          <aside className="hidden lg:block fixed top-16 left-0 w-64 h-full bg-gray-100 z-50">
+          <aside className="hidden lg:block fixed top-16 left-0 w-48 h-full bg-gray-100 z-50">
             <nav className="space-y-2">
               <Link
                 href="/"

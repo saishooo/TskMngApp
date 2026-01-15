@@ -1,6 +1,4 @@
-//最初に表示されるhomeページ
-
-import { headerInnerChgSixe_className } from "./className";
+//最初に表示される紹介ージ
 
 const descriptions = [
   "Development of TskManagerApp started on 2025-12-06 at 00:06.",
@@ -10,25 +8,22 @@ const descriptions = [
   "You can organize your daily tasks and easily track your progress.",
 ];
 
+const headerInner_className = "fixed top-16 flex justify-center";
+const documentBase_output = "items-center pt-20 pl-10";
+const documentLg_output = "lg:pt-16 lg:pl-74";
+
 export default function Introduction() {
   return (
-    <div className={headerInnerChgSixe_className}>
-      {/* Desktopサイズ時 */}
-      <div className="hidden lg:block">
-        <div className="items-center pt-16 pl-74">
-          {descriptions.map((text, index) => (
-            <p key={index}>{text}</p>
-          ))}
-        </div>
-      </div>
-
-      {/* Mobileサイズ時 */}
-      <div className="lg:hidden">
-        <div className="items-center pt-20 pl-10">
-          {descriptions.map((text, index) => (
-            <p key={index}>{text}</p>
-          ))}
-        </div>
+    <div className={headerInner_className}>
+      <div
+        className={`
+        ${documentBase_output}
+        ${documentLg_output}
+        `}
+      >
+        {descriptions.map((text, index) => (
+          <p key={index}>{text}</p>
+        ))}
       </div>
     </div>
   );

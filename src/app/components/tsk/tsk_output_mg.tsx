@@ -4,17 +4,19 @@ import { useTasks } from "./tsk_parent";
 import { useState } from "react";
 import Image from "next/image";
 import {
-  headerInnerCenter_className,
-  taskBoxBig_className,
-  taskOutput_taskDisplayArea_className,
   taskOutput_deleteButton_className,
   taskOutput_updateButton_className,
-  headerInnerCenterTablet_className,
-  taskBoxBigTablet_className,
-  headerInnerCenterSmartphone_className,
-  taskBoxBigSmartphone_className,
-  taskOutput_taskDisplayAreaSmartphone_className,
-  taskOutput_taskDisplayAreaTablet_className,
+  headerInnerCenterBase_className,
+  headerInnerCenterLg_className,
+  taskBoxBigBase_className,
+  taskBoxBigLg_className,
+  taskBoxBigMd_className,
+  overflowBase_className,
+  overflowLg_className,
+  overflowMd_className,
+  taskOutput_taskDisplayAreaBase_className,
+  taskOutput_taskDisplayAreaLg_className,
+  taskOutput_taskDisplayAreaMd_className,
 } from "@/app/className";
 import { useAuth } from "../Auth/AuthContext";
 import { TaskRadioButton } from "../common/taskRadioButton";
@@ -69,15 +71,25 @@ export default function Tsk_Output_Management() {
   //タスクが多く保存された時の表示方法を考える
   return (
     <>
-      {/* Desktop(PC)サイズ時 横幅がlg以上で表示 */}
-      <div className="hidden lg:flex">
-        <div className={headerInnerCenter_className}>
-          <div className={taskBoxBig_className}>
+      <div className="flex">
+        <div
+          className={`
+          ${headerInnerCenterBase_className}
+          ${headerInnerCenterLg_className}
+          `}
+        >
+          <div
+            className={`
+            ${taskBoxBigBase_className}
+            ${taskBoxBigLg_className}
+            ${taskBoxBigMd_className}
+            `}
+          >
             <h1 className="font-bold mb-3">My Tasks</h1>
 
-            <div className="flex items-center h-10">
+            <div className="flex flex-col h-10 md:flex-row md-0">
               <div className="flex items-center">
-                <h1 className="me-2">Filter :</h1>
+                <h1 className="w-16 md:w-12 me-2">Filter :</h1>
                 <SelectTaskFilter
                   value={tsk_filter}
                   options={filterOptions}
@@ -85,8 +97,8 @@ export default function Tsk_Output_Management() {
                 />
               </div>
 
-              <div className="flex items-center ml-8">
-                <h1 className="mr-2">Sorte :</h1>
+              <div className="flex items-center md:ml-8">
+                <h1 className="w-16 md:w-12 mr-2">Sorte :</h1>
                 <SelectTaskFilter
                   value={sortValue}
                   options={sortOptions}
@@ -102,7 +114,13 @@ export default function Tsk_Output_Management() {
           */}
             </div>
 
-            <div className="pt-3 overflow-y-auto max-h-[490px]">
+            <div
+              className={`
+              ${overflowBase_className}
+              ${overflowLg_className}
+              ${overflowMd_className}
+              `}
+            >
               {output_filtered_sort_tsks.length === 0 ? (
                 <p>There are no unfinished tasks.</p>
               ) : (
@@ -118,307 +136,11 @@ export default function Tsk_Output_Management() {
                           onToggle={toggleTask}
                         />
                         <div
-                          className={taskOutput_taskDisplayArea_className}
-                          onClick={() => {
-                            setEditingTaskId(task.id);
-                            setEditTitle(task.tsk_title);
-                            setEditDeadLine(task.dead_line);
-                          }}
-                        >
-                          <div className="w-70">
-                            <p className="font-semibold">{task.tsk_title}</p>
-                            <p className="text-sm text-gray-700">
-                              {task.dead_line}
-                            </p>
-                            <p className="text-sm text-gray-700">
-                              {task.priority}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className={taskOutput_deleteButton_className}>
-                          <button onClick={() => deleteTask(task.id)}>
-                            <Image
-                              className="mt-1"
-                              src="/trash.svg"
-                              alt="delete"
-                              width={24}
-                              height={24}
-                            />
-                          </button>
-                          <p className="text-xs mt-1">delete</p>
-                        </div>
-                      </div>
-                    )}
-                    {editingTaskId === task.id && (
-                      //タスク編集状態
-                      <div className="flex">
-                        <TaskRadioButton
-                          output_type="management"
-                          task={task}
-                          onToggle={toggleTask}
-                        />
-
-                        <div
-                          className={taskOutput_taskDisplayArea_className}
-                          onClick={() => setEditingTaskId(null)}
-                        >
-                          <div>
-                            <input
-                              className="block font-semibold text-gray-600 h-10"
-                              value={editTitle}
-                              placeholder={task.tsk_title}
-                              onChange={(e) => setEditTitle(e.target.value)}
-                              onClick={(e) => e.stopPropagation()}
-                            />
-                            <input
-                              className="block text-sm text-gray-700 h-10"
-                              type="date"
-                              value={editDeadLine}
-                              placeholder={task.dead_line}
-                              onChange={(e) => setEditDeadLine(e.target.value)}
-                              onClick={(e) => e.stopPropagation()}
-                            />
-                            <select
-                              name="tsk_priority"
-                              value={editPriority}
-                              onChange={(e) => setEditPriority(e.target.value)}
-                              onClick={(e) => e.stopPropagation()}
-                              className="block text-sm text-gray-700 h-10"
-                            >
-                              <option value="">select</option>
-                              <option value="high">high</option>
-                              <option value="medium">medium</option>
-                              <option value="low">low</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        <div className={taskOutput_updateButton_className}>
-                          <button
-                            onClick={() =>
-                              Local_UpdateTask(
-                                task.id,
-                                editTitle,
-                                editDeadLine,
-                                editPriority
-                              )
-                            }
-                          >
-                            <Image
-                              className="mt-1"
-                              src="/update.svg"
-                              alt="delete"
-                              width={24}
-                              height={24}
-                            />
-                          </button>
-                          <p className="text-xs mt-1">Update</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile(タブレット)サイズ時 横幅がmd以上で表示、lg以下で非表示 */}
-      <div className="hidden md:block lg:hidden">
-        <div className={headerInnerCenterTablet_className}>
-          <div className={taskBoxBigTablet_className}>
-            <h1 className="font-bold mb-3">My Tasks</h1>
-
-            <div className="flex items-center h-10">
-              <div className="flex items-center">
-                <h1 className="me-2">Filter :</h1>
-                <SelectTaskFilter
-                  value={tsk_filter}
-                  options={filterOptions}
-                  onChange={setTaskFilter}
-                />
-              </div>
-
-              <div className="flex items-center ml-8">
-                <h1 className="mr-2">Sorte :</h1>
-                <SelectTaskFilter
-                  value={sortValue}
-                  options={sortOptions}
-                  onChange={setSortValue}
-                />
-              </div>
-            </div>
-
-            <div className="pt-3 overflow-y-auto max-h-[400px]">
-              {output_filtered_sort_tsks.length === 0 ? (
-                <p>There are no unfinished tasks.</p>
-              ) : (
-                //表示タスクがある場合
-                output_filtered_sort_tsks.map((task) => (
-                  <div key={task.id} className="flex">
-                    {editingTaskId !== task.id && (
-                      //タスク表示状態
-                      <div className="flex">
-                        <TaskRadioButton
-                          output_type="management"
-                          task={task}
-                          onToggle={toggleTask}
-                        />
-                        <div
-                          className={taskOutput_taskDisplayAreaTablet_className}
-                          onClick={() => {
-                            setEditingTaskId(task.id);
-                            setEditTitle(task.tsk_title);
-                            setEditDeadLine(task.dead_line);
-                          }}
-                        >
-                          <div className="w-70">
-                            <p className="font-semibold">{task.tsk_title}</p>
-                            <p className="text-sm text-gray-700">
-                              {task.dead_line}
-                            </p>
-                            <p className="text-sm text-gray-700">
-                              {task.priority}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className={taskOutput_deleteButton_className}>
-                          <button onClick={() => deleteTask(task.id)}>
-                            <Image
-                              className="mt-1"
-                              src="/trash.svg"
-                              alt="delete"
-                              width={24}
-                              height={24}
-                            />
-                          </button>
-                          <p className="text-xs mt-1">delete</p>
-                        </div>
-                      </div>
-                    )}
-                    {editingTaskId === task.id && (
-                      //タスク編集状態
-                      <div className="flex">
-                        <TaskRadioButton
-                          output_type="management"
-                          task={task}
-                          onToggle={toggleTask}
-                        />
-
-                        <div
-                          className={taskOutput_taskDisplayAreaTablet_className}
-                          onClick={() => setEditingTaskId(null)}
-                        >
-                          <div>
-                            <input
-                              className="block font-semibold text-gray-600 h-10"
-                              value={editTitle}
-                              placeholder={task.tsk_title}
-                              onChange={(e) => setEditTitle(e.target.value)}
-                              onClick={(e) => e.stopPropagation()}
-                            />
-                            <input
-                              className="block text-sm text-gray-700 h-10"
-                              type="date"
-                              value={editDeadLine}
-                              placeholder={task.dead_line}
-                              onChange={(e) => setEditDeadLine(e.target.value)}
-                              onClick={(e) => e.stopPropagation()}
-                            />
-                            <select
-                              name="tsk_priority"
-                              value={editPriority}
-                              onChange={(e) => setEditPriority(e.target.value)}
-                              onClick={(e) => e.stopPropagation()}
-                              className="block text-sm text-gray-700 h-10"
-                            >
-                              <option value="">select</option>
-                              <option value="high">high</option>
-                              <option value="medium">medium</option>
-                              <option value="low">low</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        <div className={taskOutput_updateButton_className}>
-                          <button
-                            onClick={() =>
-                              Local_UpdateTask(
-                                task.id,
-                                editTitle,
-                                editDeadLine,
-                                editPriority
-                              )
-                            }
-                          >
-                            <Image
-                              className="mt-1"
-                              src="/update.svg"
-                              alt="delete"
-                              width={24}
-                              height={24}
-                            />
-                          </button>
-                          <p className="text-xs mt-1">Update</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile(スマホ)サイズ時 横幅がmd以上になったら非表示 */}
-      <div className="block md:hidden">
-        <div className={headerInnerCenterSmartphone_className}>
-          <div className={taskBoxBigSmartphone_className}>
-            <h1 className="font-bold mb-3">My Tasks</h1>
-
-            <div className="flex flex-col h-10 mb-4">
-              <div className="flex items-center">
-                <h1 className="w-16">Filter :</h1>
-                <SelectTaskFilter
-                  value={tsk_filter}
-                  options={filterOptions}
-                  onChange={setTaskFilter}
-                />
-              </div>
-
-              <div className="flex items-center">
-                <h1 className="w-16">Sorte :</h1>
-                <SelectTaskFilter
-                  value={sortValue}
-                  options={sortOptions}
-                  onChange={setSortValue}
-                />
-              </div>
-            </div>
-
-            <div className="pt-3 overflow-y-auto max-h-[400px]">
-              {output_filtered_sort_tsks.length === 0 ? (
-                <p>There are no unfinished tasks.</p>
-              ) : (
-                //表示タスクがある場合
-                output_filtered_sort_tsks.map((task) => (
-                  <div key={task.id} className="flex">
-                    {editingTaskId !== task.id && (
-                      //タスク表示状態
-                      <div className="flex">
-                        <TaskRadioButton
-                          output_type="management"
-                          task={task}
-                          onToggle={toggleTask}
-                        />
-                        <div
-                          className={
-                            taskOutput_taskDisplayAreaSmartphone_className
-                          }
+                          className={`
+                            ${taskOutput_taskDisplayAreaBase_className}
+                            ${taskOutput_taskDisplayAreaLg_className}
+                            ${taskOutput_taskDisplayAreaMd_className}
+                            `}
                           onClick={() => {
                             setEditingTaskId(task.id);
                             setEditTitle(task.tsk_title);
@@ -460,9 +182,11 @@ export default function Tsk_Output_Management() {
                         />
 
                         <div
-                          className={
-                            taskOutput_taskDisplayAreaSmartphone_className
-                          }
+                          className={`
+                            ${taskOutput_taskDisplayAreaBase_className}
+                            ${taskOutput_taskDisplayAreaLg_className}
+                            ${taskOutput_taskDisplayAreaMd_className}
+                            `}
                           onClick={() => setEditingTaskId(null)}
                         >
                           <div>
