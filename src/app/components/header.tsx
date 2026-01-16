@@ -25,6 +25,7 @@ export default function Header() {
     { href: "/tsk/tsk_mng", label: "My Tasks" },
     { href: "/tsk/tsk_comp", label: "Completed" },
     { href: "/tsk/tsk_all", label: "All Tasks" },
+    { href: "/tsk/sql_sample", label: "SQLPage"},
   ];
 
   //サイドバーを閉じる

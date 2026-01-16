@@ -13,8 +13,8 @@ db.exec(`
     tsk_title TEXT NOT NULL,
     dead_line TEXT,
     priority TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     user_id TEXT NOT NULL
     );
     `);
