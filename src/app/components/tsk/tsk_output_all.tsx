@@ -69,11 +69,11 @@ export default function Tsk_Output_AllList() {
           ${taskBoxBigMd_className}
           `}
         >
-          <h1 className="font-bold mb-3">My All Tasks</h1>
+          <h1 className="font-bold mb-3">すべてのタスクリスト</h1>
 
           <div className="flex flex-col h-10 md:flex-row mb-0">
             <div className="flex items-center">
-              <h1 className="w-16 md:w-12 me-2">Filter :</h1>
+              <h1 className="w-16 md:w-16 me-2 whitespace-nowrap">絞り込み:</h1>
 
               <SelectTaskFilter
                 value={tsk_filter}
@@ -83,7 +83,7 @@ export default function Tsk_Output_AllList() {
             </div>
 
             <div className="flex items-center md:ml-8">
-              <h1 className="w-16 md:w-12 mr-2">Sorte :</h1>
+              <h1 className="w-16 md:w-16 mr-2 whitespace-nowrap">並び替え:</h1>
 
               <SelectTaskFilter
                 value={sortValue}
@@ -108,7 +108,7 @@ export default function Tsk_Output_AllList() {
               `}
           >
             {output_filtered_sort_tsks.length === 0 ? (
-              <p>No tasks have been registered.</p>
+              <p>登録されているタスクはありません。</p>
             ) : (
               //タスクがある場合
               output_filtered_sort_tsks.map((task) => (
@@ -143,7 +143,7 @@ export default function Tsk_Output_AllList() {
                           height={24}
                         />
                       </button>
-                      <p className="text-xs mt-1">delete</p>
+                      <p className="text-xs mt-1">削除</p>
                     </div>
                   </div>
                 </div>

@@ -1,11 +1,11 @@
 //最初に表示される紹介ージ
 
 const descriptions = [
-  "Development of TskManagerApp started on 2025-12-06 at 00:06.",
-  "We have created a task management tool.",
-  "Please log in or sign up first, then start adding your tasks.",
-  "You can also add tasks as a guest.",
-  "You can organize your daily tasks and easily track your progress.",
+  "タスク管理アプリの開発は 2025年12月6日 00:06 に開始されました",
+  "私はタスク管理ツールを作成しました。",
+  "まずはログイン、またはサインアップを行ってからタスクの追加を開始してください。",
+  "ゲストとしてタスクを追加することも可能です。",
+  "日々のタスクを整理し、進捗を簡単に把握できます。",
 ];
 
 const headerInner_className = "fixed top-16 flex justify-center";

@@ -15,17 +15,17 @@ export default function Header() {
 
   //LogLinkまとめ
   const logLinks = [
-    { href: "/Auth/login", label: "Login" },
-    { href: "/Auth/signup", label: "Sign Up" },
+    { href: "/Auth/login", label: "ログイン" },
+    { href: "/Auth/signup", label: "登録" },
   ];
 
   //TaskLinkまとめ
   const taskLinks = [
-    { href: "/tsk/tsk_input", label: "Input" },
-    { href: "/tsk/tsk_mng", label: "My Tasks" },
-    { href: "/tsk/tsk_comp", label: "Completed" },
-    { href: "/tsk/tsk_all", label: "All Tasks" },
-    { href: "/tsk/sql_sample", label: "SQLPage"},
+    { href: "/tsk/tsk_input", label: "入力" },
+    { href: "/tsk/tsk_mng", label: "未達成" },
+    { href: "/tsk/tsk_comp", label: "達成済" },
+    { href: "/tsk/tsk_all", label: "すべて" },
+    { href: "/tsk/sql_sample", label: "SQL" },
   ];
 
   //サイドバーを閉じる
@@ -56,9 +56,7 @@ export default function Header() {
             <Image src="/menu.svg" alt="menu" width={24} height={24} />
           </button>
 
-          <h1 className="font-bold text-2xl text-white ml-5">
-            Task Management
-          </h1>
+          <h1 className="font-bold text-2xl text-white ml-5">タスク管理</h1>
         </div>
       </header>
 
@@ -66,7 +64,7 @@ export default function Header() {
         <aside className="fixed top-16 z-50 bg-gray-100 w-full flex lg:left-0 lg:w-48 lg:h-full lg:block">
           <nav className="flex gap-2 lg:flex-col lg:space-y-2">
             <Link href="/" className="font-bold p-2 rounded hover:bg-gray-200">
-              Introduction
+              紹介
             </Link>
 
             {/* Authentication */}
@@ -75,7 +73,7 @@ export default function Header() {
                 className="p-2 font-bold rounded hover:bg-gray-200"
                 onClick={toggleLogMenu}
               >
-                Authentication
+                ユーザー情報
               </button>
 
               {isLogMenuOpen && (
@@ -90,7 +88,7 @@ export default function Header() {
                     </Link>
                   ))}
                   <button onClick={logout} className="block p-2">
-                    Logout
+                    ログアウト
                   </button>
                 </div>
               )}
@@ -102,7 +100,7 @@ export default function Header() {
                 className="p-2 font-bold rounded hover:bg-gray-200"
                 onClick={toggleTaskMenu}
               >
-                TaskList
+                タスク
               </button>
 
               {isTaskMenuOpen && (
@@ -130,7 +128,7 @@ export default function Header() {
               className="flex p-2 text-white font-bold border rounded bg-gray-600 hover:bg-gray-400"
               onClick={closeSidebar}
             >
-              Menu Close
+              閉じる
             </button>
           </div>
         </aside>
