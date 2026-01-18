@@ -24,10 +24,10 @@ export default function TskMngApp_Login() {
   const handleLogin = () => {
     if (!login(id, password)) {
       //ログイン失敗
-      showAlert("Error : ID or Password is incorrect", "error");
+      showAlert("エラー : IDまたはパスワードが誤っています", "error");
     } else {
       //ログイン成功
-      showAlert("Login is success!!", "success");
+      showAlert("ログインしました", "success");
     }
   };
 
@@ -46,13 +46,13 @@ export default function TskMngApp_Login() {
             ${LoginBoxMd_className}
           `}
           >
-            <h1 className="font-bold mb-3">Login</h1>
+            <h1 className="font-bold mb-3">ログイン</h1>
 
             <h1 className="mb-2">ID</h1>
             <input
               name="login_id"
               type="text"
-              placeholder="User ID"
+              placeholder="ユーザーIDを入力してください"
               value={id}
               onChange={(e) => setId(e.target.value)}
               className={`
@@ -61,11 +61,11 @@ export default function TskMngApp_Login() {
                 ${inputMd_className}
                 `}
             />
-            <h1 className="mb-2">PassWord</h1>
+            <h1 className="mb-2">パスワード</h1>
             <input
               name="login_password"
               type="text"
-              placeholder="PassWord"
+              placeholder="パスワードを入力してください"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className={`
@@ -74,7 +74,7 @@ export default function TskMngApp_Login() {
                 ${inputMd_className}`}
             />
             <button onClick={handleLogin} className={logButton_className}>
-              Login
+              ログイン
             </button>
           </div>
         </div>

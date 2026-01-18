@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     //↓saito 意味理解
     localStorage.setItem("currentUser", JSON.stringify(newUser));
 
-    showAlert("Sign up is success!!", "success");
+    showAlert("ユーザー登録が成功しました", "success");
 
     return true;
   };
@@ -108,7 +108,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setUser(guestUser);
     localStorage.removeItem("currentUser");
-    showAlert("You are now logged out.", "error");
+    showAlert("ログアウト", "error");
   };
 
   //ページリロード時に保持

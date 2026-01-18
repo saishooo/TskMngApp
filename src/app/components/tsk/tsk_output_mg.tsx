@@ -85,11 +85,13 @@ export default function Tsk_Output_Management() {
             ${taskBoxBigMd_className}
             `}
           >
-            <h1 className="font-bold mb-3">My Tasks</h1>
+            <h1 className="font-bold mb-3">未達成タスク</h1>
 
             <div className="flex flex-col h-10 md:flex-row md-0">
               <div className="flex items-center">
-                <h1 className="w-16 md:w-12 me-2">Filter :</h1>
+                <h1 className="w-16 md:w-16 me-2 whitespace-nowrap">
+                  絞り込み:
+                </h1>
                 <SelectTaskFilter
                   value={tsk_filter}
                   options={filterOptions}
@@ -98,7 +100,9 @@ export default function Tsk_Output_Management() {
               </div>
 
               <div className="flex items-center md:ml-8">
-                <h1 className="w-16 md:w-12 mr-2">Sorte :</h1>
+                <h1 className="w-16 md:w-16 mr-2 whitespace-nowrap">
+                  並び替え:
+                </h1>
                 <SelectTaskFilter
                   value={sortValue}
                   options={sortOptions}
@@ -122,7 +126,7 @@ export default function Tsk_Output_Management() {
               `}
             >
               {output_filtered_sort_tsks.length === 0 ? (
-                <p>There are no unfinished tasks.</p>
+                <p>未達成のタスクはありません。</p>
               ) : (
                 //表示タスクがある場合
                 output_filtered_sort_tsks.map((task) => (
@@ -168,7 +172,7 @@ export default function Tsk_Output_Management() {
                               height={24}
                             />
                           </button>
-                          <p className="text-xs mt-1">delete</p>
+                          <p className="text-xs mt-1">削除</p>
                         </div>
                       </div>
                     )}
@@ -212,10 +216,10 @@ export default function Tsk_Output_Management() {
                               onClick={(e) => e.stopPropagation()}
                               className="block text-sm text-gray-700 h-10"
                             >
-                              <option value="">select</option>
-                              <option value="high">high</option>
-                              <option value="medium">medium</option>
-                              <option value="low">low</option>
+                              <option value="">選択</option>
+                              <option value="high">高</option>
+                              <option value="medium">中</option>
+                              <option value="low">低</option>
                             </select>
                           </div>
                         </div>
@@ -239,7 +243,7 @@ export default function Tsk_Output_Management() {
                               height={24}
                             />
                           </button>
-                          <p className="text-xs mt-1">Update</p>
+                          <p className="text-xs mt-1">更新</p>
                         </div>
                       </div>
                     )}

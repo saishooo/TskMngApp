@@ -55,9 +55,9 @@ export default function Tsk_Input() {
           ${taskBoxSm_className}
           `}
             >
-              <h1 className="mb-3 font-bold">My Task Input</h1>
+              <h1 className="mb-3 font-bold">タスク入力</h1>
 
-              <h1 className="mb-2">Task</h1>
+              <h1 className="mb-2">タスク</h1>
               <input
                 name="tsk_title"
                 type="text"
@@ -71,7 +71,7 @@ export default function Tsk_Input() {
                 `}
               />
 
-              <h1 className="mb-2">DeadLine</h1>
+              <h1 className="mb-2">期限</h1>
               <input
                 name="tsk_dead_line"
                 type="date"
@@ -85,7 +85,7 @@ export default function Tsk_Input() {
                 `}
               />
 
-              <h1 className="mb-2">Priority</h1>
+              <h1 className="mb-2">優先度</h1>
               <select
                 name="tsk_priority"
                 value={priority}
@@ -96,14 +96,14 @@ export default function Tsk_Input() {
                 ${inputMd_className}
                 `}
               >
-                <option value="">Select</option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="">選択</option>
+                <option value="high">高</option>
+                <option value="medium">中</option>
+                <option value="low">低</option>
               </select>
 
               <button className={taskInputButton_className} onClick={handleAdd}>
-                Add
+                追加
               </button>
             </div>
           </div>

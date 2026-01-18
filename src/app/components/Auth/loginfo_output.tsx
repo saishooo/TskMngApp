@@ -16,12 +16,12 @@ export function LogInfo_Output() {
   const headerInnerLg_className = "lg:top-16 flex justify-center";
 
   const LoginButtonBase_className =
-    "ml-4 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
+    "ml-4 w-18 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
   const LoginButtonMd_className = "md:ml-8";
 
   const SignUpButtonBase_className =
-    "ml-2 w-18 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
-  const SignUpButtonMd_className = "md:ml-4 w-20";
+    "ml-2 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
+  const SignUpButtonMd_className = "md:ml-4 w-16";
 
   const LogoutButtonBase_className =
     "ml-28 w-16 h-10 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";
@@ -52,7 +52,7 @@ export function LogInfo_Output() {
             `}
             >
               <div className="flex ml-3 w-40 md:w-55">
-                <h1 className="font-bold text-green-600">Login :</h1>
+                <h1 className="font-bold text-green-600">ログイン :</h1>
                 <p className="ml-2">{user.user_name}</p>
               </div>
               <button
@@ -73,8 +73,8 @@ export function LogInfo_Output() {
             `}
             >
               <div className="flex ml-3 w-40 md:w-55">
-                <h1 className="font-bold text-blue-600">Logout :</h1>
-                <p className="ml-2">Guest</p>
+                <h1 className="font-bold text-blue-600">ログアウト :</h1>
+                <p className="ml-2">ゲスト</p>
               </div>
               <button
                 className={`
@@ -83,7 +83,7 @@ export function LogInfo_Output() {
                 `}
                 onClick={() => router.push("/Auth/login")}
               >
-                Login
+                ログイン
               </button>
               <p className="flex ml-2 md:ml-4">or</p>
               <button
@@ -93,7 +93,7 @@ export function LogInfo_Output() {
                 `}
                 onClick={() => router.push("/Auth/signup")}
               >
-                Sing Up
+                登録
               </button>
             </div>
           )}
