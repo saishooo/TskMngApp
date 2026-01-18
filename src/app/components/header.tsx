@@ -77,7 +77,7 @@ export default function Header() {
               </button>
 
               {isLogMenuOpen && (
-                <div className="absolute top-full left-0 mt-1 bg-white shadow rounded z-50 lg:static lg:shadow-none lg:bg-transparent">
+                <div className="absolute top-full left-0 mt-1 w-full bg-white shadow rounded z-50 lg:static lg:shadow-none lg:bg-transparent">
                   {logLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -106,9 +106,8 @@ export default function Header() {
               {isTaskMenuOpen && (
                 <div
                   className="
-              absolute top-full left-0 mt-1 bg-white shadow rounded z-50
-              lg:static lg:shadow-none lg:bg-transparent
-            "
+              absolute top-full left-0 mt-1 w-full bg-white shadow rounded z-50
+              lg:static lg:shadow-none lg:bg-transparent"
                 >
                   {taskLinks.map((link) => (
                     <Link
