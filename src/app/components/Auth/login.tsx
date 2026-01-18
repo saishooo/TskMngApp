@@ -27,7 +27,7 @@ export default function TskMngApp_Login() {
       showAlert("エラー : IDまたはパスワードが誤っています", "error");
     } else {
       //ログイン成功
-      showAlert("ログインに成功しました", "success");
+      showAlert("ログインしました", "success");
     }
   };
 
