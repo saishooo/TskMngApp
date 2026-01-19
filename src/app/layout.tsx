@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import Tsk_Parent from "./components/tsk/tsk_parent";
+import { AuthProvider } from "./components/Auth/AuthContext";
+import { AlertProvider } from "./components/alert/alertContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <Header />
-        <div className="flex min-h-screen">
-          <Tsk_Parent>
-            {children}
-          </Tsk_Parent>
-        </div>
+        <AlertProvider>
+          <AuthProvider>
+            <Header />
+            <div className="flex min-h-screen">
+              <Tsk_Parent>{children}</Tsk_Parent>
+            </div>
+          </AuthProvider>
+        </AlertProvider>
       </body>
     </html>
   );
