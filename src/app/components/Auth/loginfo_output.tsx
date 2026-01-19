@@ -5,6 +5,7 @@
 import { useRouter } from "next/navigation";
 import { useAuth } from "./AuthContext";
 
+
 //ログイン情報を表示するコンポーネント
 export function LogInfo_Output() {
   const { user, logout } = useAuth();
