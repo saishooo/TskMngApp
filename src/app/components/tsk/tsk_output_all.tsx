@@ -69,7 +69,7 @@ export default function Tsk_Output_AllList() {
           ${taskBoxBigMd_className}
           `}
         >
-          <h1 className="font-bold mb-3">すべてのタスクリスト</h1>
+          <h1 className="font-bold mb-3">すべてのタスク</h1>
 
           <div className="flex flex-col h-10 md:flex-row mb-0">
             <div className="flex items-center">
