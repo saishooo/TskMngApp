@@ -29,7 +29,8 @@ export const taskOutput_taskDisplayAreaBase_className =
 export const taskOutput_taskDisplayAreaLg_className = "md:w-110";
 export const taskOutput_taskDisplayAreaMd_className = "md:w-80";
 
-export const inputBase_className = "p-2 mb-6 border rounded border-gray-300";
+export const inputBase_className =
+  "p-2 mb-6 w-80 border rounded border-gray-300";
 export const inputMd_className = "md:w-80";
 export const inputLg_className = "lg:w-90";
 
