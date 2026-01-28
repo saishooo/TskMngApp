@@ -11,7 +11,7 @@ export const taskBoxMd_className = "md:w-[400px]";
 export const taskBoxLg_className = "lg:w-100";
 
 export const taskBoxBigBase_className =
-  "p-4 border rounded border-gray-300 w-[380px] h-[510px]";
+  "p-4 border rounded border-gray-300 w-[360px] h-[390px]";
 export const taskBoxBigMd_className = "md:w-[480px] md:h-[510px]";
 export const taskBoxBigLg_className = "lg:w-150 md:h-[600px]";
 
@@ -20,7 +20,7 @@ export const taskOutput_taskDisplayBase_className =
 export const taskOutput_taskDisplayLg_className = "lg:w-110";
 export const taskOutput_taskDisplayMd_className = "md:w-80";
 
-export const overflowBase_className = "pt-4 overflow-y-auto max-h-[400px] mt-4";
+export const overflowBase_className = "pt-4 overflow-y-auto max-h-[270px] mt-4";
 export const overflowLg_className = "Lg:max-h-[490px]";
 export const overflowMd_className = "md:max-h-[460px]";
 
@@ -44,9 +44,9 @@ export const signUpBoxLg_className = "lg";
 export const signUpBoxMd_className = "md:w-100";
 
 export const taskOutput_deleteButton_className =
-  "flex flex-col items-center justify-center w-20 rounded hover:bg-red-200";
+  "flex flex-col items-center justify-center w-16 rounded hover:bg-red-200";
 export const taskOutput_updateButton_className =
-  "flex flex-col items-center justify-center w-20 rounded hover:bg-green-200";
+  "flex flex-col items-center justify-center w-16 rounded hover:bg-green-200";
 
 export const taskInputButton_className =
   "block p-3 w-25 text-white font-bold rounded bg-gray-600 hover:bg-gray-400";

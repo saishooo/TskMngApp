@@ -14,7 +14,7 @@ export const TaskRadioButton = ({ output_type, task, onToggle }: Props) => {
   const isChecked = output_type === "completed" ? true : false;
 
   return (
-    <div className="flex w-10 h-15 px-4">
+    <div className="flex w-6 h-15 px-4">
       {isChecked === true ? (
         //タスク完了ページ使用するラジオボタン
         <>

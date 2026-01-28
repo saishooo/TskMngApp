@@ -114,7 +114,7 @@ export default function Tsk_Output_AllList() {
               output_filtered_sort_tsks.map((task) => (
                 <div key={task.id} className="flex">
                   <div className="flex">
-                    <div className="flex items-center justify-center w-10 h-15">
+                    <div className="flex items-center justify-center w-8 h-15">
                       <p>{task.comp ? completedIcon : ""}</p>
                     </div>
                     <div
