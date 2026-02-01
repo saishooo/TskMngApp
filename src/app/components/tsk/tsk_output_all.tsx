@@ -69,7 +69,7 @@ export default function Tsk_Output_AllList() {
           ${taskBoxBigMd_className}
           `}
         >
-          <h1 className="font-bold mb-3">すべてのタスクリスト</h1>
+          <h1 className="font-bold mb-3">すべてのタスク</h1>
 
           <div className="flex flex-col h-10 md:flex-row mb-0">
             <div className="flex items-center">
@@ -114,7 +114,7 @@ export default function Tsk_Output_AllList() {
               output_filtered_sort_tsks.map((task) => (
                 <div key={task.id} className="flex">
                   <div className="flex">
-                    <div className="flex items-center justify-center w-10 h-15">
+                    <div className="flex items-center justify-center w-8 h-15">
                       <p>{task.comp ? completedIcon : ""}</p>
                     </div>
                     <div
