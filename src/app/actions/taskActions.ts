@@ -16,11 +16,20 @@ export async function getTasksAction(userId: string): Promise<Tasks[]> {
 }
 
 /* タスク追加 */
-export async function addTaskAction(
-  task: Omit<Tasks, "id" | "createdAt" | "updatedAt">
-) {
+export async function addTaskAction(formData: FormData) {
+  const task = {
+    id: null,
+    comp: false,
+    tsk_title: formData.get("tsk_title") as string,
+    dead_line: null,
+    priority: null,
+    createdAt: null,
+    updatedAt: null,
+    user_id: formData.get("user_id") as string,
+  };
+
   addTask(task);
-  revalidatePath("/"); //ページの描写を再度行わせる命令
+  revalidatePath("/tsk/sql_sample"); //ページの描写を再度行わせる命令
 }
 
 /* タスクの完了・未完了の切り替え */
