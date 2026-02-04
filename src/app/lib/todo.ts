@@ -20,7 +20,7 @@ export const getTasks = (userId: string): Tasks[] => {
         ORDER BY created_at DESC
         `);
 
-  const rows = stmt.all(userId);
+  const rows = stmt.all(userId) as any[];
 
   return rows.map((row) => ({
     ...row,
