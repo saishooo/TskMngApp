@@ -22,7 +22,7 @@ export async function addTaskAction(formData: FormData) {
     comp: false,
     tsk_title: formData.get("tsk_title") as string,
     dead_line: null,
-    priority: null,
+    priority: "hight",
     createdAt: null,
     updatedAt: null,
     user_id: formData.get("user_id") as string,
