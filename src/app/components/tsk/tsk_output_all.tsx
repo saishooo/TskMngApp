@@ -1,4 +1,4 @@
-"use client";
+//"use client";
 
 import { useTasks } from "./tsk_parent";
 import Image from "next/image";
@@ -19,14 +19,21 @@ import {
 import { useAuth } from "../Auth/AuthContext";
 import { useTaskFilter } from "../common/useTaskFilter";
 import { SelectTaskFilter } from "../common/slectTaskFilter";
-import { useState } from "react";
+//import { useState } from "react";
 import { useTaskSort } from "../common/useTaskSort";
 import { allFileterOption, sortOptions } from "../common/taskOption";
 
+import { getTasksAction } from "@/app/actions/taskActions";
+import { Tasks } from "@/app/types";
+
+
 //タスクを全て表示するコンポーネント
-export default function Tsk_Output_AllList() {
-  const { tasks, deleteTask } = useTasks();
-  const { user } = useAuth();
+export default async function Tsk_Output_AllList() {
+  const userId = "sai.shooo"
+  const tasks: Tasks[] = await getTasksAction(userId);
+
+  //const { tasks, deleteTask } = useTasks();
+  //const { user } = useAuth();
 
   //タスク完了画像
   const completedIcon = (
@@ -40,18 +47,17 @@ export default function Tsk_Output_AllList() {
   );
 
   //ログインしているユーザーID別にタスクを吸い上げ
-  const login_user_tsks = tasks.filter((task) => task.user_id === user.user_id);
+  //const login_user_tsks = tasks.filter((task) => task.user_id === user.user_id);
 
   //フィルターにかけたタスク
-  const { tsk_filter, setTaskFilter, output_filtered_tsks } =
-    useTaskFilter(login_user_tsks);
+  //const { tsk_filter, setTaskFilter, output_filtered_tsks } =useTaskFilter(login_user_tsks);
 
-  const [sortValue, setSortValue] = useState("");
+  //const [sortValue, setSortValue] = useState("");
   //フィルターにかけたタスクをさらに、ソートする
-  const output_filtered_sort_tsks = useTaskSort(
+  /*const output_filtered_sort_tsks = useTaskSort(
     output_filtered_tsks,
     sortValue
-  );
+  );*/
 
   //タスクが多く保存された時の表示方法を考える
   return (
@@ -75,29 +81,26 @@ export default function Tsk_Output_AllList() {
             <div className="flex items-center">
               <h1 className="w-16 md:w-16 me-2 whitespace-nowrap">絞り込み:</h1>
 
+            {/*
               <SelectTaskFilter
                 value={tsk_filter}
                 options={allFileterOption}
                 onChange={setTaskFilter}
               />
+              */}
             </div>
 
             <div className="flex items-center md:ml-8">
               <h1 className="w-16 md:w-16 mr-2 whitespace-nowrap">並び替え:</h1>
 
+              {/*
               <SelectTaskFilter
                 value={sortValue}
                 options={sortOptions}
                 onChange={setSortValue}
               />
+              */}
             </div>
-            {/*
-          <div className="flex items-center ml-20 hrounded hover:bg-gray-200">
-            <button>
-              <Image src="/search.svg" alt="search" width={30} height={30} />
-            </button>
-          </div>
-          */}
           </div>
 
           <div
@@ -107,11 +110,11 @@ export default function Tsk_Output_AllList() {
               ${overflowMd_className}
               `}
           >
-            {output_filtered_sort_tsks.length === 0 ? (
+            {tasks.length === 0 ? (
               <p>登録されているタスクはありません。</p>
             ) : (
               //タスクがある場合
-              output_filtered_sort_tsks.map((task) => (
+              tasks.map((task) => (
                 <div key={task.id} className="flex">
                   <div className="flex">
                     <div className="flex items-center justify-center w-8 h-15">
@@ -134,7 +137,7 @@ export default function Tsk_Output_AllList() {
                     </div>
 
                     <div className={taskOutput_deleteButton_className}>
-                      <button onClick={() => deleteTask(task.id)}>
+                      <button /*onClick={() => deleteTask(task.id)}*/>
                         <Image
                           className="mt-1"
                           src="/trash.svg"
