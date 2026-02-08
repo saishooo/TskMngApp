@@ -53,9 +53,9 @@ export const toggleTask = (id: number, comp: boolean) => {
   const stmt = db.prepare(`
         UPDATE tasks
         SET
-            comp = ?
-            updated_at = CURRENT_TIMESTANP
-        WHRE id = ?
+            comp = ?,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
         `);
   stmt.run(comp ? 1 : 0, id);
 };
@@ -82,7 +82,7 @@ export const updateTask = (
 {
   /* SQL:タスク削除 */
 }
-export const deleteTask = (id: number) => {
+export const deleteTask = (id: string) => {
   const stmt = db.prepare(`
         DELETE FROM tasks
         WHERE id = ?

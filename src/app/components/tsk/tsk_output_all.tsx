@@ -26,10 +26,9 @@ import {
 import { getTasksAction } from "@/app/actions/taskActions";
 import { Tasks } from "@/app/types";
 
-
 //タスクを全て表示するコンポーネント
 export default async function Tsk_Output_AllList() {
-  const userId = "sai.shooo"
+  const userId = "sai.shooo";
   const tasks: Tasks[] = await getTasksAction(userId);
 
   //const { tasks, deleteTask } = useTasks();
@@ -81,7 +80,7 @@ export default async function Tsk_Output_AllList() {
             <div className="flex items-center">
               <h1 className="w-16 md:w-16 me-2 whitespace-nowrap">絞り込み:</h1>
 
-            {/*
+              {/*
               <SelectTaskFilter
                 value={tsk_filter}
                 options={allFileterOption}

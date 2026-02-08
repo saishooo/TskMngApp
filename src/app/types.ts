@@ -3,12 +3,12 @@
 export interface Tasks {
   id: number; //id
   comp: boolean; //達成 or 未達
-  tsk_title: string; //タスク
+  tsk_title: string | null; //タスク
   dead_line: string | null; //期日
   priority: string | null; //優先度
-  createdAt: string; //追加日
-  updatedAt: string; //更新日
-  user_id: string; //ユーザーID
+  createdAt: string | null; //追加日
+  updatedAt: string | null; //更新日
+  user_id: string | null; //ユーザーID
 }
 
 export interface AuthUser {

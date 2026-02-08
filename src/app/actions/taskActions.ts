@@ -33,9 +33,20 @@ export async function addTaskAction(formData: FormData) {
 }
 
 /* タスクの完了・未完了の切り替え */
-export async function toggleTaskAction(id: number, comp: boolean) {
-  toggleTask(id, comp);
-  revalidatePath("/");
+export async function toggleTaskAction(formData: FormData) {
+  const idValue = formData.get("tsk_id");
+
+  if (typeof idValue !== "string") {
+    throw new Error("invalid id");
+  }
+
+  const tsk_id = Number(idValue);
+
+  //チェックボックスにチェックが入ると、trueが入る
+  const tsk_comp = formData.has("tsk_comp");
+
+  toggleTask(tsk_id, tsk_comp);
+  revalidatePath("/tsk/sql_sample");
 }
 
 /* タスク内容の更新 */
@@ -48,7 +59,12 @@ export async function updateTaskAction(
 }
 
 /* タスクの削除 */
-export async function deleteTaskAction(id: number) {
+export async function deleteTaskAction(formData: FormData) {
+  const id = formData.get("tsk_id");
+  if (typeof id != "string") {
+    throw new Error("invalid form data");
+  }
+
   deleteTask(id);
   revalidatePath("/");
 }
